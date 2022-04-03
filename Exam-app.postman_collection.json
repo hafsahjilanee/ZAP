@@ -1,0 +1,910 @@
+{
+	"info": {
+		"_postman_id": "3b620af5-4ec0-4866-824f-18c7227cc534",
+		"name": "Exam-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4000/admin/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Fatima\",\r\n    \"lastName\": \"Athar\",\r\n    \"username\": \"fatima\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:4000/admin/register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Fatima\",\r\n    \"lastName\": \"Athar\",\r\n    \"username\": \"fatima\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/admin/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"admin",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2-vyGp6PvFo4RvsFtPoIWeCReyIC8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Oct 2021 17:44:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:4000/admin/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"fatima\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:4000/admin/login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"fatima\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/admin/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"admin",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "317"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"13d-A6N1+eo6MW/mZf3d/hKpqYy6i7U\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Oct 2021 17:44:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"firstName\": \"Fatima\",\n    \"lastName\": \"Athar\",\n    \"username\": \"fatima\",\n    \"createdDate\": \"2021-10-31T17:44:34.301Z\",\n    \"id\": \"617ed6024fbd1e7510da4f25\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlZDYwMjRmYmQxZTc1MTBkYTRmMjUiLCJpYXQiOjE2MzU3MDIyODQsImV4cCI6MTYzNjMwNzA4NH0.QS60RP4LDmGFZRcQgXhlV01MfG9aeGkwHBb6xe-l7fM\"\n}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:4000/admin/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Hafsah\",\r\n    \"lastName\": \"Jilanee\",\r\n    \"username\": \"hafsah\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:4000/admin/register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Hafsah\",\r\n    \"lastName\": \"Jilanee\",\r\n    \"username\": \"hafsah\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/admin/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"admin",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2-vyGp6PvFo4RvsFtPoIWeCReyIC8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Oct 2021 17:45:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:4000/admin/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDA0MTMsImV4cCI6MTYzNjMwNTIxM30.5VZLcF-FxSh7xJHub2QU_8dnkIzd1hjgZvT4Oeez1vQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/admin/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/admin/617ece90b104116a8c071893",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDA0MTMsImV4cCI6MTYzNjMwNTIxM30.5VZLcF-FxSh7xJHub2QU_8dnkIzd1hjgZvT4Oeez1vQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/617ece90b104116a8c071893",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"617ece90b104116a8c071893"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/admin/617ece90b104116a8c071893",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDA0MTMsImV4cCI6MTYzNjMwNTIxM30.5VZLcF-FxSh7xJHub2QU_8dnkIzd1hjgZvT4Oeez1vQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"hafsah\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/617ece90b104116a8c071893",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"617ece90b104116a8c071893"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/admin/617ece90b104116a8c071893",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDA0MTMsImV4cCI6MTYzNjMwNTIxM30.5VZLcF-FxSh7xJHub2QU_8dnkIzd1hjgZvT4Oeez1vQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/admin/617ece90b104116a8c071893",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"617ece90b104116a8c071893"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/admin/registerTeacher",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDA5NDMsImV4cCI6MTYzNjMwNTc0M30.xXOVZkjLnMDZS31O37TLYoTNKseMtXWP5kxQSR0IRyI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Taha\",\r\n    \"lastName\": \"Athar\",\r\n    \"username\": \"taha\",\r\n    \"password\": \"12345\",\r\n    \"Subject\": \"Maths\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/registerTeacher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"registerTeacher"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/admin/registerStudent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDA5NDMsImV4cCI6MTYzNjMwNTc0M30.xXOVZkjLnMDZS31O37TLYoTNKseMtXWP5kxQSR0IRyI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Tuba\",\r\n    \"lastName\": \"Athar\",\r\n    \"username\": \"tuba\",\r\n    \"password\": \"12345\",\r\n    \"class\": \"9\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/registerStudent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"registerStudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/admin/students",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDA5NDMsImV4cCI6MTYzNjMwNTc0M30.xXOVZkjLnMDZS31O37TLYoTNKseMtXWP5kxQSR0IRyI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/admin/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/admin/teachers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDEyMTcsImV4cCI6MTYzNjMwNjAxN30.-a_i8XNbRdMJBzJN3e3xInYBEGnJfHGzd6OKmqK3SZo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/admin/teachers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"teachers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/teachers/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDEyMTcsImV4cCI6MTYzNjMwNjAxN30.-a_i8XNbRdMJBzJN3e3xInYBEGnJfHGzd6OKmqK3SZo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/teachers/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"teachers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/teachers/students",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDEyMTcsImV4cCI6MTYzNjMwNjAxN30.-a_i8XNbRdMJBzJN3e3xInYBEGnJfHGzd6OKmqK3SZo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/teachers/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"teachers",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/teachers/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"taha\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/teachers/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"teachers",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:4000/teachers/login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"athar\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/teachers/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"teachers",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "332"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"14c-2xWdl+146HVB3ghPKkmuNxKah50\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Oct 2021 17:43:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"firstName\": \"Taha\",\n    \"lastName\": \"Athar\",\n    \"username\": \"athar\",\n    \"Subject\": \"Maths\",\n    \"createdDate\": \"2021-10-31T17:22:38.433Z\",\n    \"id\": \"617ed0deb104116a8c071894\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlZDBkZWIxMDQxMTZhOGMwNzE4OTQiLCJpYXQiOjE2MzU3MDIxOTUsImV4cCI6MTYzNjMwNjk5NX0.eho9LEYxr34b2rSYKJWGzLpBLgCt7iJq3DqQScFACWE\"\n}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:4000/teachers/617ed0deb104116a8c071894",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDE1MjQsImV4cCI6MTYzNjMwNjMyNH0.7gDVd1-Knm7ZV2GSFz1tPRVcRSARl3apRzqdF-UUUkQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/teachers/617ed0deb104116a8c071894",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"teachers",
+						"617ed0deb104116a8c071894"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/teachers/617ed0deb104116a8c071894",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDE1MjQsImV4cCI6MTYzNjMwNjMyNH0.7gDVd1-Knm7ZV2GSFz1tPRVcRSARl3apRzqdF-UUUkQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"athar\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/teachers/617ed0deb104116a8c071894",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"teachers",
+						"617ed0deb104116a8c071894"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/students/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"tuba\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/students/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"students",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/students/617ed162b104116a8c071895",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDE3MDgsImV4cCI6MTYzNjMwNjUwOH0.yAoUZKEdlG6HGxX-wW62Whp9FVvEgSW2IcDhBeyMnsg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"class\":\"8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/students/617ed162b104116a8c071895",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"students",
+						"617ed162b104116a8c071895"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/students/617ed162b104116a8c071895",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdlY2UwOGIxMDQxMTZhOGMwNzE4OTIiLCJpYXQiOjE2MzU3MDE4MjMsImV4cCI6MTYzNjMwNjYyM30.S-UMnLDsF6cGIxRRuDGI4anE5EqNIGfL9Ct5JFLo65Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:4000/students/617ed162b104116a8c071895",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"students",
+						"617ed162b104116a8c071895"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

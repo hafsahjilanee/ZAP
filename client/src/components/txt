@@ -1,0 +1,158 @@
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+const AdminDashboard = () => {
+    const [teachers, setTeacher] = useState([]);
+
+    useEffect(() => {
+        loadUsers();
+      }, []);
+    
+      const loadUsers = async () => {
+        const result = 
+        await axios({
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                
+            },
+            url: "http://localhost:4000/admin/admins"
+        }).then((result) => {
+            result.json().then((resp) => {
+                console.log(resp); 
+            })
+        })
+        setUser(result.data.reverse());
+      };
+
+    try {
+
+        console.log(localStorage.getItem("auth"))
+
+        fetch("http://localhost:4000/admin/admins", {
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        }).then((result) => {
+            result.json().then((resp) => {
+                console.log(resp); 
+            })
+        })
+
+    } catch (e) {
+        console.log(e)
+    }
+    return (
+        <div className="container">
+            <div className='py-4'>
+                <h1> Teachers</h1>
+                <table class="table border shadow">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">username</th>
+                            <th> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {teachers.map((resp, index) => (
+              <tr>
+                <th scope="row">{index + 1}</th>
+                <td>{resp.firstName}</td>
+                <td>{resp.firstName}</td>
+                <td>{resp.firstName}</td>
+                
+              </tr>
+            ))}
+          </tbody>
+                </table>
+                <div className='py-4'>
+                <h1> Students</h1>
+                <table className="table border shadow">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">username</th>
+                            <th> Action </th>
+                        </tr>
+                    </thead>
+                
+                </table>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default AdminDashboard;
+
+/* after return (
+        <nav className="navbar navbar-expand navbar-dark bg-dark">
+            <div className="container" >
+            <div className="container-fluid">
+
+<NavLink className="navbar-brand" exact to="/">Zap</NavLink>
+
+
+
+
+
+
+
+
+
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+
+const ViewTeacher = () => {
+  const [Teacher, setTeacher] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    subject: "",
+  });
+
+  const { id } = useParams();
+  useEffect(() => {
+    loadTeachers();
+  }, []);
+
+  const loadTeachers = async id => {
+      console.log(id)
+    const result = await axios.get('http://localhost:4000/admin/' + id, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('auth')
+        }
+    });
+    setTeacher(result.data);
+    
+  };
+  return (
+    <div className="container py-4">
+      <Link className="btn btn-primary" to="/">
+        back to Home
+      </Link>
+      <h1 className="display-4">Teacher Id: {id}</h1>
+      <hr />
+      <ul className="list-group w-50">
+        <li className="list-group-item">First Name: {Teacher.firstName}</li>
+        <li className="list-group-item">Last Name: {Teacher.lastName}</li>
+        <li className="list-group-item">Username: {Teacher.username}</li>
+        <li className="list-group-item">Subject: {Teacher.subject}</li>
+        
+      </ul>
+    </div>
+  );
+};
+
+export default ViewTeacher;

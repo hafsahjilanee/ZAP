@@ -1,0 +1,467 @@
+{
+	"info": {
+		"_postman_id": "8b50e31a-9e0d-4f09-9d1b-f1a9768fa6e4",
+		"name": "quiz-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllQuestions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"5 times 10?\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"50\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"20\"\r\n            \r\n        },\r\n        {\r\n            \"text\": \"25\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/questions/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"questions",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getAllQuestions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"5 times 10?\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"50\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"20\"\r\n            \r\n        },\r\n        {\r\n            \"text\": \"25\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/questions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"questions",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1023"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3ff-mKh1cpn3nXUltK0ElFJKflUQCFk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Oct 2021 15:55:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"617ea8ddbff67f666e25944f\",\n        \"description\": \"What is 4 times 4?\",\n        \"alternatives\": [\n            {\n                \"text\": \"32\",\n                \"isCorrect\": false,\n                \"_id\": \"617ea8ddbff67f666e259450\"\n            },\n            {\n                \"text\": \"42\",\n                \"isCorrect\": false,\n                \"_id\": \"617ea8ddbff67f666e259451\"\n            },\n            {\n                \"text\": \"4\",\n                \"isCorrect\": false,\n                \"_id\": \"617ea8ddbff67f666e259452\"\n            },\n            {\n                \"text\": \"16\",\n                \"isCorrect\": true,\n                \"_id\": \"617ea8ddbff67f666e259453\"\n            }\n        ],\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"617eaa54926c684b34dee634\",\n        \"description\": \"What is the capital of Pakistan?\",\n        \"alternatives\": [\n            {\n                \"text\": \"Lahore\",\n                \"isCorrect\": false,\n                \"_id\": \"617eaf3e8eb3f09aaa6e049b\"\n            },\n            {\n                \"text\": \"Islamabad\",\n                \"isCorrect\": true,\n                \"_id\": \"617eaf3e8eb3f09aaa6e049c\"\n            },\n            {\n                \"text\": \"Karachi\",\n                \"isCorrect\": false,\n                \"_id\": \"617eaf3e8eb3f09aaa6e049d\"\n            },\n            {\n                \"text\": \"Quetta\",\n                \"isCorrect\": false,\n                \"_id\": \"617eaf3e8eb3f09aaa6e049e\"\n            }\n        ],\n        \"__v\": 1\n    },\n    {\n        \"_id\": \"617eb942002fee3d5f234659\",\n        \"description\": \"5 times 9?\",\n        \"alternatives\": [\n            {\n                \"text\": \"45\",\n                \"isCorrect\": true,\n                \"_id\": \"617eba08002fee3d5f234672\"\n            },\n            {\n                \"text\": \"20\",\n                \"isCorrect\": false,\n                \"_id\": \"617eba08002fee3d5f234673\"\n            },\n            {\n                \"text\": \"25\",\n                \"isCorrect\": false,\n                \"_id\": \"617eba08002fee3d5f234674\"\n            }\n        ],\n        \"__v\": 1\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "addQuestion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Formula for speed?\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"time/distance\"\r\n        },\r\n        {\r\n            \"text\": \"distance/time\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"time * distance\"\r\n        },\r\n        {\r\n            \"text\": \"none of the above\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/questions/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"questions",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:3333/questions/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Formula for speed?\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"time/distance\"\r\n        },\r\n        {\r\n            \"text\": \"distance/time\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"time * distance\"\r\n        },\r\n        {\r\n            \"text\": \"none of the above\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/questions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"questions",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "403"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"193-K5+VwVUOKGJ+Qx0h9cFe9AEEPz8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Oct 2021 17:15:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"description\": \"Formula for speed?\",\n    \"alternatives\": [\n        {\n            \"text\": \"time/distance\",\n            \"isCorrect\": false,\n            \"_id\": \"617ecf30ba76f318a77fd565\"\n        },\n        {\n            \"text\": \"distance/time\",\n            \"isCorrect\": true,\n            \"_id\": \"617ecf30ba76f318a77fd566\"\n        },\n        {\n            \"text\": \"time * distance\",\n            \"isCorrect\": false,\n            \"_id\": \"617ecf30ba76f318a77fd567\"\n        },\n        {\n            \"text\": \"none of the above\",\n            \"isCorrect\": false,\n            \"_id\": \"617ecf30ba76f318a77fd568\"\n        }\n    ],\n    \"_id\": \"617ecf30ba76f318a77fd564\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "updateQuestion",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Formula for velocity?\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"time/distance\"\r\n        },\r\n        {\r\n            \"text\": \"distance/time\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"time * distance\"\r\n        },\r\n        {\r\n            \"text\": \"none of the above\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/questions/617ecf30ba76f318a77fd564",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"questions",
+						"617ecf30ba76f318a77fd564"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "updateQuestion",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Formula for velocity?\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"time/distance\"\r\n        },\r\n        {\r\n            \"text\": \"distance/time\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"time * distance\"\r\n        },\r\n        {\r\n            \"text\": \"none of the above\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/questions/617ecf30ba76f318a77fd564",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"questions",
+								"617ecf30ba76f318a77fd564"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "406"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"196-bdWzhzK9Qi8K81Wh4CFNq7OT4Cc\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Oct 2021 17:17:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"617ecf30ba76f318a77fd564\",\n    \"description\": \"Formula for velocity?\",\n    \"alternatives\": [\n        {\n            \"text\": \"time/distance\",\n            \"isCorrect\": false,\n            \"_id\": \"617ecfadba76f318a77fd56f\"\n        },\n        {\n            \"text\": \"distance/time\",\n            \"isCorrect\": true,\n            \"_id\": \"617ecfadba76f318a77fd570\"\n        },\n        {\n            \"text\": \"time * distance\",\n            \"isCorrect\": false,\n            \"_id\": \"617ecfadba76f318a77fd571\"\n        },\n        {\n            \"text\": \"none of the above\",\n            \"isCorrect\": false,\n            \"_id\": \"617ecfadba76f318a77fd572\"\n        }\n    ],\n    \"__v\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "getOneQuestion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/questions/617ecf30ba76f318a77fd564",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"questions",
+						"617ecf30ba76f318a77fd564"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getOneQuestion",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/questions/617ecf30ba76f318a77fd564",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"questions",
+								"617ecf30ba76f318a77fd564"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "406"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"196-bdWzhzK9Qi8K81Wh4CFNq7OT4Cc\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Oct 2021 17:19:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"617ecf30ba76f318a77fd564\",\n    \"description\": \"Formula for velocity?\",\n    \"alternatives\": [\n        {\n            \"text\": \"time/distance\",\n            \"isCorrect\": false,\n            \"_id\": \"617ecfadba76f318a77fd56f\"\n        },\n        {\n            \"text\": \"distance/time\",\n            \"isCorrect\": true,\n            \"_id\": \"617ecfadba76f318a77fd570\"\n        },\n        {\n            \"text\": \"time * distance\",\n            \"isCorrect\": false,\n            \"_id\": \"617ecfadba76f318a77fd571\"\n        },\n        {\n            \"text\": \"none of the above\",\n            \"isCorrect\": false,\n            \"_id\": \"617ecfadba76f318a77fd572\"\n        }\n    ],\n    \"__v\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "deleteQuestion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/questions/617eaa54926c684b34dee634",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"questions",
+						"617eaa54926c684b34dee634"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deleteQuestion",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/questions/617eaa54926c684b34dee634",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"questions",
+								"617eaa54926c684b34dee634"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Oct 2021 17:22:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
