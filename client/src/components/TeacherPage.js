@@ -74,10 +74,10 @@ const TeacherPage = () => {
         console.log(e)
     }*/
   return (
-    <div className="container">
+    <div className="container-main">
       {" "}
       <br></br>
-      <div className="py-4">
+      <div className="container-list">
         <h1>
           {" "}
           Teachers

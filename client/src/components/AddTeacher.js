@@ -31,7 +31,7 @@ const AddTeacher = () => {
   };
   return (
     <div className="container">
-      <div className="w-75 mx-auto shadow p-5">
+      <div className="container22 ">
         <h2 className="text-center mb-4">Add a Teacher</h2>
         <form onSubmit={(e) => onSubmit(e)}>
           <div className="mb-3 py-4">
