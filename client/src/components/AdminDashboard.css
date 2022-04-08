@@ -62,7 +62,7 @@
   }
  
   .gallery:hover .image1{
-    opacity: 0.15;
+    opacity: 0.5;
   }
   
   .gallery:hover .middle{
