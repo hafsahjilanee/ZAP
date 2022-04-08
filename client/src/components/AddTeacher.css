@@ -10,7 +10,8 @@
     text-align:inherit;
     font-weight: bolder;
 }
-.form-control-lg1{
+.form-control-lg{
+    width: 50%;
     margin-bottom: 0.75rem !important;
     min-height: calc(1.5em + (1rem + 2px));
     padding: 0.5rem;
@@ -18,13 +19,26 @@
     border: 1px solid #9c9b9b;
     font-size: 1.25rem;
     border-radius: 0.3rem;
+    margin: auto    ;
 }
-.container22{
-    width: 65%;
+.container-form{
+    width: 45%;
     margin-right: auto !important;
     margin-left: auto !important;
     padding: 2rem !important;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-    background-color: #efededf9;
-    border: #717171;
+    background-color: #f1ededaa;
+  
+    justify-content: space-between !important;
+}
+.container-main{
+    width: 65%;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding: 2rem !important;   
+  
+}
+.form-group {
+    margin-bottom: 1rem !important;
+    padding: auto;
+    
 }

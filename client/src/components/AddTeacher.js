@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./AddTeacher.css";
 
 const AddTeacher = () => {
   let navigate = useNavigate();
@@ -31,59 +30,61 @@ const AddTeacher = () => {
   };
   return (
     <div className="container">
-      <div className="container22 ">
-        <h2 className="text-center mb-4">Add a Teacher</h2>
+      <div className="w-75 mx-auto shadow p-5">
+        <h2 className=" mb-4">Add a Teacher</h2>
         <form onSubmit={(e) => onSubmit(e)}>
-          <div className="mb-3 py-4">
-            <label className="label">First Name</label>{" "}
+          <div className="form-group mb-3 ">
             <input
-              label="First Name"
               type="text"
-              className="form-control-lg1 "
+              className="form-control form-control-lg mb-2"
               id="floatingInput"
               name="firstName"
               placeholder="Enter First Name"
               value={firstName}
               onChange={(e) => onInputChange(e)}
             />
-            <br></br>
-            <label className="label">Last Name</label>{" "}
+          </div>
+
+          <div className="form-group mb-3 ">
             <input
               type="text"
-              className="form-control-lg1 "
+              className="form-control form-control-lg mb-2"
               id="floatingInput"
               name="lastName"
               placeholder="Enter Last Name"
               value={lastName}
               onChange={(e) => onInputChange(e)}
             />
-            <br></br>
-            <label className="label">Role</label>{" "}
+          </div>
+
+          <div className="form-group mb-3 ">
             <input
               type="text"
-              className="form-control-lg1 "
+              className="form-control form-control-lg mb-2"
               id="floatingInput"
               name="Role"
               placeholder="Enter Role"
               value="Teacher"
               onChange={(e) => onInputChange(e)}
             />
-            <br></br>
-            <label className="label">User ID</label>{" "}
+          </div>
+
+          <div className="form-group mb-3 ">
             <input
               type="text"
-              className="form-control-lg1 "
+              className="form-control form-control-lg mb-2"
               id="floatingInput"
               name="user_id"
               placeholder="Enter User ID"
               value={user_id}
               onChange={(e) => onInputChange(e)}
             />
-            <br></br>
-            <label className="label">Initial password</label>{" "}
+          </div>
+
+          <div className="form-group mb-3 ">
             <input
               type="password"
-              className=" form-control-lg1 "
+              className="form-control form-control-lg mb-2"
               id="floatingInput"
               placeholder="Enter Initial password"
               name="password"
@@ -92,11 +93,12 @@ const AddTeacher = () => {
             />
           </div>
 
-          <button className="btn btn-primary btn-block me-2 mb-2">
-            Add Teacher
-          </button>
-          <Link className="btn btn-primary me-2 mb-2" to="/adminDashboard">
-            Back to Dashboard
+          <button className="btn btn-primary btn-block me-2 mb-2">Add</button>
+          <Link
+            className="btn btn-primary me-2 mb-2"
+            to="/AdminDashboard/TeacherPage"
+          >
+            Back
           </Link>
         </form>
       </div>
