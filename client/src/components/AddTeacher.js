@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./AddTeacher.css";
 
 const AddTeacher = () => {
   let navigate = useNavigate();
@@ -29,11 +30,11 @@ const AddTeacher = () => {
     navigate("/AdminDashboard/teacherPage");
   };
   return (
-    <div className="container">
-      <div className="w-75 mx-auto shadow p-5">
+    <div className="container-main">
+      <div className=" container-form shadow  ">
         <h2 className=" mb-4">Add a Teacher</h2>
         <form onSubmit={(e) => onSubmit(e)}>
-          <div className="form-group mb-3 ">
+          <div className="form-group mb-3">
             <input
               type="text"
               className="form-control form-control-lg mb-2"
@@ -45,7 +46,7 @@ const AddTeacher = () => {
             />
           </div>
 
-          <div className="form-group mb-3 ">
+          <div className="form-group mb-3">
             <input
               type="text"
               className="form-control form-control-lg mb-2"
@@ -84,7 +85,7 @@ const AddTeacher = () => {
           <div className="form-group mb-3 ">
             <input
               type="password"
-              className="form-control form-control-lg mb-2"
+              className="form-control form-control-lg mb-4"
               id="floatingInput"
               placeholder="Enter Initial password"
               name="password"
@@ -94,10 +95,8 @@ const AddTeacher = () => {
           </div>
 
           <button className="btn btn-primary btn-block me-2 mb-2">Add</button>
-          <Link
-            className="btn btn-primary me-2 mb-2"
-            to="/AdminDashboard/TeacherPage"
-          >
+
+          <Link className="btn mb-2" to="/AdminDashboard/TeacherPage">
             Back
           </Link>
         </form>

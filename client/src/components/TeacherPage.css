@@ -16,3 +16,15 @@
    .table{
        background: #f3EDED;
    }
+   .btn{
+    margin-left: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    
+    
+}
+.table{
+    margin-top: auto;
+}

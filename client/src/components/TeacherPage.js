@@ -78,8 +78,7 @@ const TeacherPage = () => {
       {" "}
       <br></br>
       <div className="container-list">
-        <h1>
-          {" "}
+        <h1 className="mb-4">
           Teachers
           <NavLink exact to="/adminDashboard/AddTeacher">
             <img

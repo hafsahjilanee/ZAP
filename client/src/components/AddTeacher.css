@@ -20,6 +20,7 @@
     font-size: 1.25rem;
     border-radius: 0.3rem;
     margin: auto    ;
+    
 }
 .container-form{
     width: 45%;
@@ -42,3 +43,27 @@
     padding: auto;
     
 }
+.btn{
+    margin-left: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+    
+}
+
+.btn-primary{
+    background-color: #B24C4C;
+    border-color: #B24C4C;
+    margin-left: 20px;
+    
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.btn-primary:hover{
+    background-color: #b24c4cc3;
+}
+.btn-primary::after,.btn-primary:focus, .btn-primary:active {
+    background-color: #b24c4cc3;
+    
+}
+.btn{align-self: right;}

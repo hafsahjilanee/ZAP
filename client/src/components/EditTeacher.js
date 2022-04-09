@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import "./AddTeacher.css";
 const EditTeacher = () => {
   let history = useNavigate();
   const { id } = useParams();
@@ -52,16 +52,16 @@ const EditTeacher = () => {
     setTeacher(result.data);
   };
   return (
-    <div className="container">
-      <div className="w-75 mx-auto shadow p-5">
+    <div className="container-main">
+      <div className="container-form shadow ">
         <h2 className="text-center mb-4">
-          Edit Information of: {firstName} {lastName}
+          {firstName} {lastName}
         </h2>
         <form onSubmit={(e) => onSubmit(e)}>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <input
               type="text"
-              className="form-control form-control-lg"
+              className="form-control form-control-lg mb-2"
               placeholder="Enter first Name"
               name="firstName"
               value={firstName}
@@ -69,10 +69,10 @@ const EditTeacher = () => {
             />
             <br></br>
           </div>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <input
               type="text"
-              className="form-control form-control-lg"
+              className="form-control form-control-lg mb-2"
               placeholder="Enter Last Name"
               name="lastName"
               value={lastName}
@@ -80,10 +80,10 @@ const EditTeacher = () => {
             />
             <br></br>
           </div>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <input
               type="text"
-              className="form-control form-control-lg"
+              className="form-control form-control-lg mb-2"
               placeholder="Enter User ID"
               name="user_id"
               value={user_id}
@@ -98,11 +98,8 @@ const EditTeacher = () => {
           >
             Update Teacher
           </button>
-          <Link
-            className="btn btn-primary me-2 mb-2"
-            to="/adminDashboard/TeacherPage"
-          >
-            Done
+          <Link className="btn me-2 mb-2" to="/adminDashboard/TeacherPage">
+            Back
           </Link>
         </form>
       </div>

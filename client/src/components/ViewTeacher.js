@@ -30,14 +30,14 @@ const ViewTeacher = () => {
   };
 
   return (
-    <div className="container py-4 ">
-      <h1 className="display-4">
-        Teacher Name: {Teacher.firstName} {Teacher.lastName}
-      </h1>
-      <hr />
-      <ul className="list-group w-50 ">
+    <div className="container-main py-4 ">
+      <div className="container-form w-50 ">
+        <h2 className="text-center mb-4">
+          {Teacher.firstName} {Teacher.lastName}
+        </h2>
+
         <div class="row mb-3">
-          <label for="inputText3" class="col-sm-2 col-form-label">
+          <label for="inputText3" class="col-sm-2  mb-3">
             First Name
           </label>
           <div class="col-sm-10">
@@ -82,11 +82,12 @@ const ViewTeacher = () => {
           </div>
         </div>
         <div class="row mb-3"></div>
-      </ul>
-      <br />
-      <Link className="btn btn-primary" to="/adminDashboard/TeacherPage">
-        Done
-      </Link>
+
+        <br />
+        <Link className="btn btn-primary" to="/adminDashboard/TeacherPage">
+          Done
+        </Link>
+      </div>
     </div>
   );
 };
