@@ -6,8 +6,8 @@ const schema = new Schema({
     phone_no: {type: String, required: false},
     course: [
         { 
-            name: { type: String, required: true },
-            course_id:{type:String, required: false, unique: false }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Courses"
         }
         ],
     createdDate: { type: Date, default: Date.now },
