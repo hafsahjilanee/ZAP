@@ -16,6 +16,7 @@ app.use('/admin', require('./controllers/users.controller'));
 app.use('/teacher', require('./controllers/teacher.controller'));
 app.use('/student', require('./controllers/student.controller'));
 app.use('/question',require('./controllers/question.controller'));
+app.use('/courses',require('./controllers/courses.controller'));
 
 // global error handler
 app.use(errorHandler);

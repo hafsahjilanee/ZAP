@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+
 
 const AddQuestion = () => {
   let navigate = useNavigate();
@@ -122,6 +124,9 @@ const AddQuestion = () => {
           <br />
 
           <button className="btn btn-primary btn-block">Add Question</button>
+          <Link className="btn btn-primary me-2 mb-2" to="/quizDashboard">
+            Back to Dashboard
+          </Link>
         </form>
       </div>
     </div>
