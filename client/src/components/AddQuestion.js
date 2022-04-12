@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
-
-
+import image from "./minus1.png";
 const AddQuestion = () => {
   let navigate = useNavigate();
 
@@ -69,14 +67,17 @@ const AddQuestion = () => {
 
   return (
     <div className="container">
-      <div className="w-75 mx-auto shadow p-5">
+      <div className="container-form w-75 ">
         <h2 className="text-center mb-4">Add A Question</h2>
         <form onSubmit={(e) => onSubmit(e)}>
           <div className="form-group">
-            <input
+            <textarea
               type="text"
-              className="form-control form-control-lg"
-              placeholder="Enter Question Description"
+              rows="5"
+              cols="100"
+              wrap="soft"
+              placeholder="Enter Question Description "
+              className="form-control-lg w-75"
               name="description"
               value={question.description}
               onChange={(e) => onInputChange(e)}
@@ -84,49 +85,68 @@ const AddQuestion = () => {
           </div>
           <br />
           {question.alternatives.map((alternative, i) => (
-            <div style={{ padding: "25px" }}>
+            <div style={{ padding: "15px" }}>
               <span style={{ fontSize: "18px" }}>Option {i + 1}: </span>
               <input
                 variant="outlined"
                 name="text"
-                placeholder="answer text"
+                placeholder="Answer text"
+                className="form-control-lg"
+                style={{ width: "300px" }}
                 onChange={(e) => handleAlternativeChange(e, i)}
                 value={question.alternatives[i].text}
               />
-
               <input
-                variant="outlined"
+                type={"checkbox"}
                 name="isCorrect"
-                placeholder="true false?"
+                variant="outlined"
+                placeholder="true/false?"
+                className="form-control-lg"
+                style={{
+                  width: "30px",
+                  marginLeft: "30px",
+                  marginRight: "30px",
+                  position: "relative",
+                  justifySelf: "flex-start",
+                }}
                 onChange={(e) => handleAlternativeChange(e, i)}
                 value={question.alternatives[i].isCorrect}
               />
+              <button
+                variant="contained"
+                style={{
+                  marginLeft: "10px",
+                  height: "50px",
+                  border: "none",
+                  paddingBottom: "0px",
+                  background: "none",
+                }}
+                onClick={(e) => deleteAlternative(e, i)}
+              >
+                <img
+                  classname="img"
+                  src={image}
+                  alt="add"
+                  height="40"
+                  align="right"
+                ></img>
+              </button>
               <div>
                 <br />
               </div>
               <button
                 variant="contained"
-                color="primary"
+                className="btn-primary"
+                style={{ height: "40px", borderRadius: "5px " }}
                 onClick={(e) => addAlternative(e, i)}
               >
                 Add Option
-              </button>
-              <button
-                variant="contained"
-                color="secondary"
-                style={{ marginLeft: "10px" }}
-                onClick={(e) => deleteAlternative(e, i)}
-              >
-                Delete option
               </button>
             </div>
           ))}
           <br />
 
           <button className="btn btn-primary btn-block">Add Question</button>
-          <Link className="btn btn-primary me-2 mb-2" to="/quizDashboard">
-            Back to Dashboard
-          </Link>
         </form>
       </div>
     </div>
