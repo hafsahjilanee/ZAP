@@ -78,16 +78,17 @@ const StudentPage = () => {
       {" "}
       <br></br>
       <div className="container-list">
-        <h1>
+        <h1 className="mb-4">
           {" "}
           Students
           <NavLink exact to="/adminDashboard/addStudent">
             <img
-              classname="img"
+              className="img"
               src={image}
               alt="add"
               height="40"
               align="right"
+              style={{ paddingRight: "3rem" }}
             ></img>{" "}
           </NavLink>{" "}
         </h1>
@@ -130,6 +131,7 @@ const StudentPage = () => {
                 </td>
               </tr>
             ))}
+            x
           </tbody>
         </table>
       </div>

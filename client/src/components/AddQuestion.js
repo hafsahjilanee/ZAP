@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import image from "./minus1.png";
+import image1 from "./plus.png";
 const AddQuestion = () => {
   let navigate = useNavigate();
 
@@ -136,7 +137,7 @@ const AddQuestion = () => {
 
               <button
                 variant="contained"
-                className="btn-primary"
+                className="btn btn-outline-secondary me-2 "
                 style={{ height: "40px", borderRadius: "5px " }}
                 onClick={(e) => addAlternative(e, i)}
               >
@@ -154,8 +155,6 @@ const AddQuestion = () => {
               fontSize: "23px",
               fontFamily: "Calibri",
               borderRadius: "5px ",
-              backgroundColor: "#802929",
-              borderColor: "802929",
             }}
           >
             Add Question

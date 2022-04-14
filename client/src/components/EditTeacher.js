@@ -98,7 +98,10 @@ const EditTeacher = () => {
           >
             Update Teacher
           </button>
-          <Link className="btn me-2 mb-2" to="/adminDashboard/TeacherPage">
+          <Link
+            className="btn btn-outline-secondary me-2 mb-2"
+            to="/adminDashboard/TeacherPage"
+          >
             Back
           </Link>
         </form>

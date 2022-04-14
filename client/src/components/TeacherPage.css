@@ -2,6 +2,9 @@
 .img {
     margin-left: 5px;
     }
+    .img:hover{
+        opacity: 0.5;
+    }
 .container-list{
      padding-top: 20px;
     height: auto;

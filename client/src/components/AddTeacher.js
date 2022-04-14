@@ -65,7 +65,7 @@ const AddTeacher = () => {
               id="floatingInput"
               name="Role"
               placeholder="Enter Role"
-              value="Teacher"
+              value="Role-Teacher"
               onChange={(e) => onInputChange(e)}
             />
           </div>

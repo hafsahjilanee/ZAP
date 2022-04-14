@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import background from "./work-on-site.png";
+import { Navbar } from "react-bootstrap";
 
 const StudentDashboard = () => {
-    return (
-        <div className="container">
-            <div className='py-4'>
-                <h1> Teacher Dashboard</h1>
-                <table class="table border shadow">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">username</th>
-                            <th> Action </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    );
+  return (
+    <div
+      className="container"
+      style={{ marginTop: "0", backgroundImage: { background } }}
+    >
+      <img className="image1" src={background} alt="bg" marginTop="0" />
+    </div>
+  );
 };
 
 export default StudentDashboard;

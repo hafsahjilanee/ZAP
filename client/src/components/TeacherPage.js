@@ -82,11 +82,12 @@ const TeacherPage = () => {
           Teachers
           <NavLink exact to="/adminDashboard/AddTeacher">
             <img
-              classname="img"
+              className="img"
               src={image}
               alt="add"
               height="40"
               align="right"
+              style={{ paddingRight: "3rem" }}
             ></img>{" "}
           </NavLink>{" "}
         </h1>{" "}

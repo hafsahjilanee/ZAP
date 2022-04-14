@@ -114,7 +114,11 @@ const AdminDashboard = () => {
   return (
     <div className="container-admin">
       <div className="gallery">
-        <NavLink className="container2" exact to="/adminDashboard/teacherPage">
+        <NavLink
+          className="container2  "
+          exact
+          to="/adminDashboard/teacherPage"
+        >
           <img className="image1" src={image} alt="teacher" />
           <div class="middle">
             <div class="text">Teachers</div>
@@ -123,7 +127,7 @@ const AdminDashboard = () => {
       </div>
       <div className="gallery">
         <NavLink className="container2" exact to="/adminDashboard/studentPage">
-          <img class="image1" src={image1} alt="students"></img>
+          <img class="image1" src={image1} alt="students" />
           <div class="middle">
             <div class="text">Students</div>
           </div>
@@ -131,7 +135,7 @@ const AdminDashboard = () => {
       </div>
       <div className="gallery">
         <NavLink className="container2" exact to="/adminDashboard/teacherPage">
-          <img class="image1" src={image2} alt="courses"></img>
+          <img class="image1" src={image2} alt="courses" />
           <div class="middle">
             <div class="text">Courses</div>
           </div>
