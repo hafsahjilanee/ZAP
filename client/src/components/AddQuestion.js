@@ -85,55 +85,55 @@ const AddQuestion = () => {
           </div>
           <br />
           {question.alternatives.map((alternative, i) => (
-            <div style={{ padding: "15px" }}>
-              <span style={{ fontSize: "18px" }}>Option {i + 1}: </span>
-              <input
-                variant="outlined"
-                name="text"
-                placeholder="Answer text"
-                className="form-control-lg"
-                style={{ width: "300px" }}
-                onChange={(e) => handleAlternativeChange(e, i)}
-                value={question.alternatives[i].text}
-              />
-              <input
-                type={"checkbox"}
-                name="isCorrect"
-                variant="outlined"
-                placeholder="true/false?"
-                className="form-control-lg"
-                style={{
-                  width: "30px",
-                  marginLeft: "30px",
-                  marginRight: "30px",
-                  position: "relative",
-                  justifySelf: "flex-start",
-                }}
-                onChange={(e) => handleAlternativeChange(e, i)}
-                value={question.alternatives[i].isCorrect}
-              />
-              <button
-                variant="contained"
-                style={{
-                  marginLeft: "10px",
-                  height: "50px",
-                  border: "none",
-                  paddingBottom: "0px",
-                  background: "none",
-                }}
-                onClick={(e) => deleteAlternative(e, i)}
-              >
-                <img
-                  classname="img"
-                  src={image}
-                  alt="add"
-                  height="40"
-                  align="right"
-                ></img>
-              </button>
-              <div>
-                <br />
+            <div style={{ padding: "15px", alignItems: "center" }}>
+              <div style={{ alignItems: "flex-start" }}>
+                <span style={{ fontSize: "18px" }}>Option {i + 1}: </span>
+
+                <input
+                  variant="outlined"
+                  name="text"
+                  placeholder="Answer text"
+                  className="form-control-lg"
+                  style={{ width: "300px" }}
+                  onChange={(e) => handleAlternativeChange(e, i)}
+                  value={question.alternatives[i].text}
+                />
+                <input
+                  type={"checkbox"}
+                  name="isCorrect"
+                  variant="outlined"
+                  placeholder="true/false?"
+                  className="btn-primary "
+                  style={{
+                    width: "25px",
+                    height: "25px",
+                    marginLeft: "30px",
+                    marginRight: "30px",
+                  }}
+                  onChange={(e) => handleAlternativeChange(e, i)}
+                  value={question.alternatives[i].isCorrect}
+                />
+                <button
+                  variant="contained"
+                  className="btn-primary "
+                  style={{
+                    marginLeft: "70px",
+                    border: "none",
+                    paddingBottom: "0px",
+                    background: "none",
+                  }}
+                  onClick={(e) => deleteAlternative(e, i)}
+                >
+                  <img
+                    classname="img"
+                    src={image}
+                    alt="add"
+                    height="23px"
+                    align="right"
+                  ></img>
+                </button>
               </div>
+
               <button
                 variant="contained"
                 className="btn-primary"
@@ -146,7 +146,20 @@ const AddQuestion = () => {
           ))}
           <br />
 
-          <button className="btn btn-primary btn-block">Add Question</button>
+          <button
+            className="btn-primary"
+            style={{
+              height: "55px",
+              width: "400px",
+              fontSize: "23px",
+              fontFamily: "Calibri",
+              borderRadius: "5px ",
+              backgroundColor: "#802929",
+              borderColor: "802929",
+            }}
+          >
+            Add Question
+          </button>
         </form>
       </div>
     </div>

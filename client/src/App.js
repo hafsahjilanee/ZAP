@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import About from "./components/About";
 import Login from "./components/Login";
 import Navbar from "./components/layout/Navbar";
