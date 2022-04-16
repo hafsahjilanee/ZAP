@@ -20,7 +20,7 @@ const QuizDashboard = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: `http://localhost:4000/question/?page=${currentPage}&pagination=6`,
+      url: `http://localhost:4000/question/?page=${currentPage}&pagination=50`,
     });
     console.log(result.data);
     setQuestions(result.data.data);
@@ -46,7 +46,7 @@ const QuizDashboard = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/question/?page=1&pagination=6",
+      url: "http://localhost:4000/question/?page=1&pagination=50",
     });
     //console.log(result.data)
     setQuestions(result.data.data);
@@ -57,7 +57,7 @@ const QuizDashboard = () => {
   const deleteQuestion = async (id) => {
     //console.log(id);
     await axios.delete(
-      "http://localhost:4000/question/" + id,
+      "http://localhost:4000/question/questions" + id,
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("auth"),
@@ -94,10 +94,12 @@ const QuizDashboard = () => {
               <th style={{ width: "5%" }} scope="col">
                 #
               </th>
-              <th style={{ width: "70%" }} scope="col">
+              <th style={{ width: "60%", overflow: "auto" }} scope="col">
                 Question
               </th>
-              <th style={{ width: "30%" }}>Action</th>
+              <th style={{ width: "35%", overflow: "auto" }} scope="col">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -105,7 +107,15 @@ const QuizDashboard = () => {
               questions.map((question, index) => (
                 <tr>
                   <th scope="row">{index + 1}</th>
-                  <td>{question.description}</td>
+                  <td
+                    style={{
+                      height: "min-content",
+                      wrap: "soft",
+                      width: "max-content",
+                    }}
+                  >
+                    {question.description}
+                  </td>
                   <td>
                     <Link
                       class="btn btn-outline-secondary me-2"

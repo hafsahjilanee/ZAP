@@ -79,6 +79,7 @@ const TeacherPage = () => {
       <br></br>
       <div className="container-list">
         <h1 className="mb-4">
+          {" "}
           Teachers
           <NavLink exact to="/adminDashboard/AddTeacher">
             <img
@@ -94,11 +95,19 @@ const TeacherPage = () => {
         <table class="table table-hover border shadow">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">User ID</th>
-              <th> Action </th>
+              <th style={{ width: "5%" }} scope="col">
+                #
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                First Name
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                Last Name
+              </th>
+              <th style={{ width: "8%", overflow: "auto" }} scope="col">
+                User ID
+              </th>
+              <th style={{ width: "35%", overflow: "auto" }}> Action </th>
             </tr>
           </thead>
           <tbody>

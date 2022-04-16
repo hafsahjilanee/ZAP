@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import "./AddTeacher.css";
 
 const ViewTeacher = () => {
   const [Teacher, setTeacher] = useState({
@@ -31,58 +32,147 @@ const ViewTeacher = () => {
 
   return (
     <div className="container-main py-4 ">
-      <div className="container-form w-50 ">
-        <h2 className="text-center mb-4">
-          {Teacher.firstName} {Teacher.lastName}
-        </h2>
-
+      <h2 className="text-center mb-4">
+        {Teacher.firstName} {Teacher.lastName}
+      </h2>{" "}
+      <div className="container-form">
         <div class="row mb-3">
-          <label for="inputText3" class="col-sm-2  mb-3">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "120px", margin: "auto" }}
+          >
             First Name
           </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-              id="inputText3"
-              name="firstname"
-              value={Teacher.firstName}
-              readOnly
-            />
-          </div>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="firstname"
+            value={Teacher.firstName}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
         </div>
         <div class="row mb-3">
-          <label for="inputText3" class="col-sm-2 col-form-label">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "120px", margin: "auto" }}
+          >
             Last Name
           </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-              id="inputText3"
-              name="lastname"
-              value={Teacher.lastName}
-              readOnly
-            />
-          </div>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="lastname"
+            value={Teacher.lastName}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
         </div>
         <div class="row mb-3">
-          <label for="inputText3" class="col-sm-2 col-form-label">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "120px", margin: "auto" }}
+          >
             User ID
           </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-              id="inputText3"
-              name="user ID"
-              value={Teacher.user_id}
-              readOnly
-            />
-          </div>
-        </div>
-        <div class="row mb-3"></div>
 
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="user ID"
+            value={Teacher.user_id}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+        <div class="row mb-3">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "140px", margin: "auto" }}
+          >
+            Email Address
+          </label>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="Email address"
+            value={Teacher.user_id}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "150px", margin: "auto" }}
+          >
+            Contact Number
+          </label>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="Contact Number"
+            value={Teacher.user_id}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+        {/*For course count (optional) */}
+        <div class="row mb-3">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "150px", margin: "auto" }}
+          >
+            Courses
+          </label>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="Courses"
+            value={Teacher.user_id}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+        <table class="table table-hover border shadow">
+          <thead>
+            <tr>
+              <th style={{ width: "5%" }} scope="col">
+                #
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                Course Name
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Map Courses here
+            {Teacher.map((teacher, index) => (
+              <tr>
+                <th scope="row">{index + 1}</th>
+                <td>{teacher.firstName}</td>
+              </tr>
+            ))} */}
+          </tbody>
+        </table>
         <br />
         <Link className="btn btn-primary" to="/adminDashboard/TeacherPage">
           Done

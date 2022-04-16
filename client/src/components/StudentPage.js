@@ -95,11 +95,19 @@ const StudentPage = () => {
         <table class="table table-hover border shadow">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">user ID</th>
-              <th> Action </th>
+              <th style={{ width: "5%", overflow: "auto" }} scope="col">
+                #
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                First Name
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                Last Name
+              </th>
+              <th style={{ width: "8%", overflow: "auto" }} scope="col">
+                user ID
+              </th>
+              <th style={{ width: "35%" }}> Action </th>
             </tr>
           </thead>
           <tbody>

@@ -29,66 +29,157 @@ const ViewStudent = () => {
   };
 
   return (
-    <div className="container py-4 ">
-      <h1 className="display-4">
-        Student Name: {Student.firstName} {Student.lastName}
-      </h1>
-      <hr />
-      <ul className="list-group w-50 ">
+    <div className="container-main py-4 ">
+      <h2 className="text-center mb-4">
+        {Student.firstName} {Student.lastName}
+      </h2>{" "}
+      <div className="container-form">
         <div class="row mb-3">
-          <label for="inputText3" class="col-sm-2 col-form-label">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "120px", margin: "auto" }}
+          >
             First Name
           </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-              id="inputText3"
-              name="firstname"
-              value={Student.firstName}
-              readOnly
-            />
-          </div>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="firstname"
+            value={Student.firstName}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
         </div>
         <div class="row mb-3">
-          <label for="inputText3" class="col-sm-2 col-form-label">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "120px", margin: "auto" }}
+          >
             Last Name
           </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-              id="inputText3"
-              name="lastname"
-              value={Student.lastName}
-              readOnly
-            />
-          </div>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="lastname"
+            value={Student.lastName}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
         </div>
         <div class="row mb-3">
-          <label for="inputText3" class="col-sm-2 col-form-label">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "120px", margin: "auto" }}
+          >
             User ID
           </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-              id="inputText3"
-              name="user ID"
-              value={Student.user_id}
-              readOnly
-            />
-          </div>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="user ID"
+            value={Student.user_id}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
         </div>
-        <div class="row mb-3"></div>
-      </ul>
-      <br />
-      <Link
-        className="btn btn-primary me-2 mb-2"
-        to="/adminDashboard/StudentPage"
-      >
-        Back
-      </Link>
+        <div class="row mb-3">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "140px", margin: "auto" }}
+          >
+            Email Address
+          </label>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="Email address"
+            value={Student.user_id}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "150px", margin: "auto" }}
+          >
+            Contact Number
+          </label>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="Contact Number"
+            value={Student.user_id}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+        {/*For course count (optional) */}
+        <div class="row mb-3">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "150px", margin: "auto" }}
+          >
+            Courses
+          </label>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="Courses"
+            value={Student.user_id}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+        <table class="table table-hover border shadow">
+          <thead>
+            <tr>
+              <th style={{ width: "5%" }} scope="col">
+                #
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                Course Name
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                Teacher Name
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Map Courses here
+            {Student.map((Student, index) => (
+              <tr>
+                <th scope="row">{index + 1}</th>
+                <td>{Student.firstName}</td>
+                <td>{Student.firstName}</td>
+              </tr>
+            ))} */}
+          </tbody>
+        </table>
+        <br />
+        <Link className="btn btn-primary" to="/adminDashboard/StudentPage">
+          Done
+        </Link>
+      </div>
     </div>
   );
 };

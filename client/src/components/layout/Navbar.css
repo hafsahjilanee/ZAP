@@ -1,6 +1,6 @@
 .bg-new {
-    background-color:#702c7e !important;
-    color: #000;
+    background-color:#5e2369bf !important;
+     color: #000;
     position: relative;
     flex-direction: row;
     
@@ -9,26 +9,19 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 1.5rem;
-    padding-bottom: 0.5rem;
-    margin-bottom: 5rem;
-   
-    flex-wrap: nowrap;
-    justify-content: flex-start;
+    padding-bottom: 0.2rem;
+    margin-bottom: 6rem;
     
-    flex-wrap: inherit;
     
         
   }
   .navbar-brand-new {
     
-    padding-top: 8rem;
-    padding-bottom: 2rem;
-    padding-left: 8rem;
+   
+    margin-left: 8rem;
     margin-right: 1rem;
-    font-size: 1.25rem;
-    text-decoration: none;
-    white-space: nowrap;
-    margin-bottom: 0%;
+     white-space: nowrap;
+   
   }
   .container-nav{
     width: 100%;
