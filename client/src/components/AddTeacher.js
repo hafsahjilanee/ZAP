@@ -93,7 +93,28 @@ const AddTeacher = () => {
               onChange={(e) => onInputChange(e)}
             />
           </div>
-
+          <div className="form-group mb-3 ">
+            <input
+              type="text"
+              className="form-control form-control-lg mb-4"
+              id="floatingInput"
+              placeholder="Enter Email Address"
+              name="email"
+              value={firstName}
+              onChange={(e) => onInputChange(e)}
+            />
+          </div>
+          <div className="form-group mb-3 ">
+            <input
+              type="text"
+              className="form-control form-control-lg mb-4"
+              id="floatingInput"
+              placeholder="Enter Contact Number"
+              name="number"
+              value={firstName}
+              onChange={(e) => onInputChange(e)}
+            />
+          </div>
           <button className="btn btn-primary btn-block me-2 mb-2">Add</button>
 
           <Link className="btn mb-2" to="/AdminDashboard/TeacherPage">

@@ -33,7 +33,7 @@ const ViewStudent = () => {
       <h2 className="text-center mb-4">
         {Student.firstName} {Student.lastName}
       </h2>{" "}
-      <div className="container-form">
+      <div className="container-form shadow">
         <div class="row mb-3">
           <label
             for="inputText3"

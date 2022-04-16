@@ -91,7 +91,16 @@ const StudentPage = () => {
               style={{ paddingRight: "3rem" }}
             ></img>{" "}
           </NavLink>{" "}
-        </h1>
+        </h1>{" "}
+        {/*Adding multiple students functionality*/}
+        <div className="form-group mb-3 ">
+          <input
+            type="file"
+            id="floatingInput"
+            name="file"
+            value={File}
+          ></input>
+        </div>
         <table class="table table-hover border shadow">
           <thead>
             <tr>
