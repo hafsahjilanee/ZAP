@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import spiderman from "./spiderman.jpg";
-const Profile = () => {
-  const [User, setUser] = useState({
+
+const ViewCourse = () => {
+  const [Student, setStudent] = useState({
     firstName: "",
     lastName: "",
     user_id: "",
-    role: "",
   });
   const id = useParams();
-
   useEffect(() => {
-    loadUser();
+    loadStudent();
   }, []);
 
-  const loadUser = async () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user);
-
+  const loadStudent = async () => {
+    console.log(id.id);
     const result = await axios({
       method: "get",
       headers: {
@@ -26,26 +22,25 @@ const Profile = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/admin/getById/" + user.id,
+      url: "http://localhost:4000/admin/getById/" + id.id,
     });
     console.log(result.data);
-    setUser(result.data);
+    setStudent(result.data);
   };
 
   return (
-    <div className="container py-4 ">
-      {/* <img src ={spiderman} alt='spidermna' width={200} height={200}></img> */}
+    <div className="container-main py-4 ">
       <h2 className="text-center mb-4">
-        {User.firstName} {User.lastName}
+        {Student.firstName} {Student.lastName}
       </h2>{" "}
       <div className="container-form shadow">
-        <div class="row mb-3 ">
+        <div class="row mb-3">
           <label
             for="inputText3"
             class="col-sm-2 col-form-label"
             style={{ width: "120px", margin: "auto" }}
           >
-            First Name
+            Course Name
           </label>
 
           <input
@@ -53,19 +48,18 @@ const Profile = () => {
             class="form-control-lg"
             id="inputText3"
             name="firstname"
-            value={User.firstName}
+            value={Student.firstName}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
         </div>
-
         <div class="row mb-3">
           <label
             for="inputText3"
             class="col-sm-2 col-form-label"
             style={{ width: "120px", margin: "auto" }}
           >
-            Last Name
+            Course ID
           </label>
 
           <input
@@ -73,19 +67,18 @@ const Profile = () => {
             class="form-control-lg"
             id="inputText3"
             name="lastname"
-            value={User.lastName}
+            value={Student.lastName}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
         </div>
-
         <div class="row mb-3">
           <label
             for="inputText3"
             class="col-sm-2 col-form-label"
             style={{ width: "120px", margin: "auto" }}
           >
-            User ID
+            Term
           </label>
 
           <input
@@ -93,37 +86,83 @@ const Profile = () => {
             class="form-control-lg"
             id="inputText3"
             name="user ID"
-            value={User.user_id}
+            value={Student.user_id}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
         </div>
-
-        <div class="row mb-3 ">
+        <div class="row mb-3">
           <label
             for="inputText3"
             class="col-sm-2 col-form-label"
-            style={{ width: "110px", margin: "auto" }}
+            style={{ width: "140px", margin: "auto" }}
           >
-            Role
+            Taught by:
           </label>
+
           <input
             type="text"
             class="form-control-lg"
             id="inputText3"
-            name="User Role"
-            value={User.role}
+            name="Email address"
+            value={Student.user_id}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
         </div>
+
+        {/*For course count (optional) */}
+        <div class="row mb-3">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "150px", margin: "auto" }}
+          >
+            Students
+          </label>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="Courses"
+            value={Student.user_id}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+        <table class="table table-hover border shadow">
+          <thead>
+            <tr>
+              <th style={{ width: "5%" }} scope="col">
+                #
+              </th>
+              <th style={{ width: "20%", overflow: "auto" }} scope="col">
+                Student Name
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                Student ID
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Map Students here
+            {Student.map((Student, index) => (
+              <tr>
+                <th scope="row">{index + 1}</th>
+                <td>{Student.firstName}{Student.firstName}</td>
+                <td>{Student.user_id}</td>
+                </tr>
+            ))} */}
+          </tbody>
+        </table>
+        <br />
+        <Link className="btn btn-primary" to="/adminDashboard/CoursesPage">
+          Done
+        </Link>
       </div>
-      <br />
-      <Link className="btn btn-primary" to="/">
-        Back
-      </Link>
     </div>
   );
 };
 
-export default Profile;
+export default ViewCourse;

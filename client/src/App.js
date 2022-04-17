@@ -12,10 +12,13 @@ import TeacherDashboard from "./components/TeacherDashboard";
 import StudentDashboard from "./components/StudentDashboard";
 import AddTeacher from "./components/AddTeacher";
 import AddStudent from "./components/AddStudent";
+import AddCourse from "./components/AddCourse";
 import ViewTeacher from "./components/ViewTeacher";
 import ViewStudent from "./components/ViewStudent";
+import ViewCourse from "./components/ViewCourse";
 import EditTeacher from "./components/EditTeacher";
 import EditStudent from "./components/EditStudent";
+import EditCourse from "./components/EditCourse";
 import QuizDashboard from "./components/QuizDashboard";
 import ViewQuestion from "./components/ViewQuestion";
 import EditQuestion from "./components/EditQuestion";
@@ -23,6 +26,7 @@ import { AuthContext } from "./components/_helpers/AuthContext";
 import AddQuestion from "./components/AddQuestion";
 import TeacherPage from "./components/TeacherPage";
 import StudentPage from "./components/StudentPage";
+import CoursesPage from "./components/CoursesPage";
 import Profile from "./components/Profile";
 import { useState } from "react";
 
@@ -64,6 +68,11 @@ function App() {
             />
             <Route
               exact
+              path="/adminDashboard/addCourse"
+              element={<AddCourse />}
+            />
+            <Route
+              exact
               path="/adminDashboard/viewTeacher/:id"
               element={<ViewTeacher />}
             />
@@ -71,6 +80,11 @@ function App() {
               exact
               path="/adminDashboard/viewStudent/:id"
               element={<ViewStudent />}
+            />
+            <Route
+              exact
+              path="/adminDashboard/viewCourse/:id"
+              element={<ViewCourse />}
             />
             <Route
               exact
@@ -84,6 +98,11 @@ function App() {
             />
             <Route
               exact
+              path="/adminDashboard/editCourse/:id"
+              element={<EditCourse />}
+            />
+            <Route
+              exact
               path="/adminDashboard/teacherPage"
               element={<TeacherPage />}
             />
@@ -91,6 +110,11 @@ function App() {
               exact
               path="/adminDashboard/studentPage"
               element={<StudentPage />}
+            />
+            <Route
+              exact
+              path="/adminDashboard/coursesPage"
+              element={<CoursesPage />}
             />
             <Route exact path="/QuizDashboard" element={<QuizDashboard />} />
             <Route
