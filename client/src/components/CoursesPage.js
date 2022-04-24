@@ -8,10 +8,10 @@ import "./TeacherPage.css";
 
 const CoursesPage = () => {
   const nav = useNavigate();
-  const [students, setStudent] = useState([]);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    loadStudents();
+    loadCourses();
   }, []);
 
   const viewCourse = async (id) => {
@@ -34,10 +34,10 @@ const CoursesPage = () => {
         data: { id: id },
       }
     );
-    loadStudents();
+    loadCourses();
   };
 
-  const loadStudents = async () => {
+  const loadCourses = async () => {
     const result = await axios({
       method: "get",
       headers: {
@@ -45,10 +45,10 @@ const CoursesPage = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/admin/getStudents",
+      url: "http://localhost:4000/courses/allCourses",
     });
-    console.log(result.data.data.users);
-    setStudent(result.data.data.users);
+    console.log(result.data);
+    setCourses(result.data);
 
     //setUser(result.data.reverse());
   };
@@ -102,42 +102,42 @@ const CoursesPage = () => {
                 Name
               </th>
               <th style={{ width: "8%", overflow: "auto" }} scope="col">
-                Course ID
+                term
               </th>
               <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Term
+                class_code
               </th>
               <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Taught by
+                active_status
               </th>
               <th style={{ width: "35%" }}> Action </th>
             </tr>
           </thead>
           <tbody>
-            {students.map((student, index) => (
+            {courses.map((course, index) => (
               <tr>
                 <th scope="row">{index + 1}</th>
-                <td>{student.firstName}</td>
-                <td>{student.user_id}</td>
-                <td>{student.lastName}</td>
-                <td>{student.lastName}</td>
+                <td>{course.name}</td>
+                <td>{course.term}</td>
+                <td>{course.class_code}</td>
+                <td>{course.active_status.toString()}</td>
 
                 <td>
                   <button
                     className="btn btn-outline-secondary me-2"
-                    onClick={() => viewCourse(student.id)}
+                    onClick={() => viewCourse(course.id)}
                   >
                     View
                   </button>
                   <button
                     className="btn btn-outline-primary me-2"
-                    onClick={() => editCourse(student.id)}
+                    onClick={() => editCourse(course.id)}
                   >
                     Edit{" "}
                   </button>
                   <button
                     className="btn btn-outline-danger"
-                    onClick={() => deleteCourse(student.user_id)}
+                    onClick={() => deleteCourse(course.id)}
                   >
                     Delete
                   </button>
