@@ -26,8 +26,12 @@ import { AuthContext } from "./components/_helpers/AuthContext";
 import AddQuestion from "./components/AddQuestion";
 import TeacherPage from "./components/TeacherPage";
 import StudentPage from "./components/StudentPage";
+import ExamPage from "./components/ExamPage";
 import CoursesPage from "./components/CoursesPage";
+import T_StudentPage from "./components/T_StudentPage";
 import Profile from "./components/Profile";
+
+import ViewGrades from "./components/ViewGrades";
 import { useState } from "react";
 
 function App() {
@@ -115,6 +119,21 @@ function App() {
               exact
               path="/adminDashboard/coursesPage"
               element={<CoursesPage />}
+            />
+            <Route
+              exact
+              path="/StudentDashboard/ExamPage"
+              element={<ExamPage />}
+            />
+            <Route
+              exact
+              path="/TeacherDashboard/T_StudentPage/:id"
+              element={<T_StudentPage />}
+            />
+            <Route
+              exact
+              path="/TeacherDashboard/ViewGrades:id"
+              element={<ViewGrades />}
             />
             <Route exact path="/QuizDashboard" element={<QuizDashboard />} />
             <Route

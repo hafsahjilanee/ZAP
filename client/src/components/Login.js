@@ -69,7 +69,11 @@ function Login() {
             />
             <br />
             <br />
-            <button className=" button" onClick={login}>
+            <button
+              className=" button"
+              onClick={login}
+              style={{ borderRadius: "15px" }}
+            >
               Login
             </button>
           </div>
