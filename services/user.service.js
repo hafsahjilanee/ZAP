@@ -37,6 +37,7 @@ async function register(userParam) {
     if(userParam.role!=='admin'){
         throw "Enter Valid user"
     }
+
     if (await User.findOne({ user_id: userParam.user_id })) {
         throw 'User ID "' + userParam.user_id + '" is already taken';
     }
@@ -121,6 +122,7 @@ async function update(id,userParam) {
 }
 
 async function _delete(user_id) {
+    //add condition here for teacher
     return await User.findOneAndRemove({user_id:user_id});
     
 }
