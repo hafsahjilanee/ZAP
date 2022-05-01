@@ -44,6 +44,7 @@ const Navbar = () => {
             height: "100px",
             marginLeft: "200px",
             marginBottom: "1.5rem",
+            borderRadius: "100px",
           }}
         />{" "}
       </a>
@@ -51,19 +52,23 @@ const Navbar = () => {
       <div
         className=" collapse navbar-collapse"
         id="navbarSupportedContent"
-        style={{ marginLeft: "10%" }}
+        style={{
+          marginLeft: "10%",
+          justifyContent: "flex-end",
+          marginRight: "123%",
+        }}
       >
         {roleadmin && <h4 className="text-white"> Admin Dashboard</h4>}
         {roleteacher && <h4 className="text-white"> Teacher Dashboard</h4>}
         {rolestudent && <h4 className="text-white"> Student Dashboard</h4>}
 
-        <ul class="navbar-nav mr-auto" style={{ marginLeft: "50%" }}>
+        <ul class="navbar-nav mr-auto" style={{ marginLeft: "55%" }}>
           <li className="nav-item active">
             {token && (
               <a
                 class="nav-link"
                 href="/profilePage"
-                style={{ color: "white", paddingTop: "12px" }}
+                style={{ color: "white", paddingTop: "28px" }}
               >
                 {" "}
                 <h5> Profile</h5>

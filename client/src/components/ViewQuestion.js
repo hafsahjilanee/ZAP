@@ -57,7 +57,7 @@ const ViewQuestion = () => {
               Options
             </th>
             <th style={{ width: "45%" }} scope="col">
-              isCorrect
+              Correct Option
             </th>
           </tr>
         </thead>

@@ -40,6 +40,10 @@ const TeacherDashboard = () => {
         marginRight: "37%",
       }}
     >
+      <h1 className="mb-4">
+        {/* course name from api */}
+        Course Name //backend needed
+      </h1>{" "}
       <div className="gallery">
         <NavLink className="container2" exact to="/QuizDashboard">
           <img className="image1" src={image} alt="exam" />
@@ -49,7 +53,11 @@ const TeacherDashboard = () => {
         </NavLink>
       </div>
       <div className="gallery">
-        <NavLink className="container2" exact to="/QuizDashboard">
+        <NavLink
+          className="container2"
+          exact
+          to="/TeacherDashboard/T_StudentPage"
+        >
           <img className="image1" src={image1} alt="students" />
           <div class="middle">
             <div class="text">Students</div>
