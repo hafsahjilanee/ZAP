@@ -67,7 +67,10 @@ const AddQuestion = () => {
   };
 
   return (
-    <div className="container">
+    <div
+      className="container"
+      style={{ marginBottom: "200px", paddingBottom: "100px" }}
+    >
       <div className="container-form w-75 ">
         <h2 className="text-center mb-4">Add A Question</h2>
         <form onSubmit={(e) => onSubmit(e)}>

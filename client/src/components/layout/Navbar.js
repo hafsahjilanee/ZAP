@@ -55,7 +55,7 @@ const Navbar = () => {
         style={{
           marginLeft: "10%",
           justifyContent: "flex-end",
-          marginRight: "123%",
+          marginRight: "12%",
         }}
       >
         {roleadmin && <h4 className="text-white"> Admin Dashboard</h4>}
