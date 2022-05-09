@@ -58,40 +58,143 @@ const EditTeacher = () => {
           {firstName} {lastName}
         </h2>
         <form onSubmit={(e) => onSubmit(e)}>
-          <div className="form-group mb-3">
+          <div class="row mb-3">
+            <label
+              for="inputText3"
+              class="col-sm-2 col-form-label"
+              style={{ width: "120px", margin: "auto" }}
+            >
+              First Name
+            </label>
             <input
               type="text"
-              className="form-control form-control-lg mb-2"
-              placeholder="Enter first Name"
+              class="form-control-lg "
+              id="inputText3"
+              placeholder="First Name"
               name="firstName"
               value={firstName}
+              style={{ width: "300px", margin: "auto" }}
               onChange={(e) => onInputChange(e)}
             />
-            <br></br>
           </div>
-          <div className="form-group mb-3">
+          <div class="row mb-3">
+            <label
+              for="inputText3"
+              class="col-sm-2 col-form-label"
+              style={{ width: "120px", margin: "auto" }}
+            >
+              Last Name
+            </label>
             <input
               type="text"
-              className="form-control form-control-lg mb-2"
-              placeholder="Enter Last Name"
+              class="form-control-lg"
+              id="inputText3"
+              placeholder="Last Name"
               name="lastName"
               value={lastName}
+              style={{ width: "300px", margin: "auto" }}
               onChange={(e) => onInputChange(e)}
             />
-            <br></br>
           </div>
-          <div className="form-group mb-3">
+          <div class="row mb-3">
+            <label
+              for="inputText3"
+              class="col-sm-2 col-form-label"
+              style={{ width: "120px", margin: "auto" }}
+            >
+              User ID
+            </label>
+
             <input
               type="text"
-              className="form-control form-control-lg mb-2"
-              placeholder="Enter User ID"
+              className="form-control-lg"
+              placeholder="User ID"
               name="user_id"
               value={user_id}
+              style={{ width: "300px", margin: "auto" }}
               onChange={(e) => onInputChange(e)}
             />
-            <br></br>
+          </div>
+          <div class="row mb-3">
+            <label
+              for="inputText3"
+              class="col-sm-2 col-form-label"
+              style={{ width: "140px", margin: "auto" }}
+            >
+              Email Address
+            </label>
+
+            <input
+              type="text"
+              class="form-control-lg"
+              id="inputText3"
+              name="Email address"
+              value={user_id}
+              onChange={(e) => onInputChange(e)}
+              style={{ width: "300px", margin: "auto" }}
+            />
           </div>
 
+          <div class="row mb-3">
+            <label
+              for="inputText3"
+              class="col-sm-2 col-form-label"
+              style={{ width: "150px", margin: "auto" }}
+            >
+              Contact Number
+            </label>
+
+            <input
+              type="text"
+              class="form-control-lg"
+              id="inputText3"
+              name="Contact Number"
+              value={user_id}
+              onChange={(e) => onInputChange(e)}
+              style={{ width: "300px", margin: "auto" }}
+            />
+          </div>
+          {/*For course count (optional) */}
+          <div class="row mb-3">
+            <label
+              for="inputText3"
+              class="col-sm-2 col-form-label"
+              style={{ width: "150px", margin: "auto" }}
+            >
+              Courses
+            </label>
+
+            <input
+              type="text"
+              class="form-control-lg"
+              id="inputText3"
+              name="Courses"
+              value={user_id}
+              onChange={(e) => onInputChange(e)}
+              style={{ width: "300px", margin: "auto" }}
+            />
+          </div>
+          <table class="table table-hover border shadow">
+            <thead>
+              <tr>
+                <th style={{ width: "5%" }} scope="col">
+                  #
+                </th>
+                <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                  Course Name
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Map Courses here
+            {Teacher.map((teacher, index) => (
+              <tr>
+                <th scope="row">{index + 1}</th>
+                <td>{teacher.firstName}</td>
+              </tr>
+            ))} */}
+            </tbody>
+          </table>
           <button
             className="btn btn-primary me-2 mb-2"
             to="/adminDashboard/EditTeacher"
