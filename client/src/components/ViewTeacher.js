@@ -32,10 +32,10 @@ const ViewTeacher = () => {
 
   return (
     <div className="container-main py-4 ">
-      <h2 className="text-center mb-4">
-        {Teacher.firstName} {Teacher.lastName}
-      </h2>{" "}
-      <div className="container-form">
+      <div className="container-form shadow">
+        <h2 className="text-center mb-4">
+          {Teacher.firstName} {Teacher.lastName}
+        </h2>{" "}
         <div class="row mb-3">
           <label
             for="inputText3"
@@ -112,7 +112,6 @@ const ViewTeacher = () => {
             style={{ width: "300px", margin: "auto" }}
           />
         </div>
-
         <div class="row mb-3">
           <label
             for="inputText3"
