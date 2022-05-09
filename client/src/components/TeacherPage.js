@@ -112,9 +112,9 @@ const TeacherPage = () => {
           </thead>
           <tbody>
             {teachers.map((teacher, index) => (
-              <tr>
-                <th scope="row">{index + 1}</th>
-                <td>{teacher.firstName}</td>
+              <tr key={teacher.id}>
+                <th scope="row" >{index + 1}</th>
+                <td >{teacher.firstName}</td>
                 <td>{teacher.lastName}</td>
                 <td>{teacher.user_id}</td>
                 <td>

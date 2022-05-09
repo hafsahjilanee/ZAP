@@ -57,6 +57,44 @@ router.post('/addinfo/:userid', async (req, res) => {
     }
 })
 
+router.get('/addinfo/:userid', async (req, res) => {
+    try {
+
+        const teacher_id = req.params.userid
+        //console.log(teacher_id)
+        if (await User.findOne({ _id: req.params.userid }))
+        {
+            let teacher = await Teachers.findOne({teacher_id: teacher_id})
+
+            if(!teacher){
+                teacher = await Teachers.create({
+                    teacher_id
+                })    
+                return res.status(201).json(teacher)
+            }else{
+                teacher.teacher_id = teacher_id
+                await teacher.save()
+                return res.status(200).json(teacher)
+            }
+
+            /*
+            const teacher = await Teachers.create({
+                teacher_id,
+                phone_no
+             })*/
+             //return res.status(201).json(teacher) 
+            
+        }
+        else{
+            throw 'Teacher ID "' + req.body.teacher_id + '" is invalid';
+        }       
+        
+       //res.send('Hello World')
+    } catch (error) {
+        return res.status(500).json({"error":error})
+    }
+})
+
 //get 1 teacher info
 router.get('/:userid', async (req, res) => {
     try{

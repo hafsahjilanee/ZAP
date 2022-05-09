@@ -5,18 +5,39 @@ import "./AddTeacher.css";
 
 const ViewTeacher = () => {
   const [Teacher, setTeacher] = useState({
-    firstName: "",
-    lastName: "",
-    user_id: "",
+    //firstName: "",
+    //lastName: "",
+    //user_id: "",
+    phone_no:"",
+    teacher_id:{
+      firstName: "",
+      lastName: "",
+      user_id: "",
+      role: "",
+      email:""
+    },
+    course:[
+      {
+        class_code: "",
+        name: "",
+        term: "",
+        active_status: ""
+      }
+    ]
   });
+
   const id = useParams();
+
+  useEffect(() => {
+    makeTeacher();
+  }, []);
 
   useEffect(() => {
     loadTeacher();
   }, []);
 
-  const loadTeacher = async () => {
-    console.log(id.id);
+  const makeTeacher = async () => {
+    //console.log(id.id);
     const result = await axios({
       method: "get",
       headers: {
@@ -24,7 +45,22 @@ const ViewTeacher = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/admin/getById/" + id.id,
+      url: "http://localhost:4000/teacher/addinfo/" + id.id,
+    });
+    //console.log(result.data);
+    
+  };
+
+  const loadTeacher = async () => {
+    //console.log(id.id);
+    const result = await axios({
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth"),
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/teacher/" + id.id,
     });
     console.log(result.data);
     setTeacher(result.data);
@@ -33,47 +69,10 @@ const ViewTeacher = () => {
   return (
     <div className="container-main py-4 ">
       <h2 className="text-center mb-4">
-        {Teacher.firstName} {Teacher.lastName}
+        {Teacher.teacher_id.firstName} {Teacher.teacher_id.lastName}
       </h2>{" "}
       <div className="container-form">
-        <div class="row mb-3">
-          <label
-            for="inputText3"
-            class="col-sm-2 col-form-label"
-            style={{ width: "120px", margin: "auto" }}
-          >
-            First Name
-          </label>
-
-          <input
-            type="text"
-            class="form-control-lg"
-            id="inputText3"
-            name="firstname"
-            value={Teacher.firstName}
-            readOnly
-            style={{ width: "300px", margin: "auto" }}
-          />
-        </div>
-        <div class="row mb-3">
-          <label
-            for="inputText3"
-            class="col-sm-2 col-form-label"
-            style={{ width: "120px", margin: "auto" }}
-          >
-            Last Name
-          </label>
-
-          <input
-            type="text"
-            class="form-control-lg"
-            id="inputText3"
-            name="lastname"
-            value={Teacher.lastName}
-            readOnly
-            style={{ width: "300px", margin: "auto" }}
-          />
-        </div>
+        
         <div class="row mb-3">
           <label
             for="inputText3"
@@ -88,11 +87,12 @@ const ViewTeacher = () => {
             class="form-control-lg"
             id="inputText3"
             name="user ID"
-            value={Teacher.user_id}
+            value={Teacher.teacher_id.user_id}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
         </div>
+
         <div class="row mb-3">
           <label
             for="inputText3"
@@ -107,7 +107,7 @@ const ViewTeacher = () => {
             class="form-control-lg"
             id="inputText3"
             name="Email address"
-            value={Teacher.user_id}
+            value={Teacher.teacher_id.email}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -127,31 +127,31 @@ const ViewTeacher = () => {
             class="form-control-lg"
             id="inputText3"
             name="Contact Number"
-            value={Teacher.user_id}
+            value={Teacher.phone_no}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
         </div>
-        {/*For course count (optional) */}
         <div class="row mb-3">
           <label
             for="inputText3"
             class="col-sm-2 col-form-label"
             style={{ width: "150px", margin: "auto" }}
           >
-            Courses
+            Total courses taught
           </label>
 
           <input
             type="text"
             class="form-control-lg"
             id="inputText3"
-            name="Courses"
-            value={Teacher.user_id}
+            name="Contact Number"
+            value={Teacher.course.length}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
         </div>
+       
         <table class="table table-hover border shadow">
           <thead>
             <tr>
@@ -159,18 +159,29 @@ const ViewTeacher = () => {
                 #
               </th>
               <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                Class code
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
                 Course Name
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                Term
+              </th>
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                Active Status
               </th>
             </tr>
           </thead>
           <tbody>
-            {/* Map Courses here
-            {Teacher.map((teacher, index) => (
-              <tr>
-                <th scope="row">{index + 1}</th>
-                <td>{teacher.firstName}</td>
-              </tr>
-            ))} */}
+          {Teacher.course.map((c, index) => (
+            <tr key={index}>
+              <th scope="row">{index + 1}</th>
+              <td>{c.class_code}</td>
+              <td>{c.name}</td>
+              <td>{c.term}</td>
+              <td>{c.active_status.toString()}</td>
+            </tr>
+          ))}
           </tbody>
         </table>
         <br />
