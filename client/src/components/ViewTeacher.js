@@ -8,22 +8,22 @@ const ViewTeacher = () => {
     //firstName: "",
     //lastName: "",
     //user_id: "",
-    phone_no:"",
-    teacher_id:{
+    phone_no: "",
+    teacher_id: {
       firstName: "",
       lastName: "",
       user_id: "",
       role: "",
-      email:""
+      email: "",
     },
-    course:[
+    course: [
       {
         class_code: "",
         name: "",
         term: "",
-        active_status: ""
-      }
-    ]
+        active_status: "",
+      },
+    ],
   });
 
   const id = useParams();
@@ -48,7 +48,6 @@ const ViewTeacher = () => {
       url: "http://localhost:4000/teacher/addinfo/" + id.id,
     });
     //console.log(result.data);
-    
   };
 
   const loadTeacher = async () => {
@@ -68,11 +67,21 @@ const ViewTeacher = () => {
 
   return (
     <div className="container-main py-4 ">
+      <Link
+        className="btn btn-outline-secondary mb-4"
+        to="/adminDashboard/TeacherPage"
+        style={{
+          marginRight: "1100px",
+          align: "left",
+          fontStyle: "bold",
+        }}
+      >
+        {"Back"}
+      </Link>{" "}
       <h2 className="text-center mb-4">
         {Teacher.teacher_id.firstName} {Teacher.teacher_id.lastName}
       </h2>{" "}
       <div className="container-form">
-        
         <div class="row mb-3">
           <label
             for="inputText3"
@@ -151,7 +160,7 @@ const ViewTeacher = () => {
             style={{ width: "300px", margin: "auto" }}
           />
         </div>
-       
+
         <table class="table table-hover border shadow">
           <thead>
             <tr>
@@ -173,21 +182,18 @@ const ViewTeacher = () => {
             </tr>
           </thead>
           <tbody>
-          {Teacher.course.map((c, index) => (
-            <tr key={index}>
-              <th scope="row">{index + 1}</th>
-              <td>{c.class_code}</td>
-              <td>{c.name}</td>
-              <td>{c.term}</td>
-              <td>{c.active_status.toString()}</td>
-            </tr>
-          ))}
+            {Teacher.course.map((c, index) => (
+              <tr key={index}>
+                <th scope="row">{index + 1}</th>
+                <td>{c.class_code}</td>
+                <td>{c.name}</td>
+                <td>{c.term}</td>
+                <td>{c.active_status.toString()}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <br />
-        <Link className="btn btn-primary" to="/adminDashboard/TeacherPage">
-          Done
-        </Link>
       </div>
     </div>
   );

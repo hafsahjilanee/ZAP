@@ -100,7 +100,7 @@ const AddTeacher = () => {
               id="floatingInput"
               placeholder="Enter Email Address"
               name="email"
-              value={firstName}
+              value={user_id}
               onChange={(e) => onInputChange(e)}
             />
           </div>
@@ -111,7 +111,7 @@ const AddTeacher = () => {
               id="floatingInput"
               placeholder="Enter Contact Number"
               name="number"
-              value={firstName}
+              value={user_id}
               onChange={(e) => onInputChange(e)}
             />
           </div>

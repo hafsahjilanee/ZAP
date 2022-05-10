@@ -30,7 +30,18 @@ const ViewStudent = () => {
 
   return (
     <div className="container-main py-4 ">
-      <h2 className="text-center mb-4">
+      <Link
+        className="btn btn-outline-secondary mb-4"
+        to="/adminDashboard/StudentPage"
+        style={{
+          marginRight: "1100px",
+          align: "left",
+          fontStyle: "bold",
+        }}
+      >
+        {"Back"}
+      </Link>{" "}
+      <h2 className="text-center mb-4 mt-4">
         {Student.firstName} {Student.lastName}
       </h2>{" "}
       <div className="container-form shadow">
@@ -175,10 +186,6 @@ const ViewStudent = () => {
             ))} */}
           </tbody>
         </table>
-        <br />
-        <Link className="btn btn-primary" to="/adminDashboard/StudentPage">
-          Done
-        </Link>
       </div>
     </div>
   );

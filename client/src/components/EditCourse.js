@@ -3,21 +3,22 @@ import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const EditCourse = () => {
-  let history = useNavigate();
   const { id } = useParams();
-  const [student, setStudent] = useState({
-    firstName: "",
-    lastname: "",
-    user_id: "",
+  let history = useNavigate();
+  const [Course, setCourse] = useState({
+    name: "",
+    term: "",
+    active_status: "",
+    class_code: "",
   });
 
-  const { firstName, lastName, user_id } = student;
+  const { name, term, active_status, class_code } = Course;
   const onInputChange = (e) => {
-    setStudent({ ...student, [e.target.name]: e.target.value });
+    setCourse({ ...Course, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    loadStudent();
+    loadCourses();
   }, []);
 
   const onSubmit = async (e) => {
@@ -26,19 +27,19 @@ const EditCourse = () => {
     console.log(id);
     await axios({
       method: "put",
-      data: student,
+      data: Course,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("auth"),
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/admin/" + id,
+      url: " http://localhost:4000/courses/" + id,
     });
 
-    history("/adminDashboard");
+    history("/adminDashboard/CoursePage");
   };
 
-  const loadStudent = async () => {
+  const loadCourses = async () => {
     const result = await axios({
       method: "get",
       headers: {
@@ -46,47 +47,23 @@ const EditCourse = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/admin/getById/" + id,
+      url: "http://localhost:4000/courses/" + id,
     });
     console.log(result.data);
-    setStudent(result.data);
+    setCourse(result.data);
   };
   return (
     <div className="container-main">
       <div className="container-form shadow ">
-        <h2 className="text-center mb-4">
-          {firstName} {lastName}
-        </h2>
+        <h2 className="text-center mb-4">{name}</h2>
         <form onSubmit={(e) => onSubmit(e)}>
           <div className="form-group mb-3">
             <input
               type="text"
-              className="form-control form-control-lg mb-2"
+              className=" form-control-lg mb-2"
               placeholder="Course Name"
               name="firstName"
-              value={firstName}
-              onChange={(e) => onInputChange(e)}
-            />
-            <br></br>
-          </div>
-          <div className="form-group mb-3">
-            <input
-              type="text"
-              className="form-control form-control-lg mb-2"
-              placeholder="Course ID"
-              name="lastName"
-              value={lastName}
-              onChange={(e) => onInputChange(e)}
-            />
-            <br></br>
-          </div>
-          <div className="form-group mb-3">
-            <input
-              type="text"
-              className="form-control form-control-lg mb-2"
-              placeholder="Term"
-              name="user_id"
-              value={user_id}
+              value={name}
               onChange={(e) => onInputChange(e)}
             />
             <br></br>
@@ -95,10 +72,22 @@ const EditCourse = () => {
           <div className="form-group mb-3">
             <input
               type="text"
-              className="form-control form-control-lg mb-2"
+              className="form-control-lg mb-2"
+              placeholder="Term"
+              name="class_code"
+              value={class_code}
+              onChange={(e) => onInputChange(e)}
+            />
+            <br></br>
+          </div>
+
+          <div className="form-group mb-3">
+            <input
+              type="text"
+              className="form-control-lg mb-2"
               placeholder="Teacher"
-              name="user_id"
-              value={user_id}
+              name="active_status"
+              value={active_status}
               onChange={(e) => onInputChange(e)}
             />
             <br></br>
@@ -106,9 +95,9 @@ const EditCourse = () => {
 
           <button
             className="btn btn-primary me-2 mb-2"
-            to="/adminDashboard/EditStudent"
+            to="/adminDashboard/EditCourse"
           >
-            Update Student
+            Update Course Details
           </button>
           <Link
             className="btn btn-outline-secondary me-2 mb-2"
