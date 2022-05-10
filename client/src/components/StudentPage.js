@@ -94,6 +94,9 @@ const StudentPage = () => {
           Students
           <NavLink exact to="/adminDashboard/addStudent">
             <img
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Add a Student"
               className="img"
               src={image}
               alt="add"

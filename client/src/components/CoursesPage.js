@@ -94,6 +94,9 @@ const CoursesPage = () => {
           Courses
           <NavLink exact to="/adminDashboard/addCourse">
             <img
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Add a Course"
               className="img"
               src={image}
               alt="add"

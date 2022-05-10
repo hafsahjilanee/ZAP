@@ -93,6 +93,9 @@ const TeacherPage = () => {
           Teachers
           <NavLink exact to="/adminDashboard/AddTeacher">
             <img
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Add a Teacher"
               className="img"
               src={image}
               alt="add"
