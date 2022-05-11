@@ -30,9 +30,18 @@ const ViewCourse = () => {
 
   return (
     <div className="container-main py-4 ">
-      <h2 className="text-center mb-4">
-        {Student.firstName} {Student.lastName}
-      </h2>{" "}
+      <Link
+        className="btn btn-outline-secondary mb-4"
+        to="/adminDashboard/CoursesPage"
+        style={{
+          marginRight: "1100px",
+          align: "left",
+          fontStyle: "bold",
+        }}
+      >
+        {"Back"}
+      </Link>
+      <h2 className="text-center mb-4">{Student.firstName}</h2>{" "}
       <div className="container-form shadow">
         <div class="row mb-3">
           <label
@@ -157,9 +166,6 @@ const ViewCourse = () => {
           </tbody>
         </table>
         <br />
-        <Link className="btn btn-primary" to="/adminDashboard/CoursesPage">
-          Done
-        </Link>
       </div>
     </div>
   );
