@@ -1,7 +1,7 @@
 .gallery {
   justify-self: center;
   margin:20px;
-  padding: 5px;
+  padding: 15px;
   border: 0.5px solid rgb(255, 255, 255);
   position: relative;
   border-radius: 0.35rem;
@@ -10,11 +10,27 @@
   align-content: center;
   background-color: rgb(245, 236, 236);
 
-}
+  background-image: linear-gradient(
+    transparent 0%,
+    transparent 90%,
+    #63216fbf 90%,
+    #63216fbf 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position-x: right;
+
+  transition: background-size 600ms;
+
+ }
 
 div.gallery:hover {
   border: 1px solid #777;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+
+  background-size: 100% 100%;
+  background-position-x: left ;
+  
 }
 
 
@@ -59,11 +75,11 @@ backface-visibility: hidden;
   left:8%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  
+  padding: 18px;
 }
 
 .gallery:hover .image1{
-  opacity: 0.15;
+  opacity: 0.10;
 }
 
 .gallery:hover .middle{
