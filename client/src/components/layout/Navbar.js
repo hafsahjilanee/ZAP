@@ -12,6 +12,7 @@ const Navbar = () => {
   var roleteacher = false;
   var roleadmin = false;
   var rolestudent = false;
+  var LoggedIn = true;
 
   if (user) {
     if (user.role === "admin") {
@@ -31,7 +32,12 @@ const Navbar = () => {
   const logout = () => {
     history("/");
     localStorage.clear();
+    LoggedIn = false;
+    roleteacher = false;
+    roleadmin = false;
+    rolestudent = false;
   };
+
   return (
     <React.StrictMode>
       <nav
@@ -65,6 +71,7 @@ const Navbar = () => {
           {roleadmin && <h4 className="text-white"> Admin Dashboard</h4>}
           {roleteacher && <h4 className="text-white"> Teacher Dashboard</h4>}
           {rolestudent && <h4 className="text-white"> Student Dashboard</h4>}
+          {!LoggedIn && <h4 className="text-white"> Login</h4>}
 
           <ul className="navbar-nav mr-auto" style={{ marginLeft: "55%" }}>
             <li className="nav-item active">

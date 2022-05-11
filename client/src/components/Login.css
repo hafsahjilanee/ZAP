@@ -118,19 +118,35 @@
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
+
+    background-image: linear-gradient(
+      transparent 0%,
+      transparent 90%,
+      #63216fbf 90%,
+      #63216fbf 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+
+    transition: background-size 300ms;
   }
   
+  .button:hover{
+    background-size: 100% 100%;
+    background-position-x: left ;
+  }
   .button:after {
     content: "";
     background: #5b6369;
-    display: block;
+    display:flex-start;
     position: absolute;
     padding-top: 200%;
     padding-left: 250%;
     margin-left: -20px!important;
     margin-top: -120%;
     opacity: 0;
-    transition: all 0.8s
+    transition: all 0.7s
   }
   
   .button:active:after {

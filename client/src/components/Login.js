@@ -72,8 +72,13 @@ function Login() {
             <button
               className=" button"
               onClick={login}
-              style={{ borderRadius: "15px" }}
+              style={{
+                borderRadius: "8px",
+                height: "fit-content",
+                width: "fit-content",
+              }}
             >
+              {" "}
               Login
             </button>
           </div>

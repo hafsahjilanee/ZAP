@@ -74,7 +74,12 @@ const TeacherPage = () => {
         console.log(e)
     }*/
   return (
-    <div className="container-main">
+    <div
+      className="container-main"
+      style={{
+        marginBottom: "100px",
+      }}
+    >
       <Link
         className="btn btn-outline-secondary mb-4"
         to="/adminDashboard"
