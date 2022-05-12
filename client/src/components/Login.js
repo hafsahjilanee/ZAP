@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./_helpers/AuthContext";
 import "./Login.css";
+import bg from "./bg.png";
+
 function Login() {
   const [user_id, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -42,9 +44,24 @@ function Login() {
       });
   };
   return (
-    <div>
-      <div>
-        <div className="m-2 container-login mx-auto shadow p-5">
+    <div className="bg" style={{ paddingTop: "1px" }}>
+      <div
+        style={{
+          marginTop: "50px",
+          paddingTop: "100px",
+          width: "200px",
+          paddingRight: "650px",
+          paddingLeft: "700px",
+          align: "center",
+        }}
+      >
+        <div
+          className=" m-2 container-login  shadow p-5"
+          style={{
+            width: "max-content",
+            align: "center",
+          }}
+        >
           <div className="py-4">
             <h1> Welcome to ZAP!</h1>
           </div>

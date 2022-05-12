@@ -75,97 +75,105 @@ const CoursesPage = () => {
     }*/
   return (
     <div
-      className="container-main"
+      className="bg"
       style={{
-        marginBottom: "100px",
+        marginTop: "50px",
+        paddingTop: "100px",
+        align: "center",
       }}
     >
-      {" "}
-      <Link
-        className="btn btn-outline-secondary mb-4"
-        to="/adminDashboard"
+      <div
+        className="container-main"
         style={{
-          marginRight: "1100px",
-          align: "left",
-          fontStyle: "bold",
+          marginBottom: "100px",
         }}
       >
-        {"Back"}
-      </Link>
-      <br></br>
-      <div className="container-list">
-        <h1 className="mb-4">
-          {" "}
-          Courses
-          <NavLink exact to="/adminDashboard/addCourse">
-            <img
-              data-toggle="tooltip"
-              data-placement="bottom"
-              title="Add a Course"
-              className="img"
-              src={image}
-              alt="add"
-              height="40"
-              align="right"
-              style={{ paddingRight: "3rem" }}
-            ></img>{" "}
-          </NavLink>{" "}
-        </h1>{" "}
-        <table class="table table-hover border shadow">
-          <thead>
-            <tr>
-              <th style={{ width: "5%", overflow: "auto" }} scope="col">
-                #
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Name
-              </th>
-              <th style={{ width: "8%", overflow: "auto" }} scope="col">
-                term
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                class_code
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                active_status
-              </th>
-              <th style={{ width: "35%" }}> Action </th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.map((course, index) => (
+        {" "}
+        <Link
+          className="btn btn-outline-secondary mb-4"
+          to="/adminDashboard"
+          style={{
+            marginRight: "1100px",
+            align: "left",
+          }}
+        >
+          {"Back"}
+        </Link>
+        <br></br>
+        <div className="container-list">
+          <h1 className="mb-4">
+            {" "}
+            Courses
+            <NavLink exact to="/adminDashboard/addCourse">
+              <img
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Add a Course"
+                className="img"
+                src={image}
+                alt="add"
+                height="40"
+                align="right"
+                style={{ paddingRight: "3rem" }}
+              ></img>{" "}
+            </NavLink>{" "}
+          </h1>{" "}
+          <table class="table table-hover border shadow">
+            <thead>
               <tr>
-                <th scope="row">{index + 1}</th>
-                <td>{course.name}</td>
-                <td>{course.term}</td>
-                <td>{course.class_code}</td>
-                <td>{course.active_status.toString()}</td>
-
-                <td>
-                  <button
-                    className="btn btn-outline-secondary me-2"
-                    onClick={() => viewCourse(course.id)}
-                  >
-                    View
-                  </button>
-                  <button
-                    className="btn btn-outline-primary me-2"
-                    onClick={() => editCourse(course.id)}
-                  >
-                    Edit{" "}
-                  </button>
-                  <button
-                    className="btn btn-outline-danger"
-                    onClick={() => deleteCourse(course.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+                <th style={{ width: "5%", overflow: "auto" }} scope="col">
+                  #
+                </th>
+                <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                  Name
+                </th>
+                <th style={{ width: "8%", overflow: "auto" }} scope="col">
+                  term
+                </th>
+                <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                  class_code
+                </th>
+                <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                  active_status
+                </th>
+                <th style={{ width: "35%" }}> Action </th>
               </tr>
-            ))}
-            x
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {courses.map((course, index) => (
+                <tr>
+                  <th scope="row">{index + 1}</th>
+                  <td>{course.name}</td>
+                  <td>{course.term}</td>
+                  <td>{course.class_code}</td>
+                  <td>{course.active_status.toString()}</td>
+
+                  <td>
+                    <button
+                      className="btn btn-outline-secondary me-2"
+                      onClick={() => viewCourse(course.id)}
+                    >
+                      View
+                    </button>
+                    <button
+                      className="btn btn-outline-primary me-2"
+                      onClick={() => editCourse(course.id)}
+                    >
+                      Edit{" "}
+                    </button>
+                    <button
+                      className="btn btn-outline-danger"
+                      onClick={() => deleteCourse(course.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+              x
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@
     
 }
 .container-main{
-  
+    margin-top: 1px !important;
     margin:auto;
     vertical-align: top;
    }
@@ -26,6 +26,12 @@
     padding-right: 15px;
     margin-top: auto;
     margin-bottom: auto;
+    font-size: larger;
+    font-weight: 500;
+    border-color: rgb(57, 57, 57);
+    color: dimgrey;
+    border-width: 1px;
+    height: fit-content;
     
     
 }

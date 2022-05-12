@@ -94,6 +94,7 @@ const Navbar = () => {
                   onClick={logout}
                   style={{
                     fontSize: "130%",
+                    color: "white",
                   }}
                 >
                   Logout

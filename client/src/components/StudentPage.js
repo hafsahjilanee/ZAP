@@ -75,101 +75,110 @@ const StudentPage = () => {
     }*/
   return (
     <div
-      className="container-main"
+      className="bg"
       style={{
-        marginBottom: "100px",
+        marginTop: "50px",
+        paddingTop: "100px",
+        align: "center",
       }}
     >
-      {" "}
-      <Link
-        className="btn btn-outline-secondary mb-4"
-        to="/adminDashboard"
+      <div
+        className="container-main"
         style={{
-          marginRight: "1100px",
-          align: "left",
-          fontStyle: "bold",
+          marginBottom: "100px",
         }}
       >
-        {"Back"}
-      </Link>
-      <br></br>
-      <div className="container-list">
-        <h1 className="mb-4">
-          {" "}
-          Students
-          <NavLink exact to="/adminDashboard/addStudent">
-            <img
-              data-toggle="tooltip"
-              data-placement="bottom"
-              title="Add a Student"
-              className="img"
-              src={image}
-              alt="add"
-              height="40"
-              align="right"
-              style={{ paddingRight: "3rem" }}
-            ></img>{" "}
-          </NavLink>{" "}
-        </h1>{" "}
-        {/*Adding multiple students functionality*/}
-        <div className="form-group mb-3 ">
-          <input
-            type="file"
-            id="floatingInput"
-            name="file"
-            value={File}
-          ></input>
-        </div>
-        <table class="table table-hover border shadow">
-          <thead>
-            <tr>
-              <th style={{ width: "5%", overflow: "auto" }} scope="col">
-                #
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                First Name
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Last Name
-              </th>
-              <th style={{ width: "8%", overflow: "auto" }} scope="col">
-                user ID
-              </th>
-              <th style={{ width: "35%" }}> Action </th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.map((student, index) => (
+        {" "}
+        <Link
+          className="btn btn-outline-secondary mb-4"
+          to="/adminDashboard"
+          style={{
+            marginRight: "1100px",
+            align: "left",
+            fontStyle: "bold",
+          }}
+        >
+          {"Back"}
+        </Link>
+        <br></br>
+        <div className="container-list">
+          <h1 className="mb-4">
+            {" "}
+            Students
+            <NavLink exact to="/adminDashboard/addStudent">
+              <img
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Add a Student"
+                className="img"
+                src={image}
+                alt="add"
+                height="40"
+                align="right"
+                style={{ paddingRight: "3rem" }}
+              ></img>{" "}
+            </NavLink>{" "}
+          </h1>{" "}
+          {/*Adding multiple students functionality*/}
+          <div className="form-group mb-3 ">
+            <input
+              type="file"
+              id="floatingInput"
+              name="file"
+              value={File}
+            ></input>
+          </div>
+          <table class="table table-hover border shadow">
+            <thead>
               <tr>
-                <th scope="row">{index + 1}</th>
-                <td>{student.firstName}</td>
-                <td>{student.lastName}</td>
-                <td>{student.user_id}</td>
-                <td>
-                  <button
-                    className="btn btn-outline-secondary me-2"
-                    onClick={() => viewStudent(student.id)}
-                  >
-                    View
-                  </button>
-                  <button
-                    className="btn btn-outline-primary me-2"
-                    onClick={() => editStudent(student.id)}
-                  >
-                    Edit{" "}
-                  </button>
-                  <button
-                    className="btn btn-outline-danger"
-                    onClick={() => deleteStudent(student.user_id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+                <th style={{ width: "5%", overflow: "auto" }} scope="col">
+                  #
+                </th>
+                <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                  First Name
+                </th>
+                <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                  Last Name
+                </th>
+                <th style={{ width: "8%", overflow: "auto" }} scope="col">
+                  user ID
+                </th>
+                <th style={{ width: "35%" }}> Action </th>
               </tr>
-            ))}
-            x
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {students.map((student, index) => (
+                <tr>
+                  <th scope="row">{index + 1}</th>
+                  <td>{student.firstName}</td>
+                  <td>{student.lastName}</td>
+                  <td>{student.user_id}</td>
+                  <td>
+                    <button
+                      className="btn btn-outline-secondary me-2"
+                      onClick={() => viewStudent(student.id)}
+                    >
+                      View
+                    </button>
+                    <button
+                      className="btn btn-outline-primary me-2"
+                      onClick={() => editStudent(student.id)}
+                    >
+                      Edit{" "}
+                    </button>
+                    <button
+                      className="btn btn-outline-danger"
+                      onClick={() => deleteStudent(student.user_id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+              x
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

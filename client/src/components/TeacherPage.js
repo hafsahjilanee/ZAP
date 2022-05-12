@@ -75,90 +75,99 @@ const TeacherPage = () => {
     }*/
   return (
     <div
-      className="container-main"
+      className="bg"
       style={{
-        marginBottom: "100px",
+        marginTop: "50px",
+        paddingTop: "100px",
+        align: "center",
       }}
     >
-      <Link
-        className="btn btn-outline-secondary mb-4"
-        to="/adminDashboard"
+      <div
+        className="container-main"
         style={{
-          marginRight: "1100px",
-          align: "left",
-          fontStyle: "bold",
+          marginBottom: "100px",
         }}
       >
-        {"Back"}
-      </Link>{" "}
-      <br></br>
-      <div className="container-list">
-        <h1 className="mb-4">
-          {" "}
-          Teachers
-          <NavLink exact to="/adminDashboard/AddTeacher">
-            <img
-              data-toggle="tooltip"
-              data-placement="bottom"
-              title="Add a Teacher"
-              className="img"
-              src={image}
-              alt="add"
-              height="40"
-              align="right"
-              style={{ paddingRight: "3rem" }}
-            ></img>{" "}
-          </NavLink>{" "}
-        </h1>{" "}
-        <table class="table table-hover border shadow">
-          <thead>
-            <tr>
-              <th style={{ width: "5%" }} scope="col">
-                #
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                First Name
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Last Name
-              </th>
-              <th style={{ width: "8%", overflow: "auto" }} scope="col">
-                User ID
-              </th>
-              <th style={{ width: "35%", overflow: "auto" }}> Action </th>
-            </tr>
-          </thead>
-          <tbody>
-            {teachers.map((teacher, index) => (
-              <tr key={teacher.id}>
-                <th scope="row">{index + 1}</th>
-                <td>{teacher.firstName}</td>
-                <td>{teacher.lastName}</td>
-                <td>{teacher.user_id}</td>
-                <td>
-                  <button
-                    className="btn btn-outline-secondary me-2"
-                    onClick={() => viewTeacher(teacher.id)}
-                  >
-                    View
-                  </button>
-                  <button
-                    className="btn btn-outline-primary me-2"
-                    onClick={() => editTeacher(teacher.id)}
-                  >
-                    Edit{" "}
-                  </button>
-                  <button
-                    className="btn btn-outline-danger me-2"
-                    onClick={() => deleteTeacher(teacher.user_id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+        <Link
+          className="btn btn-outline-secondary mb-4"
+          to="/adminDashboard"
+          style={{
+            marginRight: "1100px",
+            align: "left",
+            fontStyle: "bold",
+          }}
+        >
+          {"Back"}
+        </Link>{" "}
+        <br></br>
+        <div className="container-list">
+          <h1 className="mb-4">
+            {" "}
+            Teachers
+            <NavLink exact to="/adminDashboard/AddTeacher">
+              <img
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Add a Teacher"
+                className="img"
+                src={image}
+                alt="add"
+                height="40"
+                align="right"
+                style={{ paddingRight: "3rem" }}
+              ></img>{" "}
+            </NavLink>{" "}
+          </h1>{" "}
+          <table class="table table-hover border shadow">
+            <thead>
+              <tr>
+                <th style={{ width: "5%" }} scope="col">
+                  #
+                </th>
+                <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                  First Name
+                </th>
+                <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                  Last Name
+                </th>
+                <th style={{ width: "8%", overflow: "auto" }} scope="col">
+                  User ID
+                </th>
+                <th style={{ width: "35%", overflow: "auto" }}> Action </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {teachers.map((teacher, index) => (
+                <tr key={teacher.id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{teacher.firstName}</td>
+                  <td>{teacher.lastName}</td>
+                  <td>{teacher.user_id}</td>
+                  <td>
+                    <button
+                      className="btn btn-outline-secondary me-2"
+                      onClick={() => viewTeacher(teacher.id)}
+                    >
+                      View
+                    </button>
+                    <button
+                      className="btn btn-outline-primary me-2"
+                      onClick={() => editTeacher(teacher.id)}
+                    >
+                      Edit{" "}
+                    </button>
+                    <button
+                      className="btn btn-outline-danger me-2"
+                      onClick={() => deleteTeacher(teacher.user_id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
