@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import TeacherDashboard from "./TeacherDashboard";
 
 const EditCourse = () => {
   const { id } = useParams();
@@ -73,7 +74,7 @@ const EditCourse = () => {
             <input
               type="text"
               className="form-control-lg mb-2"
-              placeholder="Term"
+              placeholder="Class code"
               name="class_code"
               value={class_code}
               onChange={(e) => onInputChange(e)}
@@ -85,9 +86,20 @@ const EditCourse = () => {
             <input
               type="text"
               className="form-control-lg mb-2"
-              placeholder="Teacher"
+              placeholder="Active status"
               name="active_status"
               value={active_status}
+              onChange={(e) => onInputChange(e)}
+            />
+            <br></br>
+          </div>
+          <div className="form-group mb-3">
+            <input
+              type="text"
+              className="form-control-lg mb-2"
+              placeholder="Teacher user  ID"
+              name="Teacher user ID"
+              value={Course.name}
               onChange={(e) => onInputChange(e)}
             />
             <br></br>

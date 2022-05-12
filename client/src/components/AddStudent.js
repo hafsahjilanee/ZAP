@@ -105,7 +105,9 @@ const AddStudent = () => {
               onChange={(e) => onInputChange(e)}
             />
           </div>
-          {/*dropdown for courses*/}
+          {/*dropdown for courses
+          https://react-bootstrap.github.io/components/dropdowns/#custom-dropdown-components
+          */}
 
           <button className="btn btn-primary btn-block me-2 mb-2">Add</button>
 

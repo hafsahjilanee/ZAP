@@ -30,7 +30,7 @@ import ExamPage from "./components/ExamPage";
 import CoursesPage from "./components/CoursesPage";
 import T_StudentPage from "./components/T_StudentPage";
 import Profile from "./components/Profile";
-
+import T_CoursePage from "./components/T_CoursePage";
 import ViewGrades from "./components/ViewGrades";
 import { useState } from "react";
 
@@ -42,7 +42,7 @@ function App() {
         <Navbar />
         <AuthContext.Provider value={{ authState, setAuthState }}>
           <Routes>
-            <Route exact path="/about" element={<About />} />
+            {/* <Route exact path="/about" element={<About />} /> */}
 
             <Route exact path="/" element={<Login />} />
             <Route
@@ -127,8 +127,13 @@ function App() {
             />
             <Route
               exact
-              path="/TeacherDashboard/T_StudentPage/:id"
+              path="/TeacherDashboard/T_StudentPage/"
               element={<T_StudentPage />}
+            />
+            <Route
+              exact
+              path="/TeacherDashboard/T_CoursePage/"
+              element={<T_CoursePage />}
             />
             <Route
               exact

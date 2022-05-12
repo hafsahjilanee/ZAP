@@ -72,7 +72,17 @@ const QuizDashboard = () => {
 
   return (
     <div className="container-main">
-      {" "}
+      <Link
+        className="btn btn-outline-secondary mb-4"
+        to="/TeacherDashboard/T_CoursePage/"
+        style={{
+          marginRight: "1100px",
+          align: "left",
+          fontStyle: "bold",
+        }}
+      >
+        {"Back"}
+      </Link>{" "}
       <br></br>
       <div className="container-list">
         <h1 className="mb-4">

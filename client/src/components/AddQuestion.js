@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import image from "./minus1.png";
 import image1 from "./plus.png";
+import { FormCheck } from "react-bootstrap";
 const AddQuestion = () => {
   let navigate = useNavigate();
 
@@ -48,6 +49,9 @@ const AddQuestion = () => {
     let temp = { ...question };
     temp.alternatives[i][e.target.name] = e.target.value;
     setQuestion(temp);
+
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : (e.target.value = true);
   };
 
   const onSubmit = async (e) => {
@@ -87,7 +91,7 @@ const AddQuestion = () => {
               onChange={(e) => onInputChange(e)}
             />
           </div>
-          <br />
+          <br />{" "}
           {question.alternatives.map((alternative, i) => (
             <div style={{ padding: "15px", alignItems: "center" }}>
               <div style={{ alignItems: "flex-start" }}>
@@ -105,8 +109,8 @@ const AddQuestion = () => {
                 <input
                   type={"checkbox"}
                   name="isCorrect"
-                  variant="outlined"
-                  placeholder="true/false?"
+                  // variant="outlined"
+                  // placeholder="true/false?"
                   className="btn-primary "
                   style={{
                     width: "25px",
@@ -116,6 +120,7 @@ const AddQuestion = () => {
                   }}
                   onChange={(e) => handleAlternativeChange(e, i)}
                   value={question.alternatives[i].isCorrect}
+                  checked={this.state.isCorrect}
                 />
                 <button
                   variant="contained"
@@ -137,19 +142,21 @@ const AddQuestion = () => {
                   ></img>
                 </button>
               </div>
-
-              <button
-                variant="contained"
-                className="btn btn-outline-secondary me-2 "
-                style={{ height: "40px", borderRadius: "5px " }}
-                onClick={(e) => addAlternative(e, i)}
-              >
-                Add Option
-              </button>
             </div>
           ))}
+          <button
+            variant="contained"
+            className="btn btn-outline-secondary me-2 "
+            style={{
+              height: "40px",
+              borderRadius: "5px ",
+              marginBottom: "50px",
+            }}
+            onClick={(e) => addAlternative(e, Map.i)}
+          >
+            Add Option
+          </button>
           <br />
-
           <button
             className="btn-primary"
             style={{

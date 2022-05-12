@@ -4,60 +4,27 @@ import { NavLink, Link } from "react-router-dom";
 import image from "./plus.png";
 import "./TeacherPage.css";
 
-const T_StudentDashboard = () => {
-  //used to store data
-  const [questions, setQuestions] = useState([]);
+import { useNavigate } from "react-router-dom";
 
-  const [pageCount, setpageCount] = useState(0);
-
-  let limit = 3;
-
-  const fetchQuestions = async (currentPage) => {
-    const result = await axios({
-      method: "get",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("auth"),
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      url: `http://localhost:4000/question/?page=${currentPage}&pagination=50`,
-    });
-    console.log(result.data);
-    setQuestions(result.data.data);
-  };
-
-  const handlePageClick = async (data) => {
-    //console.log(data.selected);
-
-    let currentPage = data.selected + 1;
-
-    await fetchQuestions(currentPage);
-  };
+const T_StudentPage = () => {
+  const nav = useNavigate();
+  const [students, setStudent] = useState([]);
 
   useEffect(() => {
-    loadQuestions();
-  }, [limit]);
+    loadStudents();
+  }, []);
 
-  const loadQuestions = async () => {
-    const result = await axios({
-      method: "get",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("auth"),
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      url: "http://localhost:4000/question/?page=1&pagination=50",
-    });
-    //console.log(result.data)
-    setQuestions(result.data.data);
-    //console.log(questions)
-    //setUser(result.data.reverse());
+  const viewStudent = async (id) => {
+    nav("/adminDashboard/viewStudent/" + id);
   };
 
-  const deleteQuestion = async (id) => {
-    //console.log(id);
+  const editStudent = async (id) => {
+    nav("/adminDashboard/editStudent/" + id);
+  };
+
+  const deleteStudent = async (id) => {
     await axios.delete(
-      "http://localhost:4000/question/questions" + id,
+      "http://localhost:4000/admin/" + id,
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("auth"),
@@ -67,9 +34,45 @@ const T_StudentDashboard = () => {
         data: { id: id },
       }
     );
-    loadQuestions();
+    loadStudents();
   };
 
+  const loadStudents = async () => {
+    const result = await axios({
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth"),
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/admin/getStudents",
+    });
+    console.log(result.data.data.users);
+    setStudent(result.data.data.users);
+
+    //setUser(result.data.reverse());
+  };
+
+  /*try {
+
+        console.log(localStorage.getItem("auth"))
+
+        /*fetch("http://localhost:4000/admin/admins", {
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('auth'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        }).then((result) => {
+            result.json().then((resp) => {
+                console.log(resp); 
+            })
+        })
+
+    } catch (e) {
+        console.log(e)
+    }*/
   return (
     <div
       className="container-main"
@@ -92,68 +95,78 @@ const T_StudentDashboard = () => {
       <br></br>
       <div className="container-list">
         <h1 className="mb-4">
-          {/* course name from api */}
-          Course Name - Students
+          {"//Coursename:Students"}
+          <NavLink exact to="/adminDashboard/addStudent">
+            <img
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Add a Student"
+              className="img"
+              src={image}
+              alt="add"
+              height="40"
+              align="right"
+              style={{ paddingRight: "3rem" }}
+            ></img>{" "}
+          </NavLink>{" "}
         </h1>{" "}
+        {/*Adding multiple students functionality*/}
+        <div className="form-group mb-3 ">
+          <input
+            type="file"
+            id="floatingInput"
+            name="file"
+            value={File}
+          ></input>
+        </div>
         <table class="table table-hover border shadow">
           <thead>
             <tr>
-              <th style={{ width: "5%" }} scope="col">
+              <th style={{ width: "5%", overflow: "auto" }} scope="col">
                 #
               </th>
-              <th style={{ width: "20%", overflow: "auto" }} scope="col">
-                Fist Name
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                First Name
               </th>
-              <th style={{ width: "20%", overflow: "auto" }} scope="col">
+              <th style={{ width: "10%", overflow: "auto" }} scope="col">
                 Last Name
               </th>
-              <th style={{ width: "15%", overflow: "auto" }} scope="col">
-                User ID
+              <th style={{ width: "8%", overflow: "auto" }} scope="col">
+                user ID
               </th>
-              <th style={{ width: "35%", overflow: "auto" }} scope="col">
-                Grades
-              </th>
+              <th style={{ width: "35%" }}> Action </th>
             </tr>
           </thead>
           <tbody>
-            {questions &&
-              questions.map((question, index) => (
-                <tr>
-                  <th scope="row">{index + 1}</th>
-                  <td
-                    style={{
-                      height: "min-content",
-                      wrap: "soft",
-                      width: "max-content",
-                    }}
+            {students.map((student, index) => (
+              <tr>
+                <th scope="row">{index + 1}</th>
+                <td>{student.firstName}</td>
+                <td>{student.lastName}</td>
+                <td>{student.user_id}</td>
+                <td>
+                  <button
+                    className="btn btn-outline-secondary me-2"
+                    onClick={() => viewStudent(student.id)}
                   >
-                    {question.description}
-                  </td>
-                  <td
-                    style={{
-                      height: "min-content",
-                      wrap: "soft",
-                      width: "max-content",
-                    }}
+                    View
+                  </button>
+                  <button
+                    className="btn btn-outline-primary me-2"
+                    onClick={() => editStudent(student.id)}
                   >
-                    {question.description}
-                  </td>
-                  <td
-                    style={{
-                      height: "min-content",
-                      wrap: "soft",
-                      width: "max-content",
-                    }}
+                    Edit{" "}
+                  </button>
+                  <button
+                    className="btn btn-outline-danger"
+                    onClick={() => deleteStudent(student.user_id)}
                   >
-                    {question.description}
-                  </td>
-                  <td>
-                    <Link class="btn btn-outline-secondary me-2">
-                      View Grades
-                    </Link>
-                  </td>
-                </tr>
-              ))}
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+            x
           </tbody>
         </table>
       </div>
@@ -161,4 +174,4 @@ const T_StudentDashboard = () => {
   );
 };
 
-export default T_StudentDashboard;
+export default T_StudentPage;

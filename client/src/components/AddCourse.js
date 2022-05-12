@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DropdownButton, Dropdown, ButtonGroup } from "react-bootstrap";
 import "./AddTeacher.css";
+import TeacherDashboard from "./TeacherDashboard";
 
 const AddCourse = () => {
   let navigate = useNavigate();
@@ -30,7 +31,7 @@ const AddCourse = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: " http://localhost:4000/courses/",
+      url: " http://localhost:4000/courses/6268eeec55b70352f4e6f276",
     });
 
     return (
@@ -72,6 +73,7 @@ const AddCourse = () => {
                 onChange={(e) => onInputChange(e)}
               />
             </div>
+
             {/* 
           <div className="form-group mb-3">
             <input

@@ -35,7 +35,7 @@ const EditTeacher = () => {
       url: "http://localhost:4000/admin/" + id,
     });
 
-    history("/adminDashboard");
+    history("/adminDashboard/TeacherPage");
   };
 
   const loadTeacher = async () => {
