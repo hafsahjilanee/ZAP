@@ -37,7 +37,7 @@ const T_CoursePage = () => {
   };
 
   return (
-    <div style={{ paddingTop: "100px" }}>
+    <div className="bg" style={{ paddingTop: "100px" }}>
       <Link
         className="btn btn-outline-secondary"
         to="/TeacherDashboard"
@@ -51,7 +51,7 @@ const T_CoursePage = () => {
       </Link>
 
       <div
-        className="container-admin"
+        className="container-admin "
         style={{
           align: "center",
           justifyContent: "space-between",
