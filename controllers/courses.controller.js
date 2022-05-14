@@ -71,32 +71,73 @@ router.post('/teacherCourse/:id', async (req, res) => {
     };
 })
 
-// update course
-//:id is the id of course in course collection
+//update course 
 router.put('/:id', async (req, res) => {
     try {
         const _id = req.params.id; 
-        const { name, class_code, term, active_status } = req.body
+        const { name } = req.body
+        const { term } = req.body
+        const { class_code } = req.body
+        const { active_status } = req.body
+        const {teacherID} = req.body
 
-        let course = await Courses.findOne({_id})
+        //console.log(teacherID)
+        if (teacherID != null)
+        {
+            let user = await User.findOne({ user_id: teacherID })
+            if (user) {
+                //console.log(user.id)
+                let findteacher = await Teachers.findOne({ teacher_id: user.id })
+                if (findteacher) {
+                    let course = await Courses.findOne({ _id })
+                    if (course) {
 
-        if(!course){
-            course = await Courses.create({
-                name,
-                class_code, 
-                term, 
-                active_status
-            })    
-            return res.status(201).json(course)
+                        course.name = name
+                        course.class_code = class_code
+                        course.term = term
+                        course.active_status = active_status
+                        course.teacher = findteacher.id
+                        //console.log(findteacher.id)
+                        await course.save()
+                            .then(async function (dbTeacher) {
+                                const checkCourse = await Teachers.findOne({course: req.params.id})
+                                //console.log(checkCourse)
+                                if (!checkCourse){
+                                await Teachers.findOneAndUpdate({ _id: findteacher.id }, { $push: { course: dbTeacher._id } }, { new: true });
+                                }
+                            })
+                            return res.status(200).json(course)
+                        
+                    }
+
+
+                }
+
+            } else {
+                throw 'Teacher ID "' + teacherID + '" is invalid';
+            }
         }else{
-            course.name = name
-            course.class_code = class_code
-            course.term = term
-            course.active_status = active_status
+            let course = await Courses.findOne({ _id })
 
-            await course.save()
-            return res.status(200).json(course)
-        }
+            if (!course) {
+                course = await Courses.create({
+                    name,
+                    class_code,
+                    term,
+                    active_status
+                })
+                return res.status(201).json(course)
+            } else {
+                course.name = name
+                course.class_code = class_code
+                course.term = term
+                course.active_status = active_status
+
+                await course.save()
+                return res.status(200).json(course)
+            }
+        } 
+        
     } catch (error) {
         return res.status(500).json({"error":error})
     }
