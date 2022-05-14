@@ -3,7 +3,7 @@ import axios from "axios";
 import { NavLink, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import "./TeacherPage.css";
+import "./TeacherDashboard.css";
 
 const TeacherDashboard = () => {
   const nav = useNavigate();
@@ -57,47 +57,59 @@ const TeacherDashboard = () => {
   };
 
   return (
-    <div
-      className="container-main"
-      style={{
-        marginBottom: "100px",
-      }}
-    >
-      <br></br>
-      <div className="container-list">
-        <table class="table table-hover border shadow">
-          <thead>
-            <tr>
-              <th style={{ width: "5%", overflow: "auto" }} scope="col">
-                #
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Name
-              </th>
-              <th style={{ width: "8%", overflow: "auto" }} scope="col">
-                term
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                class_code
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                active_status
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.map((course, index) => (
-              <tr onClick={() => viewCoursePage()}>
-                <th scope="row">{index + 1}</th>
-                <td>{course.name}</td>
-                <td>{course.term}</td>
-                <td>{course.class_code}</td>
-                <td>{course.active_status.toString()}</td>
-              </tr>
-            ))}
-            x
-          </tbody>
-        </table>
+    <div className="bg">
+      <div
+        className="container-main"
+        style={{
+          marginBottom: "100px",
+
+          paddingTop: "400px",
+        }}
+      >
+        <br></br>
+        <div className="container-list ">
+          <table class="table table-hover border shadow row">
+            <tbody>
+              {courses.map((course) => (
+                <tr
+                  onClick={() => viewCoursePage(course.id)}
+                  style={{
+                    marginBottom: "20px",
+                    paddingBottom: "20px",
+                  }}
+                >
+                  <td
+                    style={{
+                      paddingLeft: "70px",
+                      paddingRight: "10px",
+                      width: "maxContent",
+                    }}
+                  >
+                    {course.name}
+                  </td>
+                  <td
+                    style={{
+                      paddingLeft: "8px",
+                      paddingRight: "10px",
+                      width: "maxContent",
+                    }}
+                  >
+                    {course.class_code}
+                  </td>
+                  <td
+                    style={{
+                      paddingLeft: "5px",
+                      paddingRight: "70px",
+                      width: "maxContent",
+                    }}
+                  >
+                    {course.term}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

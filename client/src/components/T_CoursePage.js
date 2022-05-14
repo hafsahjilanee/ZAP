@@ -8,6 +8,12 @@ import "./AdminDashboard.css";
 
 const T_CoursePage = () => {
   const [students, setStudent] = useState([]);
+  const [Course, setCourse] = useState({
+    name: "",
+    term: "",
+    active_status: "",
+    class_code: "",
+  });
 
   useEffect(() => {
     loadStudents();
@@ -31,7 +37,7 @@ const T_CoursePage = () => {
   };
 
   return (
-    <div>
+    <div style={{ paddingTop: "100px" }}>
       <Link
         className="btn btn-outline-secondary"
         to="/TeacherDashboard"
@@ -55,7 +61,7 @@ const T_CoursePage = () => {
       >
         <h1 className="mb-2">
           {/* course name from api */}
-          Course Name //backend needed
+          {Course.name}
         </h1>{" "}
         <div className="gallery">
           <NavLink className="container2" exact to="/QuizDashboard">
