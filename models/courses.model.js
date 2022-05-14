@@ -10,7 +10,13 @@ const schema = new Schema(
         teacher: { 
             type: mongoose.Schema.Types.ObjectId,
             ref: "Teacher"
-        }
+        },
+        exams: [
+            { 
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Exam"
+            }
+            ]
     }
     )
 
