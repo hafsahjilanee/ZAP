@@ -292,6 +292,45 @@
 			"response": []
 		},
 		{
+			"name": "update by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTIwODQ3NTUsImV4cCI6MTY1MjY4OTU1NX0.qvuDgBVSObWI1X-oDSj8Zfd4UN9kLZ48waUdKz7bAHM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Sajjad\",\r\n    \"lastName\": \"Haider\",\r\n    \"user_id\": \"03\",\r\n    \"role\": \"teacher\",\r\n    \"email\": \"sajjad@gmail.com\"\r\n    \r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/62535d84e45a06384496d3a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"62535d84e45a06384496d3a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get All Teachers",
 			"request": {
 				"auth": {
@@ -748,7 +787,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/courses/626ebe0fb1f5e14704fcdcf5",
+					"raw": "http://localhost:4000/courses/626ed3c551b1f94f5c7066dc",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -756,7 +795,7 @@
 					"port": "4000",
 					"path": [
 						"courses",
-						"626ebe0fb1f5e14704fcdcf5"
+						"626ed3c551b1f94f5c7066dc"
 					]
 				}
 			},
@@ -851,11 +890,29 @@
 			"response": []
 		},
 		{
+			"name": "admin makeTeacher",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/teacher/addinfo/62535d84e45a06384496d3a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"teacher",
+						"addinfo",
+						"62535d84e45a06384496d3a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "teacher addinfo/updateInfo",
 			"request": {
-				"auth": {
-					"type": "noauth"
-				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -910,7 +967,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"3rd course\",\r\n    \"term\": \"Fall 2021\",\r\n    \"class_code\": 5670,\r\n    \"active_status\": true\r\n}",
+					"raw": "{\r\n    \"name\": \"German 1\",\r\n    \"term\": \"Spring 2022\",\r\n    \"class_code\": 5671,\r\n    \"active_status\": true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -918,7 +975,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/courses/teacherCourse/626ebdacb1f5e14704fcdcee",
+					"raw": "http://localhost:4000/courses/teacherCourse/6278c440e3c1c30f208eabc6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -927,7 +984,155 @@
 					"path": [
 						"courses",
 						"teacherCourse",
-						"626ebdacb1f5e14704fcdcee"
+						"6278c440e3c1c30f208eabc6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin addTeacherToCourse",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n   \"name\": \"Pak History\",\r\n    \"term\": \"Fall 2021\",\r\n    \"class_code\": 5555,\r\n    \"active_status\": true,\r\n    \"teacherID\":\"03\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/courses/6268eeec55b70352f4e6f276",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"courses",
+						"6268eeec55b70352f4e6f276"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "course createExam",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"examName\": \"Test Exam\",\r\n    \"start_exam_date\": \"14/05/2022\",\r\n    \"startHours\": \"08\",\r\n    \"startMins\": \"00\",\r\n    \"startTimePeriod\" : \"AM\",\r\n    \"end_exam_date\": \"14/05/2022\",\r\n    \"endHours\":\"10\",\r\n    \"endMins\":\"00\",\r\n    \"endTimePeriod\":\"AM\",\r\n    \"totalMarks\":100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/exams/626ed3c551b1f94f5c7066dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exams",
+						"626ed3c551b1f94f5c7066dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "course getExams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/exams/626ed3c551b1f94f5c7066dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exams",
+						"626ed3c551b1f94f5c7066dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exam getOneExam",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/exams/view/627fdb99daf9db5a84649c95",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exams",
+						"view",
+						"627fdb99daf9db5a84649c95"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exam updateExamInfo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"examName\": \"update Exam\",\r\n    \"start_exam_date\": \"14/05/2022\",\r\n    \"startHours\": \"08\",\r\n    \"startMins\": \"00\",\r\n    \"startTimePeriod\" : \"AM\",\r\n    \"end_exam_date\": \"14/05/2022\",\r\n    \"endHours\":\"10\",\r\n    \"endMins\":\"00\",\r\n    \"endTimePeriod\":\"AM\",\r\n    \"totalMarks\":100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/exams/627fe1599853cd61a4ece11e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exams",
+						"627fe1599853cd61a4ece11e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete exam",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/exams/628011c7ae737a53e05c8504",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exams",
+						"628011c7ae737a53e05c8504"
 					]
 				}
 			},
