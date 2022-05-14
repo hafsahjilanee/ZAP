@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./_helpers/AuthContext";
 import "./Login.css";
-import bg from "./bg.png";
 
 function Login() {
   const [user_id, setUsername] = useState("");
