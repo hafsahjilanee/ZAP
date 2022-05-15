@@ -50,7 +50,7 @@ function App() {
               element={<Protected cmp={AdminDashboard}></Protected>}
             />
             <Route
-              path="/teacherDashboard"
+              path="/teacherDashboard/:id"
               element={
                 <TeacherProtected cmp={TeacherDashboard}></TeacherProtected>
               }
