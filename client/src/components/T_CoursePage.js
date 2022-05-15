@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import image from "./exam.png";
 import image1 from "./Student.png";
 import "./AdminDashboard.css";
 
 const T_CoursePage = () => {
-  const [students, setStudent] = useState([]);
   const [Course, setCourse] = useState({
     name: "",
     term: "",
@@ -15,11 +14,10 @@ const T_CoursePage = () => {
     class_code: "",
   });
 
-  useEffect(() => {
-    loadStudents();
-  }, []);
+  const id = useParams();
 
-  const loadStudents = async () => {
+  const loadCourses = async () => {
+    console.log(id.id);
     const result = await axios({
       method: "get",
       headers: {
@@ -27,14 +25,18 @@ const T_CoursePage = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/teacher/students",
+      url: "http://localhost:4000/courses/" + id.id,
     });
 
     console.log(result.data);
-    setStudent(result.data);
+    setCourse(result.data);
 
     //setUser(result.data.reverse());
   };
+
+  useEffect(() => {
+    loadCourses();
+  }, []);
 
   return (
     <div className="bg" style={{ paddingTop: "100px" }}>
