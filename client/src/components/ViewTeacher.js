@@ -36,6 +36,9 @@ const ViewTeacher = () => {
     loadTeacher();
   }, []);
 
+  //TO-DO: integrate both APIs into one
+
+  //creates teacher in teacher's collection
   const makeTeacher = async () => {
     //console.log(id.id);
     const result = await axios({

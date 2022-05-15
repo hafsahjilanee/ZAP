@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import "./TeacherDashboard.css";
 
 const TeacherDashboard = () => {
   const nav = useNavigate();
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState({
+    course: [
+      {
+        class_code: "",
+        name: "",
+        term: "",
+      },
+    ],
+});
 
   useEffect(() => {
     loadCourses();
@@ -40,7 +48,10 @@ const TeacherDashboard = () => {
     nav("/TeacherDashboard/T_CoursePage/");
   };
 
+  const {id} = useParams();
+
   const loadCourses = async () => {
+    //console.log(id)
     const result = await axios({
       method: "get",
       headers: {
@@ -48,7 +59,7 @@ const TeacherDashboard = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/courses/allCourses",
+      url: "http://localhost:4000/teacher/"+id,
     });
     console.log(result.data);
     setCourses(result.data);
@@ -70,9 +81,9 @@ const TeacherDashboard = () => {
         <div className="container-list ">
           <table class="table table-hover border shadow row">
             <tbody>
-              {courses.map((course) => (
+              {courses.course.map((c) => (
                 <tr
-                  onClick={() => viewCoursePage(course.id)}
+                  onClick={() => viewCoursePage(c.id)}
                   style={{
                     marginBottom: "20px",
                     paddingBottom: "20px",
@@ -85,7 +96,7 @@ const TeacherDashboard = () => {
                       width: "maxContent",
                     }}
                   >
-                    {course.name}
+                    {c.name}
                   </td>
                   <td
                     style={{
@@ -94,7 +105,7 @@ const TeacherDashboard = () => {
                       width: "maxContent",
                     }}
                   >
-                    {course.class_code}
+                    {c.class_code}
                   </td>
                   <td
                     style={{
@@ -103,7 +114,7 @@ const TeacherDashboard = () => {
                       width: "maxContent",
                     }}
                   >
-                    {course.term}
+                    {c.term}
                   </td>
                 </tr>
               ))}
