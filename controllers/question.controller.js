@@ -1,14 +1,15 @@
 const { query } = require('express');
 const express = require('express')
 const router = express.Router()
-const Question = require('../models/question.model') // includes our model
+const Question = require('../models/question.model') 
+const Exam = require('../models/exams.model');// includes our model
 
 const NoError = {status:0, message:"No error"};
 
-// get all quiz questions
-router.get('/questions', async (req, res) => {
+// get all quiz questions for one exam
+router.get('/:examID', async (req, res) => {
     try {
-        const questions = await Question.find()
+        const questions = await Exam.find({_id: req.params.examID}).populate("questions").select("questions")
         return res.status(200).json(questions)
     } catch (error) {
         return res.status(500).json({"error":error})
@@ -16,7 +17,7 @@ router.get('/questions', async (req, res) => {
 })
 
 // get one quiz question
-router.get('/:id', async (req, res) => {
+router.get('/view/:id', async (req, res) => {
     try {
         const _id = req.params.id 
 
@@ -32,17 +33,34 @@ router.get('/:id', async (req, res) => {
 })
 
 // create one quiz question
-router.post('/createQuestion', async (req, res) => {
+//id passed is of exam
+router.post('/createQuestion/:examID', async (req, res) => {
     try {
         const { description } = req.body
         const { alternatives } = req.body
+        const { marks } = req.body
 
+        const exam = await Exam.findOne({_id: req.params.examID });
+        
+        if (exam){
         const question = await Question.create({
             description,
-            alternatives
+            alternatives,
+            marks
         })
-
-        return res.status(201).json(question)
+        .then(async function(dbQuestion) {
+      
+            const addQuestion= await Exam.findOneAndUpdate({_id: req.params.examID}, 
+             {$push: {questions: dbQuestion._id}}, 
+             { new: true });
+             
+             return res.status(201).json(addQuestion) 
+         })
+        }
+        else {
+            throw "exam ID " + req.params.examID +" not found"
+        }
+        
     } catch (error) {
         return res.status(500).json({"error":error})
     }
@@ -52,19 +70,21 @@ router.post('/createQuestion', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const _id = req.params.id; 
-        const { description, alternatives } = req.body
+        const { description, alternatives, marks } = req.body
 
         let question = await Question.findOne({_id})
 
         if(!question){
             question = await Question.create({
                 description,
-                alternatives
+                alternatives,
+                marks
             })    
             return res.status(201).json(question)
         }else{
             question.description = description
             question.alternatives = alternatives
+            question.marks = marks
             await question.save()
             return res.status(200).json(question)
         }
@@ -76,18 +96,33 @@ router.put('/:id', async (req, res) => {
 // delete one quiz question
 router.delete('/:id', async (req, res) => {
     try {
-        const _id = req.params.id 
-
-        const question = await Question.deleteOne({_id})
-
-        if(question.deletedCount === 0){
-            return res.status(404).json()
-        }else{
-            return res.status(204).json()
+        const _id = req.params.id;
+    
+        const question = await Question.findOne({ _id })
+    
+        if (question) {
+    
+          await Question.findByIdAndRemove({ _id }, async (err) => {
+            if (err)
+              console.error(err);
+    
+            await Exam.updateOne({
+              "questions": { $in: [_id] }
+            }, {
+              $pullAll: { "questions": [_id] }
+            }, (err, course) => {
+              return res.status(204).json()
+            })
+    
+          })
         }
-    } catch (error) {
-        return res.status(500).json({"error":error})
-    }
+        else {
+          throw "Question ID is invalid"
+        }
+    
+      } catch (error) {
+        return res.status(500).json({ "error": error })
+      }
 })
 
 

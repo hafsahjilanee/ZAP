@@ -7,12 +7,16 @@ const schema = new Schema({
     start_exam_date: {type:String},
     startHours: {type: String},
     startMins: {type: String},
-    startTimePeriod: {type: String,enum:['AM','PM']},
     end_exam_date: {type:String},
     endHours: {type: String},
     endMins: {type: String},
-    endTimePeriod: {type: String,enum:['AM','PM']},
-    totalMarks: {type:Number}
+    totalMarks: {type:Number},
+    questions: [
+        { 
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Question"
+        }
+        ]
 })
 
 const Exam = mongoose.model('Exam', schema);

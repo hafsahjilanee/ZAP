@@ -15,7 +15,8 @@ const schema = new Schema({
                 default: false
             }
         }
-    ]
+    ],
+    marks: Number
 })
 
 const Question = mongoose.model('Question', schema);
