@@ -42,7 +42,7 @@ const TeacherCoursePage = () => {
   };
 
   useEffect(() => {
-    loadStudents();
+    //loadStudents();
   }, []);
 
   const loadTeacher = async () => {

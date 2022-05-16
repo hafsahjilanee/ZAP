@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import image from "./minus1.png";
 import image1 from "./plus.png";
 import { FormCheck } from "react-bootstrap";
+// import { set } from "mongoose";
+
 const AddQuestion = () => {
   let navigate = useNavigate();
 
@@ -50,8 +52,10 @@ const AddQuestion = () => {
     temp.alternatives[i][e.target.name] = e.target.value;
     setQuestion(temp);
 
-    const value =
-      e.target.type === "checkbox" ? e.target.checked : (e.target.value = true);
+    //  [e.target.name] = e.target.value;
+    //  temp.alternatives[i][e.target.type] === "checkbox"
+    //   ? temp.target.checked
+    //   : (e.target.value = "true");
   };
 
   const onSubmit = async (e) => {
@@ -106,7 +110,7 @@ const AddQuestion = () => {
                   onChange={(e) => handleAlternativeChange(e, i)}
                   value={question.alternatives[i].text}
                 />
-                <input
+                {/* <input
                   type={"checkbox"}
                   name="isCorrect"
                   // variant="outlined"
@@ -118,10 +122,25 @@ const AddQuestion = () => {
                     marginLeft: "30px",
                     marginRight: "30px",
                   }}
+                  value="true"
                   onChange={(e) => handleAlternativeChange(e, i)}
+                  // checked={(isCorrect= "true")}
+                /> */}
+                {/* <button
+                  variant="contained"
+                  className="btn-primary "
+                  style={{
+                    marginLeft: "70px",
+                    border: "none",
+                    paddingBottom: "0px",
+                    background: "none",
+                  }}
+                  //setQuestion.isCorrect("true")
                   value={question.alternatives[i].isCorrect}
-                  checked={this.state.isCorrect}
-                />
+                  onClick={(e) => handleAlternativeChange(e, i)}
+                >
+                  {" true"}
+                </button> */}
                 <button
                   variant="contained"
                   className="btn-primary "
@@ -166,6 +185,7 @@ const AddQuestion = () => {
               fontFamily: "Calibri",
               borderRadius: "5px ",
             }}
+            //onClick={(e) => onSubmit}
           >
             Add Question
           </button>
