@@ -36,7 +36,7 @@ const T_CoursePage = () => {
   };
 
   useEffect(() => {
-    loadCourses();
+    loadStudents();
   }, []);
 
   return (
