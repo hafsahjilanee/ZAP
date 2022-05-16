@@ -13,11 +13,9 @@ router.post('/:id', async (req, res) => {
         const { start_exam_date } = req.body
         const { startHours } = req.body
         const { startMins } = req.body
-        const { startTimePeriod } = req.body
         const { end_exam_date } = req.body
         const { endHours } = req.body
         const { endMins } = req.body
-        const { endTimePeriod } = req.body
         const { totalMarks } = req.body
 
      const newExam = await Exam.create({
@@ -25,11 +23,9 @@ router.post('/:id', async (req, res) => {
         start_exam_date,
         startHours,
         startMins,
-        startTimePeriod,
         end_exam_date,
         endHours,
         endMins,
-        endTimePeriod,
         totalMarks
     })
     //console.log(newExam) 
@@ -79,11 +75,9 @@ router.put('/:examId', async (req, res) => {
       const { start_exam_date } = req.body
       const { startHours } = req.body
       const { startMins } = req.body
-      const { startTimePeriod } = req.body
       const { end_exam_date } = req.body
       const { endHours } = req.body
       const { endMins } = req.body
-      const { endTimePeriod } = req.body
       const { totalMarks } = req.body
 
       let exam = await Exam.findOne({_id})
@@ -94,11 +88,9 @@ router.put('/:examId', async (req, res) => {
           start_exam_date,
           startHours,
           startMins,
-          startTimePeriod,
           end_exam_date,
           endHours,
           endMins,
-          endTimePeriod,
           totalMarks
           })    
           return res.status(201).json(exam)
@@ -107,11 +99,9 @@ router.put('/:examId', async (req, res) => {
         exam.start_exam_date=start_exam_date,
         exam.startHours=startHours,
         exam.startMins=startMins,
-        exam.startTimePeriod=startTimePeriod,
         exam.end_exam_date=end_exam_date,
         exam.endHours=endHours,
         exam.endMins=endMins,
-        exam.endTimePeriod=endTimePeriod,
         exam.totalMarks=totalMarks
           await exam.save()
           return res.status(200).json(exam)

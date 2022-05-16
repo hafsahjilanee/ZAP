@@ -20,6 +20,8 @@ const T_CoursePage = () => {
   }, []);
 
   const loadStudents = async () => {
+    const id = JSON.parse(localStorage.getItem('user')).id;
+    console.log(id);
     const result = await axios({
       method: "get",
       headers: {

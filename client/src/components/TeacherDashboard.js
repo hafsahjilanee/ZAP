@@ -48,10 +48,11 @@ const TeacherDashboard = () => {
     nav("/TeacherDashboard/T_CoursePage/");
   };
 
-  const {id} = useParams();
+  //const {id} = useParams();
 
   const loadCourses = async () => {
-    //console.log(id)
+    const id = JSON.parse(localStorage.getItem('user')).id;
+    console.log(id)
     const result = await axios({
       method: "get",
       headers: {
