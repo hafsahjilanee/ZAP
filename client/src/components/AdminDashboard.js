@@ -121,8 +121,8 @@ const AdminDashboard = () => {
             to="/adminDashboard/teacherPage"
           >
             <img className="image1" src={image} alt="teacher" />
-            <div class="middle">
-              <div class="text">Teachers</div>
+            <div className="middle">
+              <div className="text">Teachers</div>
             </div>
           </NavLink>
         </div>
@@ -132,9 +132,9 @@ const AdminDashboard = () => {
             exact
             to="/adminDashboard/studentPage"
           >
-            <img class="image1" src={image1} alt="students" />
-            <div class="middle">
-              <div class="text">Students</div>
+            <img className="image1" src={image1} alt="students" />
+            <div className="middle">
+              <div className="text">Students</div>
             </div>
           </NavLink>
         </div>
@@ -144,9 +144,9 @@ const AdminDashboard = () => {
             exact
             to="/adminDashboard/CoursesPage"
           >
-            <img class="image1" src={image2} alt="courses" />
-            <div class="middle">
-              <div class="text">Courses</div>
+            <img className="image1" src={image2} alt="courses" />
+            <div className="middle">
+              <div className="text">Courses</div>
             </div>
           </NavLink>
         </div>

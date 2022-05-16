@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Nav } from "react-bootstrap";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import image from "../logo.png";
 import "./Navbar.css";
 
@@ -29,6 +29,11 @@ const Navbar = () => {
       rolestudent = true;
     }
   }
+  const logonav = () => {
+    rolestudent && history("/studentDashboard");
+    roleteacher && history("/teacherDashboard");
+    roleadmin && history("/adminDashboard");
+  };
   const logout = () => {
     history("/");
     localStorage.clear();
@@ -44,20 +49,18 @@ const Navbar = () => {
         className="navbar navbar-expand-lg  bg-new"
         style={{ overflow: "auto" }}
       >
-        {/* <a class="navbar-brand" href="./"> */}
-        <a className="navbar-brand" href="../">
-          <img
-            src={image}
-            alt="logo"
-            display="block"
-            style={{
-              height: "100px",
-              marginLeft: "200px",
-              marginBottom: "1.5rem",
-              borderRadius: "100px",
-            }}
-          />{" "}
-        </a>
+        <img
+          src={image}
+          alt="logo"
+          display="block"
+          style={{
+            height: "100px",
+            marginLeft: "200px",
+            marginBottom: "1.5rem",
+            borderRadius: "100px",
+          }}
+          onClick={logonav}
+        />
 
         <div
           className=" collapse navbar-collapse"
