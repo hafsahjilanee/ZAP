@@ -20,11 +20,12 @@ const TeacherCoursePage = () => {
       lastName: "",
     },
   });
-  const id = useParams();
 
+  //const {id} = useParams();
+
+  
   const loadCourses = async () => {
-    const id = JSON.parse(localStorage.getItem("user")).id;
-    console.log(id);
+    
     const result = await axios({
       method: "get",
       headers: {
@@ -32,7 +33,7 @@ const TeacherCoursePage = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/courses/" + id,
+      url: "http://localhost:4000/courses/" + localStorage.getItem("courseID"),
     });
 
     console.log(result.data);
@@ -41,12 +42,17 @@ const TeacherCoursePage = () => {
     //setUser(result.data.reverse());
   };
 
+  
   useEffect(() => {
-    //loadStudents();
+    loadCourses();
   }, []);
 
   const loadTeacher = async () => {
-    //console.log(id.id);
+    const id = JSON.parse(localStorage.getItem("user")).id;
+    console.log(id);
+    //console.log(id);
+    //localStorage.setItem("courseID", id);
+    //console.log(localStorage.getItem("courseID"));
     const result = await axios({
       data: Teacher,
       method: "get",
@@ -57,6 +63,8 @@ const TeacherCoursePage = () => {
       },
       url: "http://localhost:4000/teacher/" + id,
     });
+    //localStorage.setItem("teacher", JSON.stringify(result.data));
+    //console.log(JSON.parse(localStorage.getItem('teacher')).course._id)
     console.log(result.data);
     setTeacher(result.data);
   };
@@ -88,9 +96,12 @@ const TeacherCoursePage = () => {
         }}
       >
         <h1 className="mb-2">
-          {Teacher.teacher_id.firstName}
-          {Teacher.teacher_id.lastName} {Course.name}
+          {Teacher.teacher_id.firstName}{" "}
+          {Teacher.teacher_id.lastName} 
         </h1>{" "}
+        <h2 className="mb-2">
+          {Course.name} 
+        </h2> 
         <div className="gallery">
           <NavLink
             className="container2"
