@@ -9,6 +9,35 @@ import "./TeacherPage.css";
 const ExamPage = () => {
   const nav = useNavigate();
 
+  const [exams, setExams] = useState([{
+    exams: [
+      {
+        examName: "",
+        end_exam_date: "",
+        totalMarks: ""
+      }
+    ]
+  }]);
+
+  useEffect(() => {
+    loadExamDetails();
+  }, []);
+
+  const loadExamDetails = async () => {
+    const result = await axios({
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth"),
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/exams/"+localStorage.getItem("courseID"),
+    });
+    console.log(result.data)
+    setExams(result.data);
+    //console.log(questions)
+    //setUser(result.data.reverse());
+  };
   return (
     <div className="bg">
       <div className="container-main">
@@ -40,38 +69,40 @@ const ExamPage = () => {
                   Due on
                 </th>
                 <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                  Status
+                  Total Marks
                 </th>
 
                 <th style={{ width: "35%" }}> Action </th>
               </tr>
             </thead>
             <tbody>
-              {/* {students.map((student, index) => (
+              {exams.map((ex) => (
+                ex.exams.map((e,i)=> 
               <tr>
-                <th scope="row">{index + 1}</th>
-                <td>{student.firstName}</td>
-                <td>{student.user_id}</td>
-                <td>{student.lastName}</td>
-                <td>{student.lastName}</td>
+                <th scope="row">{i + 1}</th>
+                <td>{e.examName}</td>
+                <td>{e.end_exam_date}</td>
+                <td>{e.totalMarks}</td>
 
                 <td>
+                  
                   <button
                     className="btn btn-outline-secondary me-2"
-                    onClick={() => viewCourse(student.id)}
+                    //onClick={() => viewCourse()}
                   >
                     View
                   </button>
                   <button
                     className="btn btn-outline-primary me-2"
-                    onClick={() => editCourse(student.id)}
+                    //onClick={() => editCourse()}
                   >
                     Attempt
                   </button>
+            
                 </td>
               </tr>
-            ))}
-            x */}
+            )))}
+
             </tbody>
           </table>
         </div>

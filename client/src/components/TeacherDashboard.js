@@ -13,6 +13,7 @@ const TeacherDashboard = () => {
         class_code: "",
         name: "",
         term: "",
+        _id: ""
       },
     ],
   });
@@ -54,7 +55,9 @@ const TeacherDashboard = () => {
   };
 
   const viewCoursePage = async (id) => {
-    nav("/TeacherDashboard/TeacherCoursePage/");
+    localStorage.setItem("courseID", id);
+    console.log(localStorage.getItem("courseID"))
+    nav("/TeacherDashboard/TeacherCoursePage");
   };
 
   //const {id} = useParams();
@@ -93,7 +96,7 @@ const TeacherDashboard = () => {
             <tbody>
               {courses.course.map((c) => (
                 <tr
-                  onClick={() => viewCoursePage(c.id)}
+                  onClick={() => viewCoursePage(c._id)}
                   style={{
                     marginBottom: "20px",
                     paddingBottom: "20px",
