@@ -15,7 +15,16 @@ const TeacherDashboard = () => {
         term: "",
       },
     ],
-});
+  });
+
+  const [teachers, setTeacher] = useState({
+    teacher: [
+      {
+        firstname: "",
+        lastname: "",
+      },
+    ],
+  });
 
   useEffect(() => {
     loadCourses();
@@ -45,14 +54,14 @@ const TeacherDashboard = () => {
   };
 
   const viewCoursePage = async (id) => {
-    nav("/TeacherDashboard/T_CoursePage/");
+    nav("/TeacherDashboard/TeacherCoursePage/");
   };
 
   //const {id} = useParams();
 
   const loadCourses = async () => {
-    const id = JSON.parse(localStorage.getItem('user')).id;
-    console.log(id)
+    const id = JSON.parse(localStorage.getItem("user")).id;
+    console.log(id);
     const result = await axios({
       method: "get",
       headers: {
@@ -60,7 +69,7 @@ const TeacherDashboard = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/teacher/"+id,
+      url: "http://localhost:4000/teacher/" + id,
     });
     console.log(result.data);
     setCourses(result.data);

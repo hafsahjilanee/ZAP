@@ -6,7 +6,7 @@ import "./TeacherPage.css";
 
 import { useNavigate } from "react-router-dom";
 
-const T_StudentPage = () => {
+const TeacherStudentPage = () => {
   const nav = useNavigate();
   const [students, setStudent] = useState([]);
 
@@ -174,4 +174,4 @@ const T_StudentPage = () => {
   );
 };
 
-export default T_StudentPage;
+export default TeacherStudentPage;

@@ -8,71 +8,7 @@ import "./TeacherPage.css";
 
 const ExamPage = () => {
   const nav = useNavigate();
-  const [students, setStudent] = useState([]);
 
-  useEffect(() => {
-    loadStudents();
-  }, []);
-
-  const viewCourse = async (id) => {
-    nav("/adminDashboard/viewCourse/" + id);
-  };
-
-  const editCourse = async (id) => {
-    nav("/adminDashboard/editCourse/" + id);
-  };
-
-  const deleteCourse = async (id) => {
-    await axios.delete(
-      "http://localhost:4000/admin/" + id,
-      {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("auth"),
-        },
-      },
-      {
-        data: { id: id },
-      }
-    );
-    loadStudents();
-  };
-
-  const loadStudents = async () => {
-    const result = await axios({
-      method: "get",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("auth"),
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      url: "http://localhost:4000/admin/getStudents",
-    });
-    console.log(result.data.data.users);
-    setStudent(result.data.data.users);
-
-    //setUser(result.data.reverse());
-  };
-
-  /*try {
-
-        console.log(localStorage.getItem("auth"))
-
-        /*fetch("http://localhost:4000/admin/admins", {
-            method: 'get',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('auth'),
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-        }).then((result) => {
-            result.json().then((resp) => {
-                console.log(resp); 
-            })
-        })
-
-    } catch (e) {
-        console.log(e)
-    }*/
   return (
     <div className="container-main">
       {" "}
@@ -101,7 +37,7 @@ const ExamPage = () => {
             </tr>
           </thead>
           <tbody>
-            {students.map((student, index) => (
+            {/* {students.map((student, index) => (
               <tr>
                 <th scope="row">{index + 1}</th>
                 <td>{student.firstName}</td>
@@ -125,7 +61,7 @@ const ExamPage = () => {
                 </td>
               </tr>
             ))}
-            x
+            x */}
           </tbody>
         </table>
       </div>

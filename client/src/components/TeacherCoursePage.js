@@ -6,7 +6,7 @@ import image from "./exam.png";
 import image1 from "./Student.png";
 import "./AdminDashboard.css";
 
-const T_CoursePage = () => {
+const TeacherCoursePage = () => {
   const [Course, setCourse] = useState({
     name: "",
     term: "",
@@ -14,10 +14,16 @@ const T_CoursePage = () => {
     class_code: "",
   });
 
+  const [Teacher, setTeacher] = useState({
+    teacher_id: {
+      firstName: "",
+      lastName: "",
+    },
+  });
   const id = useParams();
 
-  const loadStudents = async () => {
-    const id = JSON.parse(localStorage.getItem('user')).id;
+  const loadCourses = async () => {
+    const id = JSON.parse(localStorage.getItem("user")).id;
     console.log(id);
     const result = await axios({
       method: "get",
@@ -26,7 +32,7 @@ const T_CoursePage = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/courses/" + id.id,
+      url: "http://localhost:4000/courses/" + id,
     });
 
     console.log(result.data);
@@ -37,6 +43,25 @@ const T_CoursePage = () => {
 
   useEffect(() => {
     loadCourses();
+  }, []);
+
+  const loadTeacher = async () => {
+    //console.log(id.id);
+    const result = await axios({
+      data: Teacher,
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth"),
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/teacher/" + id,
+    });
+    console.log(result.data);
+    setTeacher(result.data);
+  };
+  useEffect(() => {
+    loadTeacher();
   }, []);
 
   return (
@@ -63,11 +88,15 @@ const T_CoursePage = () => {
         }}
       >
         <h1 className="mb-2">
-          {/* course name from api */}
-          {Course.name}
+          {Teacher.teacher_id.firstName}
+          {Teacher.teacher_id.lastName} {Course.name}
         </h1>{" "}
         <div className="gallery">
-          <NavLink className="container2" exact to="/QuizDashboard">
+          <NavLink
+            className="container2"
+            exact
+            to="/TeacherDashboard/ExamPage/"
+          >
             <img className="image1" src={image} alt="exam" />
             <div class="middle">
               <div class="text">Exams</div>
@@ -78,7 +107,7 @@ const T_CoursePage = () => {
           <NavLink
             className="container2"
             exact
-            to="/TeacherDashboard/T_StudentPage"
+            to="/TeacherDashboard/TeacherStudentPage"
           >
             <img className="image1" src={image1} alt="students" />
             <div class="middle">
@@ -91,4 +120,4 @@ const T_CoursePage = () => {
   );
 };
 
-export default T_CoursePage;
+export default TeacherCoursePage;
