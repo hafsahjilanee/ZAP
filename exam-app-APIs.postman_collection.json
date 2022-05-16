@@ -70,7 +70,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user_id\":\"02\",\r\n    \"password\":\"123456\"\r\n}",
+					"raw": "{\r\n    \"user_id\":\"03\",\r\n    \"password\":\"1234\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -422,7 +422,37 @@
 			"response": []
 		},
 		{
-			"name": "get questions",
+			"name": "exam CreateQuestion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"3 test\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"A\"\r\n        },\r\n        {\r\n            \"text\": \"B\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"C\"\r\n        },\r\n        {\r\n            \"text\": \"none of the above\"\r\n        }\r\n    ],\r\n    \"marks\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/question/createQuestion/62820fa343f4884ce8dd0450",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"question",
+						"createQuestion",
+						"62820fa343f4884ce8dd0450"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exam getQuestions",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -444,7 +474,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:4000/question/questions",
+					"raw": "http://localhost:4000/question/62820fa343f4884ce8dd0450",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -452,14 +482,14 @@
 					"port": "4000",
 					"path": [
 						"question",
-						"questions"
+						"62820fa343f4884ce8dd0450"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "get one question",
+			"name": "question getOneQuestion",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -474,7 +504,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/question/61c1a2ae499a910e8cdc8d2c",
+					"raw": "http://localhost:4000/question/view/62821db1bcae500c780fd023",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -482,43 +512,15 @@
 					"port": "4000",
 					"path": [
 						"question",
-						"61c1a2ae499a910e8cdc8d2c"
+						"view",
+						"62821db1bcae500c780fd023"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "CreateQuestion",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"description\": \"q7\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"A\"\r\n        },\r\n        {\r\n            \"text\": \"B\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"C\"\r\n        },\r\n        {\r\n            \"text\": \"none of the above\"\r\n        }\r\n    ]\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:4000/question/createQuestion",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"question",
-						"createQuestion"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "update one question",
+			"name": "question updateOneQuestion",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -534,7 +536,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"description\": \"HI Formula for velocity?\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"time/distance\"\r\n        },\r\n        {\r\n            \"text\": \"distance/time\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"time * distance\"\r\n        },\r\n        {\r\n            \"text\": \"none of the above\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"description\": \"3 test\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"A\"\r\n        },\r\n        {\r\n            \"text\": \"B\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"C\"\r\n        },\r\n        {\r\n            \"text\": \"none of the above\"\r\n        }\r\n    ],\r\n    \"marks\": 5\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -542,7 +544,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/question/617edb8a2e52eda426912545",
+					"raw": "http://localhost:4000/question/62821db1bcae500c780fd023",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -550,7 +552,7 @@
 					"port": "4000",
 					"path": [
 						"question",
-						"617edb8a2e52eda426912545"
+						"62821db1bcae500c780fd023"
 					]
 				}
 			},
@@ -562,7 +564,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/question/61c2cc637d46fc2fe49d71b4",
+					"raw": "http://localhost:4000/question/62821da0bcae500c780fd013",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -570,7 +572,7 @@
 					"port": "4000",
 					"path": [
 						"question",
-						"61c2cc637d46fc2fe49d71b4"
+						"62821da0bcae500c780fd013"
 					]
 				}
 			},
@@ -1026,7 +1028,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"examName\": \"Test Exam\",\r\n    \"start_exam_date\": \"14/05/2022\",\r\n    \"startHours\": \"08\",\r\n    \"startMins\": \"00\",\r\n    \"startTimePeriod\" : \"AM\",\r\n    \"end_exam_date\": \"14/05/2022\",\r\n    \"endHours\":\"10\",\r\n    \"endMins\":\"00\",\r\n    \"endTimePeriod\":\"AM\",\r\n    \"totalMarks\":100\r\n}",
+					"raw": "{\r\n    \"examName\": \"IDM Exam\",\r\n    \"start_exam_date\": \"14/05/2022\",\r\n    \"startHours\": \"08\",\r\n    \"startMins\": \"00\",\r\n    \"end_exam_date\": \"14/05/2022\",\r\n    \"endHours\":\"10\",\r\n    \"endMins\":\"00\",\r\n    \"totalMarks\":100\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1074,7 +1076,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/exams/view/627fdb99daf9db5a84649c95",
+					"raw": "http://localhost:4000/exams/view/62820fa343f4884ce8dd0450",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1083,7 +1085,7 @@
 					"path": [
 						"exams",
 						"view",
-						"627fdb99daf9db5a84649c95"
+						"62820fa343f4884ce8dd0450"
 					]
 				}
 			},
@@ -1096,7 +1098,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"examName\": \"update Exam\",\r\n    \"start_exam_date\": \"14/05/2022\",\r\n    \"startHours\": \"08\",\r\n    \"startMins\": \"00\",\r\n    \"startTimePeriod\" : \"AM\",\r\n    \"end_exam_date\": \"14/05/2022\",\r\n    \"endHours\":\"10\",\r\n    \"endMins\":\"00\",\r\n    \"endTimePeriod\":\"AM\",\r\n    \"totalMarks\":100\r\n}",
+					"raw": "{\r\n    \"examName\": \"Updated sarahh Exam\",\r\n    \"start_exam_date\": \"14/05/2022\",\r\n    \"startHours\": \"08\",\r\n    \"startMins\": \"00\",\r\n    \"startTimePeriod\" : \"AM\",\r\n    \"end_exam_date\": \"14/05/2022\",\r\n    \"endHours\":\"10\",\r\n    \"endMins\":\"00\",\r\n    \"endTimePeriod\":\"AM\",\r\n    \"totalMarks\":100\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1104,7 +1106,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/exams/627fe1599853cd61a4ece11e",
+					"raw": "http://localhost:4000/exams/6280ae63a500e443f07cceaa",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1112,7 +1114,7 @@
 					"port": "4000",
 					"path": [
 						"exams",
-						"627fe1599853cd61a4ece11e"
+						"6280ae63a500e443f07cceaa"
 					]
 				}
 			},
@@ -1124,7 +1126,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/exams/628011c7ae737a53e05c8504",
+					"raw": "http://localhost:4000/exams/6280ae63a500e443f07cceaa",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1132,7 +1134,7 @@
 					"port": "4000",
 					"path": [
 						"exams",
-						"628011c7ae737a53e05c8504"
+						"6280ae63a500e443f07cceaa"
 					]
 				}
 			},
