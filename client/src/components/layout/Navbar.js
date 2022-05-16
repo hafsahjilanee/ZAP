@@ -76,13 +76,20 @@ const Navbar = () => {
           {rolestudent && <h4 className="text-white"> Student Dashboard</h4>}
           {!LoggedIn && <h4 className="text-white"> Login</h4>}
 
-          <ul className="navbar-nav mr-auto" style={{ marginLeft: "55%" }}>
+          <ul
+            className="navbar-nav mr-auto"
+            style={{ marginLeft: "55%", marginTop: "50px" }}
+          >
             <li className="nav-item active">
               {token && (
                 <a
                   className="nav-link"
                   href="/profilePage"
-                  style={{ color: "white", paddingTop: "28px" }}
+                  style={{
+                    color: "white",
+                    paddingTop: "10px",
+                    paddingBottom: "30px",
+                  }}
                 >
                   {" "}
                   <h5> Profile</h5>
@@ -98,6 +105,7 @@ const Navbar = () => {
                   style={{
                     fontSize: "130%",
                     color: "white",
+                    border: "none",
                   }}
                 >
                   Logout

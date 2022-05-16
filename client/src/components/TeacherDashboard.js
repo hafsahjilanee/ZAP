@@ -13,18 +13,16 @@ const TeacherDashboard = () => {
         class_code: "",
         name: "",
         term: "",
-        _id: ""
+        _id: "",
       },
     ],
   });
 
-  const [teachers, setTeacher] = useState({
-    teacher: [
-      {
-        firstname: "",
-        lastname: "",
-      },
-    ],
+  const [Teacher, setTeacher] = useState({
+    teacher_id: {
+      firstname: "",
+      lastname: "",
+    },
   });
 
   useEffect(() => {
@@ -56,7 +54,7 @@ const TeacherDashboard = () => {
 
   const viewCoursePage = async (id) => {
     localStorage.setItem("courseID", id);
-    console.log(localStorage.getItem("courseID"))
+    console.log(localStorage.getItem("courseID"));
     nav("/TeacherDashboard/TeacherCoursePage");
   };
 
@@ -79,9 +77,34 @@ const TeacherDashboard = () => {
 
     //setUser(result.data.reverse());
   };
+  const loadTeacher = async () => {
+    const id = JSON.parse(localStorage.getItem("user")).id;
+    console.log(id);
+    //console.log(id);
+    //localStorage.setItem("courseID", id);
+    //console.log(localStorage.getItem("courseID"));
+    const result = await axios({
+      data: Teacher,
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth"),
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/teacher/" + id,
+    });
+    //localStorage.setItem("teacher", JSON.stringify(result.data));
+    //console.log(JSON.parse(localStorage.getItem('teacher')).course._id)
+    console.log(result.data);
+    setTeacher(result.data);
+  };
+  useEffect(() => {
+    loadTeacher();
+  }, []);
 
   return (
     <div className="bg">
+      {" "}
       <div
         className="container-main"
         style={{
@@ -90,8 +113,13 @@ const TeacherDashboard = () => {
           paddingTop: "400px",
         }}
       >
-        <br></br>
+        {" "}
+        <br></br> <br></br> <br></br>{" "}
+        <h1 className="mb-2">
+          {Teacher.teacher_id.firstName} {Teacher.teacher_id.lastName}
+        </h1>{" "}
         <div className="container-list ">
+          {" "}
           <table class="table table-hover border shadow row">
             <tbody>
               {courses.course.map((c) => (

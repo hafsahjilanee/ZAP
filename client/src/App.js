@@ -31,10 +31,12 @@ import CoursesPage from "./components/CoursesPage";
 import TeacherStudentPage from "./components/TeacherStudentPage";
 import Profile from "./components/Profile";
 import TeacherCoursePage from "./components/TeacherCoursePage";
+import ViewExam from "./components/ViewExam";
 import StudentCoursePage from "./components/StudentCoursePage";
-
+import AddExam from "./components/AddExam";
 import ViewGrades from "./components/ViewGrades";
 import { useState } from "react";
+import StudentViewExam from "./components/StudentViewExam";
 
 function App() {
   const [authState, setAuthState] = useState(false);
@@ -61,6 +63,11 @@ function App() {
               exact
               path="/studentDashboard"
               element={<StudentDashboard />}
+            />
+            <Route
+              exact
+              path="/StudentDashboard/StudentViewExam"
+              element={<StudentViewExam />}
             />
             <Route
               exact
@@ -139,9 +146,20 @@ function App() {
             />
             <Route
               exact
-              path="/TeacherDashboard/TeacherCoursePage:id"
+              path="/TeacherDashboard/TeacherCoursePage"
               element={<TeacherCoursePage />}
             />
+            <Route
+              exact
+              path="/TeacherDashboard/ViewExam"
+              element={<ViewExam />}
+            />
+            <Route
+              exact
+              path="/TeacherDashboard/AddExam"
+              element={<AddExam />}
+            />
+
             <Route
               exact
               path="/TeacherDashboard/ViewGrades:id"

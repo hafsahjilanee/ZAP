@@ -3,12 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./_helpers/AuthContext";
 import "./Login.css";
+import Navbar from "./layout/Navbar";
 
 function Login() {
   const [user_id, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const [us, setUser] = useState([]);
+  const [User, setUser] = useState([]);
 
   const { setAuthState } = useContext(AuthContext);
   let history = useNavigate();
@@ -27,13 +28,13 @@ function Login() {
           //console.log(localStorage.getItem('auth'))
           console.log(localStorage.getItem("user"));
           //console.log(JSON.parse(localStorage.getItem('user')).id);
-          const id = JSON.parse(localStorage.getItem('user')).id;
+          const id = JSON.parse(localStorage.getItem("user")).id;
           setAuthState(true);
           //alert("Login Successful!");
           if (response.data.role === "admin") {
             history("/adminDashboard");
           } else if (response.data.role === "teacher") {
-            history("/teacherDashboard");
+            history(`/teacherDashboard/${id}`);
           } else if (response.data.role === "student") {
             history("/studentDashboard");
           }

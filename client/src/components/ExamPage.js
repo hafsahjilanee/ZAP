@@ -5,19 +5,28 @@ import { useNavigate } from "react-router-dom";
 import image from "./plus.png";
 import Modal from "./Modal";
 import "./TeacherPage.css";
+import TeacherDashboard from "./TeacherDashboard";
+import ViewExam from "./ViewExam";
 
 const ExamPage = () => {
   const nav = useNavigate();
 
-  const [exams, setExams] = useState([{
-    exams: [
-      {
-        examName: "",
-        end_exam_date: "",
-        totalMarks: ""
-      }
-    ]
-  }]);
+  const [exams, setExams] = useState([
+    {
+      exams: [
+        {
+          examName: "",
+          end_exam_date: "",
+          totalMarks: "",
+        },
+      ],
+    },
+  ]);
+  const [Course, setCourse] = useState({
+    name: "",
+    term: "",
+    class_code: "",
+  });
 
   useEffect(() => {
     loadExamDetails();
@@ -31,13 +40,34 @@ const ExamPage = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/exams/"+localStorage.getItem("courseID"),
+      url: "http://localhost:4000/exams/" + localStorage.getItem("courseID"),
     });
-    console.log(result.data)
+    console.log(result.data);
     setExams(result.data);
     //console.log(questions)
     //setUser(result.data.reverse());
   };
+
+  const loadCourses = async () => {
+    const result = await axios({
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth"),
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/courses/" + localStorage.getItem("courseID"),
+    });
+
+    console.log(result.data);
+    setCourse(result.data);
+
+    //setUser(result.data.reverse());
+  };
+
+  useEffect(() => {
+    loadCourses();
+  }, []);
   return (
     <div className="bg">
       <div className="container-main">
@@ -54,9 +84,31 @@ const ExamPage = () => {
           {"Back"}
         </Link>
         <br></br>
+        <h1 className="mb-4">
+          {" "}
+          {Course.name}
+          {"-"}
+          {Course.class_code}
+        </h1>{" "}
+        <h2 className="mb-4">{Course.term}</h2>
         <div className="container-list">
-          <h1 className="mb-4"> CourseName - Exams</h1>{" "}
-          <table class="table table-hover border shadow">
+          <h1 className="mb-4">
+            {"  "} Exams
+            <NavLink exact to="/TeacherDashboard/AddExam/">
+              <img
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Add an Exam"
+                className="img"
+                src={image}
+                alt="add"
+                height="40"
+                align="right"
+                style={{ paddingRight: "3rem" }}
+              ></img>{" "}
+            </NavLink>
+          </h1>
+          <table className="table table-hover border shadow">
             <thead>
               <tr>
                 <th style={{ width: "5%", overflow: "auto" }} scope="col">
@@ -76,33 +128,54 @@ const ExamPage = () => {
               </tr>
             </thead>
             <tbody>
-              {exams.map((ex) => (
-                ex.exams.map((e,i)=> 
               <tr>
-                <th scope="row">{i + 1}</th>
-                <td>{e.examName}</td>
-                <td>{e.end_exam_date}</td>
-                <td>{e.totalMarks}</td>
+                <th scope="row">{1}</th>
+                <td>{"e.examName"}</td>
+                <td>{"e.end_exam_date"}</td>
+                <td>{"e.totalMarks"}</td>
 
                 <td>
-                  
                   <button
                     className="btn btn-outline-secondary me-2"
-                    //onClick={() => viewCourse()}
+                    onClick={() => nav("/TeacherDashboard/ViewExam")}
                   >
                     View
                   </button>
                   <button
                     className="btn btn-outline-primary me-2"
-                    //onClick={() => editCourse()}
+                    //onClick={() => editEdit()}
                   >
-                    Attempt
+                    Edit
                   </button>
-            
                 </td>
               </tr>
-            )))}
+              {exams.map((ex) =>
+                ex.exams.map((e, i) => (
+                  <tr>
+                    <th scope="row">{i + 1}</th>
+                    <td>{e.examName}</td>
+                    <td>{e.end_exam_date}</td>
+                    <td>{e.totalMarks}</td>
 
+                    <td>
+                      <button
+                        className="btn btn-outline-secondary me-2"
+                        onClick={() =>
+                          nav("TeacherDashboard/ExamPage/ViewExam")
+                        }
+                      >
+                        View
+                      </button>
+                      <button
+                        className="btn btn-outline-primary me-2"
+                        //onClick={() => editEdit()}
+                      >
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

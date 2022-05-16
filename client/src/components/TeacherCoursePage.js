@@ -23,9 +23,7 @@ const TeacherCoursePage = () => {
 
   //const {id} = useParams();
 
-  
   const loadCourses = async () => {
-    
     const result = await axios({
       method: "get",
       headers: {
@@ -42,7 +40,6 @@ const TeacherCoursePage = () => {
     //setUser(result.data.reverse());
   };
 
-  
   useEffect(() => {
     loadCourses();
   }, []);
@@ -96,12 +93,9 @@ const TeacherCoursePage = () => {
         }}
       >
         <h1 className="mb-2">
-          {Teacher.teacher_id.firstName}{" "}
-          {Teacher.teacher_id.lastName} 
+          {Teacher.teacher_id.firstName} {Teacher.teacher_id.lastName}
         </h1>{" "}
-        <h2 className="mb-2">
-          {Course.name} 
-        </h2> 
+        <h2 className="mb-2">{Course.name}</h2>
         <div className="gallery">
           <NavLink
             className="container2"

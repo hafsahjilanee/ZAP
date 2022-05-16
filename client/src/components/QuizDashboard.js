@@ -74,7 +74,7 @@ const QuizDashboard = () => {
     <div className="container-main">
       <Link
         className="btn btn-outline-secondary mb-4"
-        to="/TeacherDashboard/T_CoursePage/"
+        to="/TeacherDashboard/ExamPage/"
         style={{
           marginRight: "1100px",
           align: "left",

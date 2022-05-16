@@ -66,7 +66,7 @@ const StudentCoursePage = () => {
                 <td>
                   <button
                     className="btn btn-outline-secondary me-2"
-                    //onClick={() => }
+                    onClick={() => nav("/StudentDashboard/StudentViewExam")}
                   >
                     View
                   </button>
@@ -89,7 +89,7 @@ const StudentCoursePage = () => {
                 <td>
                   <button
                     className="btn btn-outline-secondary me-2"
-                    onClick={() => viewCourse(student.id)}
+                    onClick={() => }
                   >
                     View
                   </button>
