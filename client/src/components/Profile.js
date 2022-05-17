@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import spiderman from "./spiderman.jpg";
+import { useNavigate } from "react-router-dom";
 const Profile = () => {
+  const nav = useNavigate();
   const [User, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -119,9 +121,9 @@ const Profile = () => {
         </div>
       </div>
       <br />
-      <Link className="btn btn-primary" to="/">
+      <button className="btn btn-primary" onClick={() => nav(-1)}>
         Back
-      </Link>
+      </button>
     </div>
   );
 };

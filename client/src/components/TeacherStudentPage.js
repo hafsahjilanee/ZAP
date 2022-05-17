@@ -83,7 +83,7 @@ const TeacherStudentPage = () => {
       {" "}
       <Link
         className="btn btn-outline-secondary mb-4"
-        to="/TeacherDashboard"
+        to="/TeacherDashboard/TeacherCoursePage"
         style={{
           marginRight: "1100px",
           align: "left",
@@ -94,22 +94,7 @@ const TeacherStudentPage = () => {
       </Link>
       <br></br>
       <div className="container-list">
-        <h1 className="mb-4">
-          {"//Coursename:Students"}
-          <NavLink exact to="/adminDashboard/addStudent">
-            <img
-              data-toggle="tooltip"
-              data-placement="bottom"
-              title="Add a Student"
-              className="img"
-              src={image}
-              alt="add"
-              height="40"
-              align="right"
-              style={{ paddingRight: "3rem" }}
-            ></img>{" "}
-          </NavLink>{" "}
-        </h1>{" "}
+        <h1 className="mb-4">{"//Coursename:Students"}</h1>{" "}
         {/*Adding multiple students functionality*/}
         <div className="form-group mb-3 ">
           <input

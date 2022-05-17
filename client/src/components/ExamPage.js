@@ -68,6 +68,7 @@ const ExamPage = () => {
   useEffect(() => {
     loadCourses();
   }, []);
+
   return (
     <div className="bg">
       <div className="container-main">
