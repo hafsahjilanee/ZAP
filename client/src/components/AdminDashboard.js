@@ -118,7 +118,7 @@ const AdminDashboard = () => {
           <NavLink
             className="container2  "
             exact
-            to="/adminDashboard/teacherPage"
+            to="/adminDashboard/TeacherPage"
           >
             <img className="image1" src={image} alt="teacher" />
             <div className="middle">

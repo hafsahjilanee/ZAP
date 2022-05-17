@@ -81,12 +81,12 @@ function App() {
             />
             <Route
               exact
-              path="/adminDashboard/addStudent"
+              path="/adminDashboard/AddStudent"
               element={<AddStudent />}
             />
             <Route
               exact
-              path="/adminDashboard/addCourse"
+              path="/adminDashboard/AddCourse"
               element={<AddCourse />}
             />
             <Route
@@ -121,7 +121,7 @@ function App() {
             />
             <Route
               exact
-              path="/adminDashboard/teacherPage"
+              path="/adminDashboard/TeacherPage"
               element={<TeacherPage />}
             />
             <Route
@@ -156,7 +156,7 @@ function App() {
             />
             <Route
               exact
-              path="/TeacherDashboard/AddExam"
+              path="/TeacherDashboard/AddExam/"
               element={<AddExam />}
             />
 

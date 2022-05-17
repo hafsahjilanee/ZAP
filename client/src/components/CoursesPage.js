@@ -104,7 +104,7 @@ const CoursesPage = () => {
           <h1 className="mb-4">
             {" "}
             Courses
-            <NavLink exact to="/adminDashboard/addCourse">
+            <NavLink to="/adminDashboard/addCourse">
               <img
                 data-toggle="tooltip"
                 data-placement="bottom"

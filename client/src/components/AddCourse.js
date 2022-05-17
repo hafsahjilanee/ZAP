@@ -3,90 +3,100 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DropdownButton, Dropdown, ButtonGroup } from "react-bootstrap";
 import "./AddTeacher.css";
-import TeacherDashboard from "./TeacherDashboard";
 
 const AddCourse = () => {
   let navigate = useNavigate();
   const [Course, setCourse] = useState({
     name: "",
     term: "",
-    active_status: "",
+    active_status: null,
     class_code: "",
   });
 
-  const { name, term, active_status, class_code } = Course;
+  // const { name, term, active_status, class_code } = Course;
   const onInputChange = (e) => {
     setCourse({ ...Course, [e.target.name]: e.target.value });
+  };
+  const onChangeVal = (e) => {
+    //target.checked === e.active_status
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    //await axios.put('http://localhost:4000/admin/'+id, student);
-    // console.log(id);
+
     await axios({
-      method: "put",
+      method: "post",
       data: Course,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("auth"),
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: " http://localhost:4000/courses/6268eeec55b70352f4e6f276",
+      url: " http://localhost:4000/courses/createCourse",
     });
+  };
 
-    return (
-      <div className="container-main">
-        <div className=" container-form shadow  ">
-          <h2 className=" mb-4">Add a Course</h2>
-          <form onSubmit={(e) => onSubmit(e)}>
-            <div className="form-group mb-3">
-              <input
-                type="text"
-                className="form-control-lg "
-                id="floatingInput"
-                name="name"
-                placeholder="Enter Course Name"
-                value={name}
-                onChange={(e) => onInputChange(e)}
-              />
-            </div>
-
-            <div className="form-group mb-3">
-              <input
-                type="text"
-                className=" form-control-lg "
-                id="floatingInput"
-                name="class_code"
-                placeholder="Enter Course ID"
-                value={class_code}
-                onChange={(e) => onInputChange(e)}
-              />
-            </div>
-            <div className="form-group mb-3">
-              <input
-                type="text"
-                className="form-control-lg"
-                id="floatingInput"
-                name="active status"
-                placeholder="Active Status"
-                value={active_status}
-                onChange={(e) => onInputChange(e)}
-              />
-            </div>
-
-            {/* 
+  return (
+    <div className="container-main">
+      <div className=" container-form shadow  ">
+        <h2 className=" mb-4">Add a Course</h2>
+        <form onSubmit={(e) => onSubmit(e)}>
           <div className="form-group mb-3">
+            <input
+              type="text"
+              className="form-control-lg "
+              id="floatingInput"
+              name="name"
+              placeholder="Enter Course Name"
+              value={Course.name}
+              onChange={(e) => onInputChange(e)}
+            />
+          </div>
+          <div className="form-group mb-3">
+            <input
+              type="text"
+              className=" form-control-lg "
+              id="floatingInput"
+              name="class_code"
+              placeholder="Enter Class Code"
+              value={Course.class_code}
+              onChange={(e) => onInputChange(e)}
+            />
+          </div>
+          <button
+            type="button"
+            className=" btntrue "
+            id="floatingInput"
+            name="active status"
+            value={Course.active_status}
+            onClick={(e) => Course.active_status === true}
+          >
+            true
+          </button>
+          <button
+            type="button"
+            className=" btntrue "
+            id="floatingInput"
+            name="active status"
+            value={Course.active_status}
+            onClick={(e) => Course.active_status === false}
+          >
+            false
+          </button>
+
+          {/*<div className="form-group mb-3">
             <input
               type="text"
               className=" form-control-lg"
               id="floatingInput"
               name="term"
               placeholder="Enter Term"
-              value={term}
+              value={Course.term}
               onChange={(e) => onInputChange(e)}
             />
-          </div> 
-          <div className="form-group mb-3">
+          </div>{" "}
+          */}
+          {/* <div className="form-group mb-3">
             <label className="  ">
               {"Select Term :  "}
               <select
@@ -149,16 +159,14 @@ const AddCourse = () => {
               <Dropdown.Item eventKey="3">Teacher Three</Dropdown.Item>
             </DropdownButton>
           ))}*/}
-
-            <button className="btn btn-primary btn-block me-2 mb-2">Add</button>
-
-            <Link className="btn mb-2" to="/AdminDashboard/CoursesPage">
-              Back
-            </Link>
-          </form>
-        </div>
+          <button className="btn btn-primary btn-block me-2 mb-2">Add</button>
+          <Link className="btn mb-2" to="/AdminDashboard/CoursesPage">
+            Back
+          </Link>
+        </form>
       </div>
-    );
-  };
+    </div>
+  );
 };
+
 export default AddCourse;

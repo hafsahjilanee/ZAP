@@ -51,6 +51,17 @@
     margin-top: 20px;
     
 }
+.btntrue{
+    margin-left: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+
+    
+}
+.btntrue::after{
+   background-color:  #b24c4c;
+}
 
 .btn-primary{
     background-color: #b24c4c;
