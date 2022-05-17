@@ -139,7 +139,7 @@ function App() {
             />
             <Route
               exact
-              path="/TeacherDashboard/TeacherCoursePage:id"
+              path="/TeacherDashboard/TeacherCoursePage"
               element={<TeacherCoursePage />}
             />
             <Route
