@@ -59,7 +59,7 @@
 
     
 }
-.btntrue::after{
+.btntrue:after, .btntrue:visited{
    background-color:  #b24c4c;
 }
 

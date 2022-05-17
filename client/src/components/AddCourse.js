@@ -63,28 +63,38 @@ const AddCourse = () => {
               onChange={(e) => onInputChange(e)}
             />
           </div>
-          <button
-            type="button"
-            className=" btntrue "
-            id="floatingInput"
-            name="active status"
-            value={Course.active_status}
-            onClick={(e) => Course.active_status === true}
-          >
-            true
-          </button>
-          <button
-            type="button"
-            className=" btntrue "
-            id="floatingInput"
-            name="active status"
-            value={Course.active_status}
-            onClick={(e) => Course.active_status === false}
-          >
-            false
-          </button>
-
-          {/*<div className="form-group mb-3">
+          <div className="form-group mb-3">
+            <label
+              for="floatingInput"
+              className="col-sm-2 col-form-label"
+              style={{ width: "120px", margin: "auto" }}
+            >
+              {"Active: "}
+            </label>
+            <button
+              type="button"
+              className=" btn btntrue mb-3 "
+              id="floatingInput"
+              name="active status"
+              value={Course.active_status}
+              onClick={Course.active_status === true}
+              onChange={(e) => onInputChange(e)}
+            >
+              true
+            </button>
+            <button
+              type="button"
+              className="btn btntrue mb-3"
+              id="floatingInput"
+              name="active status"
+              value={Course.active_status}
+              onClick={Course.active_status === false}
+              onChange={(e) => onInputChange(e)}
+            >
+              false
+            </button>
+          </div>
+          <div className="form-group mb-3">
             <input
               type="text"
               className=" form-control-lg"
@@ -95,7 +105,6 @@ const AddCourse = () => {
               onChange={(e) => onInputChange(e)}
             />
           </div>{" "}
-          */}
           {/* <div className="form-group mb-3">
             <label className="  ">
               {"Select Term :  "}
