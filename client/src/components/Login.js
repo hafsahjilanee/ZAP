@@ -34,7 +34,7 @@ function Login() {
           if (response.data.role === "admin") {
             history("/adminDashboard");
           } else if (response.data.role === "teacher") {
-            history(`/teacherDashboard/${id}`);
+            history("/teacherDashboard");
           } else if (response.data.role === "student") {
             history("/studentDashboard");
           }
