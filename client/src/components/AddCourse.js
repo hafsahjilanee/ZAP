@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { DropdownButton, Dropdown, ButtonGroup } from "react-bootstrap";
 import "./AddTeacher.css";
 
 const AddCourse = () => {
@@ -9,7 +8,7 @@ const AddCourse = () => {
   const [Course, setCourse] = useState({
     name: "",
     term: "",
-    active_status: null,
+    active_status: "",
     class_code: "",
   });
 
@@ -17,10 +16,17 @@ const AddCourse = () => {
   const onInputChange = (e) => {
     setCourse({ ...Course, [e.target.name]: e.target.value });
   };
+  const onInputChange1 = (e) => {
+    setCourse({ ...Course, [e.target.name]: true });
+  };
+  const onInputChange2 = (e) => {
+    setCourse({ ...Course, [e.target.name]: false });
+  };
+
   const onChangeVal = (e) => {
     //target.checked === e.active_status
   };
-
+  console.log(Course.name, Course.active_status, Course.term);
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -64,37 +70,6 @@ const AddCourse = () => {
             />
           </div>
           <div className="form-group mb-3">
-            <label
-              for="floatingInput"
-              className="col-sm-2 col-form-label"
-              style={{ width: "120px", margin: "auto" }}
-            >
-              {"Active: "}
-            </label>
-            <button
-              type="button"
-              className=" btn btntrue mb-3 "
-              id="floatingInput"
-              name="active status"
-              value={Course.active_status}
-              onClick={Course.active_status === true}
-              onChange={(e) => onInputChange(e)}
-            >
-              true
-            </button>
-            <button
-              type="button"
-              className="btn btntrue mb-3"
-              id="floatingInput"
-              name="active status"
-              value={Course.active_status}
-              onClick={Course.active_status === false}
-              onChange={(e) => onInputChange(e)}
-            >
-              false
-            </button>
-          </div>
-          <div className="form-group mb-3">
             <input
               type="text"
               className=" form-control-lg"
@@ -105,6 +80,31 @@ const AddCourse = () => {
               onChange={(e) => onInputChange(e)}
             />
           </div>{" "}
+          <div className="form-group mb-3">
+            <label className="label" style={{ width: "120px", margin: "auto" }}>
+              {"Active: "}
+            </label>
+            <button
+              type="button"
+              className=" btntrue1 mb-3 "
+              id="floatingInput"
+              name="active status"
+              value={(Course.active_status = true)}
+              onClick={(e) => onInputChange1(e)}
+            >
+              true
+            </button>
+            <button
+              type="button"
+              className=" btntrue1 mb-3"
+              id="floatingInput"
+              name="active status"
+              value={(Course.active_status = false)}
+              onClick={(e) => onInputChange2(e)}
+            >
+              false
+            </button>
+          </div>
           {/* <div className="form-group mb-3">
             <label className="  ">
               {"Select Term :  "}

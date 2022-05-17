@@ -6,7 +6,7 @@
     padding-bottom: 1.5rem !important;
 }
 .label{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align:inherit;
     font-weight: bolder;
 }
@@ -51,7 +51,8 @@
     margin-top: 20px;
     
 }
-.btntrue{
+.btntrue1{
+   
     margin-left: 20px;
     padding-left: 15px;
     padding-right: 15px;
@@ -59,7 +60,7 @@
 
     
 }
-.btntrue:after, .btntrue:visited{
+.btntrue1:after, .btntrue1:visited, .btntrue1:hover,.btntrue1::after,.btntrue1:focus{
    background-color:  #b24c4c;
 }
 
