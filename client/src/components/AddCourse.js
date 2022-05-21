@@ -40,6 +40,7 @@ const AddCourse = () => {
       },
       url: " http://localhost:4000/courses/createCourse",
     });
+    navigate("/AdminDashboard/CoursesPage");
   };
 
   return (

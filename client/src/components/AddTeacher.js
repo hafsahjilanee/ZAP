@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./AddTeacher.css";
 
 const AddTeacher = () => {
@@ -11,11 +11,35 @@ const AddTeacher = () => {
     role: "teacher",
     user_id: "",
     password: "",
+    email: "",
   });
+  const [Number, setNumber] = useState({ phone_no: "" });
 
-  const { firstName, lastName, role, user_id, password } = Teacher;
+  const { firstName, lastName, user_id, password, email } = Teacher;
+  const { phone_no } = Number;
+
+  const onInputChange1 = (e) => {
+    setNumber({ ...Number, [e.target.phone_no]: e.target.value });
+  };
+
   const onInputChange = (e) => {
     setTeacher({ ...Teacher, [e.target.name]: e.target.value });
+  };
+  const id = useEffect;
+
+  useEffect(() => {
+    addnumber();
+  }, []);
+  console.log(id);
+  const addnumber = async (id) => {
+    await axios.post("http://localhost:4000/teacher/addinfo/" + id, Number, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth"),
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(id);
   };
 
   const onSubmit = async (e) => {
@@ -27,13 +51,21 @@ const AddTeacher = () => {
         "Content-Type": "application/json",
       },
     });
+
+    addnumber(Teacher.user_id);
+
     navigate("/AdminDashboard/teacherPage");
   };
   return (
     <div className="container-main">
       <div className=" container-form shadow  ">
         <h2 className=" mb-4">Add a Teacher</h2>
-        <form onSubmit={(e) => onSubmit(e)}>
+        <form
+          onSubmit={(e) => {
+            onSubmit(e);
+            addnumber(e);
+          }}
+        >
           <div className="form-group mb-3">
             <input
               type="text"
@@ -100,7 +132,7 @@ const AddTeacher = () => {
               id="floatingInput"
               placeholder="Enter Email Address"
               name="email"
-              value={user_id}
+              value={email}
               onChange={(e) => onInputChange(e)}
             />
           </div>
@@ -111,8 +143,8 @@ const AddTeacher = () => {
               id="floatingInput"
               placeholder="Enter Contact Number"
               name="number"
-              value={user_id}
-              onChange={(e) => onInputChange(e)}
+              value={Number.phone_no}
+              onChange={(e) => onInputChange1(e)}
             />
           </div>
           <button className="btn btn-primary btn-block me-2 mb-2">Add</button>

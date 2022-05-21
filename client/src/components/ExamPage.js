@@ -3,8 +3,6 @@ import axios from "axios";
 import { NavLink, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import image from "./plus.png";
-import Modal from "./Modal";
-import "./TeacherPage.css";
 
 //
 //
@@ -161,6 +159,7 @@ const ExamPage = () => {
                   <button
                     className="btn btn-outline-primary me-2"
                     //onClick={() => editEdit()}
+                    onClick={() => nav("/QuizDashboard/")}
                   >
                     Edit
                   </button>
