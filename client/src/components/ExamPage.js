@@ -17,17 +17,15 @@ import "./TeacherPage.css";
 const ExamPage = () => {
   const nav = useNavigate();
 
-  const [Exams, setExams] = useState([
-    {
-      exams: [
-        {
-          examName: "",
-          end_exam_date: "",
-          totalMarks: "",
-        },
-      ],
-    },
-  ]);
+  const [exams, setExams] = useState([{
+    exams: [
+      {
+        examName: "",
+        end_exam_date: "",
+        totalMarks: ""
+      }
+    ]
+  }]);
   const [Course, setCourse] = useState({
     name: "",
     term: "",
@@ -145,51 +143,34 @@ const ExamPage = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">{1}</th>
-                <td>{"e.examName"}</td>
-                <td>{"e.end_exam_date"}</td>
-                <td>{"e.totalMarks"}</td>
+              {exams.map((ex) => (
+                ex.exams.map((e, i) =>
+                  <tr>
+                    <th scope="row">{i + 1}</th>
+                    <td>{e.examName}</td>
+                    <td>{e.end_exam_date}</td>
+                    <td>{e.totalMarks}</td>
 
-                <td>
-                  <button
-                    className="btn btn-outline-secondary me-2"
-                    onClick={() => nav("/TeacherDashboard/ViewExam")}
-                  >
-                    View
-                  </button>
-                  <button
-                    className="btn btn-outline-primary me-2"
-                    //onClick={() => editEdit()}
-                  >
-                    Edit
-                  </button>
-                </td>
-              </tr>
-              {Exams.map((e, i) => (
-                <tr>
-                  <th scope="row">{i + 1}</th>
-                  <td>{e.examName}</td>
-                  <td>{e.end_exam_date}</td>
-                  <td>{e.totalMarks}</td>
+                    <td>
 
-                  <td>
-                    <button
-                      className="btn btn-outline-secondary me-2"
-                      onClick={() => ViewExam(e.id)}
-                    >
-                      View
-                    </button>
-                    <button
-                      className="btn btn-outline-primary me-2"
-                      //onClick={() => editExam()}
-                    >
-                      Edit
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              xx
+                      <button
+                        className="btn btn-outline-secondary me-2"
+                      //onClick={() => viewCourse(e.id)}
+                      >
+                        View
+                      </button>
+                      <button
+                        className="btn btn-outline-primary me-2"
+                      //onClick={() => editCourse(e.id)}
+                      >
+                        Edit
+                      </button>
+
+                    </td>
+
+                  </tr>
+                )))}
+
             </tbody>
           </table>
         </div>
