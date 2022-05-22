@@ -6,7 +6,6 @@ const schema = new Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "User",
                 required: false },
-    phone_no: {type: String, required: false},
     course: [
         { 
             type: mongoose.Schema.Types.ObjectId,

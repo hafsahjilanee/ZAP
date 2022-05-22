@@ -12,25 +12,33 @@ const AddTeacher = () => {
     user_id: "",
     password: "",
     email: "",
+    phone_no: "",
   });
-  const [Number, setNumber] = useState({ phone_no: "" });
-
-  const { firstName, lastName, user_id, password, email } = Teacher;
-  const { phone_no } = Number;
-
+/*
+  const [Number, setNumber] = useState({ 
+    phone_no: "" 
+  });
+*/
+  const { firstName, lastName, user_id, password, email, phone_no } = Teacher;
+  //const { phone_no } = Number;
+/*
   const onInputChange1 = (e) => {
     setNumber({ ...Number, [e.target.phone_no]: e.target.value });
   };
-
+*/
   const onInputChange = (e) => {
     setTeacher({ ...Teacher, [e.target.name]: e.target.value });
   };
-  const id = useEffect;
 
+  //const id = useEffect;
+
+  /*
   useEffect(() => {
     addnumber();
   }, []);
-  console.log(id);
+*/
+  //console.log(id);
+/*
   const addnumber = async (id) => {
     await axios.post("http://localhost:4000/teacher/addinfo/" + id, Number, {
       headers: {
@@ -41,7 +49,7 @@ const AddTeacher = () => {
     });
     console.log(id);
   };
-
+*/
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:4000/admin/registerTeacher", Teacher, {
@@ -51,9 +59,9 @@ const AddTeacher = () => {
         "Content-Type": "application/json",
       },
     });
-
+/*
     addnumber(Teacher.user_id);
-
+*/
     navigate("/AdminDashboard/teacherPage");
   };
   return (
@@ -63,7 +71,7 @@ const AddTeacher = () => {
         <form
           onSubmit={(e) => {
             onSubmit(e);
-            addnumber(e);
+            //addnumber(e);
           }}
         >
           <div className="form-group mb-3">
@@ -142,9 +150,9 @@ const AddTeacher = () => {
               className="form-control form-control-lg mb-4"
               id="floatingInput"
               placeholder="Enter Contact Number"
-              name="number"
+              name="phone_no"
               value={phone_no}
-              onChange={(e) => onInputChange1(e)}
+              onChange={(e) => onInputChange(e)}
             />
           </div>
           <button className="btn btn-primary btn-block me-2 mb-2">Add</button>

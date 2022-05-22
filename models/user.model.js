@@ -21,6 +21,7 @@ const schema = new Schema({
         validate: [validateEmail, 'Please fill a valid email address'],
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
+    phone_no: {type: String, required: false},
     createdDate: { type: Date, default: Date.now },
     accessToken: {type: String}
 });

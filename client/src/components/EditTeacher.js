@@ -9,9 +9,11 @@ const EditTeacher = () => {
     firstName: "",
     lastname: "",
     user_id: "",
+    email:"",
+    phone_no:""
   });
 
-  const { firstName, lastName, user_id } = teacher;
+  const { firstName, lastName, user_id,email,phone_no } = teacher;
   const onInputChange = (e) => {
     setTeacher({ ...teacher, [e.target.name]: e.target.value });
   };
@@ -135,8 +137,8 @@ const EditTeacher = () => {
               type="text"
               class="form-control-lg"
               id="inputText3"
-              name="Email address"
-              value={user_id}
+              name="email"
+              value={email}
               onChange={(e) => onInputChange(e)}
               style={{ width: "300px", margin: "auto" }}
             />
@@ -155,8 +157,8 @@ const EditTeacher = () => {
               type="text"
               class="form-control-lg"
               id="inputText3"
-              name="Contact Number"
-              value={user_id}
+              name="phone_no"
+              value={phone_no}
               onChange={(e) => onInputChange(e)}
               style={{ width: "300px", margin: "auto" }}
             />
