@@ -14,10 +14,7 @@ router.post("/register", /*validateToken,permitAdmin,*/ register);
 router.put("/:id", validateToken, permitAdmin, update);
 router.delete("/:user_id", validateToken, permitAdmin, _delete);
 //routes for teacher related issues
-router.post(
-  "/registerTeacher",
-  /*validateToken, permitAdmin,*/ registerTeacher
-);
+router.post("/registerTeacher", validateToken, permitAdmin, registerTeacher);
 router.post("/registerStudent", validateToken, permitAdmin, registerStudent);
 router.get("/getTeachers", validateToken, permitAdmin, getAllTeachers);
 router.get("/getStudents", /*validateToken, permitAdmin,*/ getAllStudents);
