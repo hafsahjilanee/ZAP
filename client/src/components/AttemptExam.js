@@ -6,12 +6,11 @@ import image1 from "./plus.png";
 import { FormCheck } from "react-bootstrap";
 // import { set } from "mongoose";
 
-const AddQuestion = () => {
+const AttemptExam = () => {
   let navigate = useNavigate();
 
   const [question, setQuestion] = useState({
     description: "",
-    marks: "",
     alternatives: [
       {
         text: "",
@@ -19,45 +18,6 @@ const AddQuestion = () => {
       },
     ],
   });
-
-  //const {description, alternative: {text, isCorrect}} = question;
-  //console.log(text);
-
-  const onInputChange = (e) => {
-    setQuestion({ ...question, [e.target.name]: e.target.value });
-  };
-
-  const addAlternative = (e) => {
-    let temp = { ...question };
-    temp.alternatives.push({
-      text: "",
-      isCorrect: "",
-    });
-    setQuestion(temp);
-  };
-  /*
-    const deleteQuestion = (e, i) => {
-      let temp = {...state}
-      temp.branches.splice(i, 1)
-      setState(temp)
-    }
-  */
-  const deleteAlternative = (e, j) => {
-    let temp = { ...question };
-    temp.alternatives.splice(j, 1);
-    setQuestion(temp);
-  };
-
-  const handleAlternativeChange = (e, i) => {
-    let temp = { ...question };
-    temp.alternatives[i][e.target.name] = e.target.value;
-    setQuestion(temp);
-
-    //  [e.target.name] = e.target.value;
-    //  temp.alternatives[i][e.target.type] === "checkbox"
-    //   ? temp.target.checked
-    //   : (e.target.value = "true");
-  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -74,7 +34,6 @@ const AddQuestion = () => {
     );
     navigate("/QuizDashboard");
   };
-
   return (
     <div
       className="container"
@@ -93,15 +52,7 @@ const AddQuestion = () => {
               className="form-control-lg w-75"
               name="description"
               value={question.description}
-              onChange={(e) => onInputChange(e)}
-            />
-            <input
-              type="number"
-              placeholder="Max Marks "
-              className="form-control-lg w-75"
-              name="marks"
-              value={question.marks}
-              onChange={(e) => onInputChange(e)}
+              rea
             />
           </div>
           <br />{" "}
@@ -116,7 +67,7 @@ const AddQuestion = () => {
                   placeholder="Answer text"
                   className="form-control-lg"
                   style={{ width: "300px" }}
-                  onChange={(e) => handleAlternativeChange(e, i)}
+                  //onChange={(e) => handleAlternativeChange(e, i)}
                   value={question.alternatives[i].text}
                 />
                 {/* <input
@@ -159,7 +110,7 @@ const AddQuestion = () => {
                     paddingBottom: "0px",
                     background: "none",
                   }}
-                  onClick={(e) => deleteAlternative(e, i)}
+                  //onClick={(e) => deleteAlternative(e, i)}
                 >
                   <img
                     classname="img"
@@ -180,7 +131,7 @@ const AddQuestion = () => {
               borderRadius: "5px ",
               marginBottom: "50px",
             }}
-            onClick={(e) => addAlternative(e, Map.i)}
+            //onClick={(e) => addAlternative(e, Map.i)}
           >
             Add Option
           </button>
@@ -204,4 +155,4 @@ const AddQuestion = () => {
   );
 };
 
-export default AddQuestion;
+export default AttemptExam;

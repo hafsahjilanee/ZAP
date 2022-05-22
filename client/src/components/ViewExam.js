@@ -67,7 +67,7 @@ const ViewExam = () => {
     <div className="container-main py-4 ">
       <Link
         className="btn btn-outline-secondary mb-4"
-        to="/TeacherDashbaord/ExamPage/"
+        to="/TeacherDashboard/ExamPage/"
         style={{
           marginRight: "1100px",
           align: "left",

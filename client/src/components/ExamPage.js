@@ -17,15 +17,17 @@ import "./TeacherPage.css";
 const ExamPage = () => {
   const nav = useNavigate();
 
-  const [exams, setExams] = useState([{
-    exams: [
-      {
-        examName: "",
-        end_exam_date: "",
-        totalMarks: ""
-      }
-    ]
-  }]);
+  const [exams, setExams] = useState([
+    {
+      exams: [
+        {
+          examName: "",
+          end_exam_date: "",
+          totalMarks: "",
+        },
+      ],
+    },
+  ]);
   const [Course, setCourse] = useState({
     name: "",
     term: "",
@@ -143,8 +145,8 @@ const ExamPage = () => {
               </tr>
             </thead>
             <tbody>
-              {exams.map((ex) => (
-                ex.exams.map((e, i) =>
+              {exams.map((ex) =>
+                ex.exams.map((e, i) => (
                   <tr>
                     <th scope="row">{i + 1}</th>
                     <td>{e.examName}</td>
@@ -152,25 +154,23 @@ const ExamPage = () => {
                     <td>{e.totalMarks}</td>
 
                     <td>
-
                       <button
                         className="btn btn-outline-secondary me-2"
-                      //onClick={() => viewCourse(e.id)}
+                        //onClick={() => viewExam(e.id)}
+                        onClick={nav("/TeacherDashboard/ExamPage/ViewExam")}
                       >
                         View
                       </button>
                       <button
                         className="btn btn-outline-primary me-2"
-                      //onClick={() => editCourse(e.id)}
+                        //onClick={() => editExam(e.id)}
                       >
                         Edit
                       </button>
-
                     </td>
-
                   </tr>
-                )))}
-
+                ))
+              )}
             </tbody>
           </table>
         </div>

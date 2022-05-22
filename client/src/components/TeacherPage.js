@@ -48,10 +48,9 @@ const TeacherPage = () => {
         },
       },
       {
-        data: { id: id },
+        data: { id },
       }
     );
-
     loadTeachers();
   };
 
@@ -178,26 +177,23 @@ const TeacherPage = () => {
                 </tr>
               ))}
             </tbody>
-            {isOpen && (
-              <Popup
-                content={
-                  <>
-                    <b>Delete this teacher?</b>
-                    <p>{teacherID.name}</p>{" "}
-                    <button
-                      className="btn"
-                      onClick={() => deleteTeacher(teacherID)}
-                    >
-                      Yes
-                    </button>
-                  </>
-                }
-                handleClose={togglePopup}
-              />
-            )}
           </table>
         </div>{" "}
       </div>
+      {isOpen && (
+        <Popup
+          content={
+            <>
+              <b>Delete this teacher?</b>
+              <p>{teacherID.firstName}</p>{" "}
+              <button className="btn" onClick={() => deleteTeacher(teacherID)}>
+                Yes
+              </button>
+            </>
+          }
+          handleClose={togglePopup}
+        />
+      )}
     </div>
   );
 };

@@ -151,7 +151,7 @@ function App() {
             />
             <Route
               exact
-              path="/TeacherDashboard/ViewExam"
+              path="/TeacherDashboard/ExamPage/ViewExam"
               element={<ViewExam />}
             />
             <Route
