@@ -71,10 +71,10 @@ const Navbar = () => {
             marginRight: "12%",
           }}
         >
-          {roleadmin && <h4 className="text-white"> Admin Dashboard</h4>}
-          {roleteacher && <h4 className="text-white"> Teacher Dashboard</h4>}
-          {rolestudent && <h4 className="text-white"> Student Dashboard</h4>}
-          {!LoggedIn && <h4 className="text-white"> Login</h4>}
+          {roleadmin && <h2 className="text-white"> Admin Dashboard</h2>}
+          {roleteacher && <h2 className="text-white"> Teacher Dashboard</h2>}
+          {rolestudent && <h2 className="text-white"> Student Dashboard</h2>}
+          {!LoggedIn && <h2 className="text-white"> Login</h2>}
 
           <ul
             className="navbar-nav mr-auto"

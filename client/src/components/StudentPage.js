@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import image from "./plus.png";
 import Modal from "./Modal";
 import "./TeacherPage.css";
+import Popup from "./Popup";
+import "./popup.css";
 
 const StudentPage = () => {
   const nav = useNavigate();
@@ -23,6 +25,7 @@ const StudentPage = () => {
   };
 
   const deleteStudent = async (id) => {
+    console.log("stud id:", id);
     await axios.delete(
       "http://localhost:4000/admin/" + id,
       {
@@ -73,11 +76,15 @@ const StudentPage = () => {
     } catch (e) {
         console.log(e)
     }*/
+  const [isOpen, setIsOpen] = useState(false);
+  const [studentID, setID] = useState("");
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div
       className="bg"
       style={{
-        marginTop: "50px",
         paddingTop: "100px",
         align: "center",
       }}
@@ -120,14 +127,14 @@ const StudentPage = () => {
             </NavLink>{" "}
           </h1>{" "}
           {/*Adding multiple students functionality*/}
-          <div className="form-group mb-3 ">
+          {/* <div className="form-group mb-3 ">
             <input
               type="file"
               id="floatingInput"
               name="file"
               value={File}
             ></input>
-          </div>
+          </div> */}
           <table class="table table-hover border shadow">
             <thead>
               <tr>
@@ -164,18 +171,35 @@ const StudentPage = () => {
                       className="btn btn-outline-primary me-2"
                       onClick={() => editStudent(student.id)}
                     >
-                      Edit{" "}
+                      Edit
                     </button>
-                    <button
+                    <input
+                      type="button"
+                      value="Delete"
                       className="btn btn-outline-danger"
-                      onClick={() => deleteStudent(student.user_id)}
-                    >
-                      Delete
-                    </button>
+                      //onClick={() => deleteStudent(student.id)}
+                      onClick={() => {
+                        setID(student.id);
+                        togglePopup();
+                      }}
+                    />
                   </td>
                 </tr>
-              ))}
-              x
+              ))}{" "}
+              {isOpen && (
+                <Popup
+                  content={
+                    <>
+                      <b>Delete this student?</b>
+                      <p>{studentID.name}</p>{" "}
+                      <button onClick={() => deleteStudent(studentID)}>
+                        Yes
+                      </button>
+                    </>
+                  }
+                  handleClose={togglePopup}
+                />
+              )}
             </tbody>
           </table>
         </div>

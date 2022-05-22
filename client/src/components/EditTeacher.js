@@ -53,7 +53,14 @@ const EditTeacher = () => {
   };
   return (
     <div className="container-main">
-      <div className="container-form shadow ">
+      <div
+        className="container-form shadow "
+        style={{
+          marginTop: "100px",
+          paddingTop: "100px",
+          align: "center",
+        }}
+      >
         <h2 className="text-center mb-4">
           {firstName} {lastName}
         </h2>
@@ -154,47 +161,7 @@ const EditTeacher = () => {
               style={{ width: "300px", margin: "auto" }}
             />
           </div>
-          {/*For course count (optional) */}
-          <div class="row mb-3">
-            <label
-              for="inputText3"
-              class="col-sm-2 col-form-label"
-              style={{ width: "150px", margin: "auto" }}
-            >
-              Courses
-            </label>
 
-            <input
-              type="text"
-              class="form-control-lg"
-              id="inputText3"
-              name="Courses"
-              value={user_id}
-              onChange={(e) => onInputChange(e)}
-              style={{ width: "300px", margin: "auto" }}
-            />
-          </div>
-          <table class="table table-hover border shadow">
-            <thead>
-              <tr>
-                <th style={{ width: "5%" }} scope="col">
-                  #
-                </th>
-                <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                  Course Name
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Map Courses here
-            {Teacher.map((teacher, index) => (
-              <tr>
-                <th scope="row">{index + 1}</th>
-                <td>{teacher.firstName}</td>
-              </tr>
-            ))} */}
-            </tbody>
-          </table>
           <button
             className="btn btn-primary me-2 mb-2"
             to="/adminDashboard/EditTeacher"

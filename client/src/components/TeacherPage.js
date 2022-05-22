@@ -3,13 +3,13 @@ import axios from "axios";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import image from "./plus.png";
-import Modal from "./Modal";
 import "./TeacherPage.css";
+import Popup from "./Popup";
+import "./popup.css";
 
 const TeacherPage = () => {
   const nav = useNavigate();
   const [teachers, setTeacher] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     loadTeachers();
@@ -39,6 +39,7 @@ const TeacherPage = () => {
     //setUser(result.data.reverse());
   };
   const deleteTeacher = async (id) => {
+    console.log(id);
     await axios.delete(
       "http://localhost:4000/admin/" + id,
       {
@@ -50,6 +51,7 @@ const TeacherPage = () => {
         data: { id: id },
       }
     );
+
     loadTeachers();
   };
 
@@ -73,11 +75,17 @@ const TeacherPage = () => {
     } catch (e) {
         console.log(e)
     }*/
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [teacherID, setID] = useState("");
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div
       className="bg"
       style={{
-        marginTop: "50px",
         paddingTop: "100px",
         align: "center",
       }}
@@ -104,7 +112,7 @@ const TeacherPage = () => {
           <h1 className="mb-4">
             {" "}
             Teachers
-            <NavLink exact to="/adminDashboard/AddTeacher">
+            <NavLink to="/adminDashboard/AddTeacher">
               <img
                 data-toggle="tooltip"
                 data-placement="bottom"
@@ -156,18 +164,39 @@ const TeacherPage = () => {
                     >
                       Edit{" "}
                     </button>
-                    <button
-                      className="btn btn-outline-danger me-2"
-                      onClick={() => deleteTeacher(teacher.user_id)}
-                    >
-                      Delete
-                    </button>
+                    <input
+                      type="button"
+                      value="Delete"
+                      className="btn btn-outline-danger"
+                      // onClick={() => deleteTeacher(teacher.id)}
+                      onClick={() => {
+                        setID(teacher.id);
+                        togglePopup();
+                      }}
+                    />
                   </td>
                 </tr>
               ))}
             </tbody>
+            {isOpen && (
+              <Popup
+                content={
+                  <>
+                    <b>Delete this teacher?</b>
+                    <p>{teacherID.name}</p>{" "}
+                    <button
+                      className="btn"
+                      onClick={() => deleteTeacher(teacherID)}
+                    >
+                      Yes
+                    </button>
+                  </>
+                }
+                handleClose={togglePopup}
+              />
+            )}
           </table>
-        </div>
+        </div>{" "}
       </div>
     </div>
   );

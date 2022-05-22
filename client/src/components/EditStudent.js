@@ -35,7 +35,7 @@ const EditStudent = () => {
       url: "http://localhost:4000/admin/" + id,
     });
 
-    history("/adminDashboard/AdminPage");
+    history("/adminDashboard/StudentPage");
   };
 
   const loadStudent = async () => {
@@ -53,7 +53,14 @@ const EditStudent = () => {
   };
   return (
     <div className="container-main">
-      <div className="container-form shadow ">
+      <div
+        className="container-form shadow "
+        style={{
+          marginTop: "100px",
+          paddingTop: "100px",
+          align: "center",
+        }}
+      >
         <h2 className="text-center mb-4">
           {firstName} {lastName}
         </h2>
