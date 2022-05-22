@@ -64,7 +64,10 @@ async function createTeacher(userParam) {
     if (await User.findOne({ user_id: userParam.user_id })) {
         throw 'User ID "' + userParam.user_id + '" is already taken';
     }
+      
     const user = new User(userParam);
+
+    //console.log(user.id);
 
     // hash password
     if (userParam.password) {
@@ -76,6 +79,12 @@ async function createTeacher(userParam) {
 
     // save teacher
     await user.save();
+
+    const teacher_id = user.id
+
+    await Teacher.create({
+        teacher_id
+    })       
 }
 
 async function createStudent(userParam) {
