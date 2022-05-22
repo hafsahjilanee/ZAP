@@ -53,7 +53,14 @@ const EditTeacher = () => {
   };
   return (
     <div className="container-main">
-      <div className="container-form shadow ">
+      <div
+        className="container-form shadow "
+        style={{
+          marginTop: "100px",
+          paddingTop: "100px",
+          align: "center",
+        }}
+      >
         <h2 className="text-center mb-4">
           {firstName} {lastName}
         </h2>

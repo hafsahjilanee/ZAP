@@ -1,6 +1,6 @@
 ﻿const express = require("express");
 const router = express.Router();
-const Teachers = require('../models/teacher.model') 
+const Teachers = require("../models/teacher.model");
 const adminService = require("../services/user.service");
 const {
   validateToken,
@@ -14,13 +14,15 @@ router.post("/register", /*validateToken,permitAdmin,*/ register);
 router.put("/:id", validateToken, permitAdmin, update);
 router.delete("/:user_id", validateToken, permitAdmin, _delete);
 //routes for teacher related issues
-router.post("/registerTeacher", /*validateToken, permitAdmin,*/ registerTeacher);
+router.post(
+  "/registerTeacher",
+  /*validateToken, permitAdmin,*/ registerTeacher
+);
 router.post("/registerStudent", validateToken, permitAdmin, registerStudent);
-router.get("/getTeachers", validateToken, permitAdmin,getAllTeachers);
+router.get("/getTeachers", validateToken, permitAdmin, getAllTeachers);
 router.get("/getStudents", /*validateToken, permitAdmin,*/ getAllStudents);
 router.get("/getById/:id", validateToken, permitAll, getById);
 router.get("/getAllInfo/:user_id", validateToken, permitAdmin, getAllInfo);
-
 
 module.exports = router;
 
@@ -74,7 +76,10 @@ function update(req, res, next) {
 function _delete(req, res, next) {
   adminService
     .delete(req.params.user_id)
-    .then(() => res.json({}))
+    .then(() => {
+      console.log("api called for del");
+      res.json(`user ${req.params.user_id} deleted`);
+    })
     .catch((err) => next(err));
 }
 

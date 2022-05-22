@@ -127,7 +127,7 @@ const AddTeacher = () => {
           </div>
           <div className="form-group mb-3 ">
             <input
-              type="text"
+              type="email"
               className="form-control form-control-lg mb-4"
               id="floatingInput"
               placeholder="Enter Email Address"
@@ -143,7 +143,7 @@ const AddTeacher = () => {
               id="floatingInput"
               placeholder="Enter Contact Number"
               name="number"
-              value={Number.phone_no}
+              value={phone_no}
               onChange={(e) => onInputChange1(e)}
             />
           </div>

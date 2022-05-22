@@ -77,7 +77,6 @@ const CoursesPage = () => {
     <div
       className="bg"
       style={{
-        marginTop: "50px",
         paddingTop: "100px",
         align: "center",
       }}
