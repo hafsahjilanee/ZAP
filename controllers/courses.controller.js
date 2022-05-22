@@ -313,5 +313,94 @@ catch (error) {
 }
   
 })*/
+router.put('/enrol/:id', async (req, res) => {
+    try {
+        const _id = req.params.id; 
+        //console.log(req.body)
+        const { name } = req.body
+        const { term } = req.body
+        const { class_code } = req.body
+        const { active_status } = req.body
+        const {teacherID} = req.body
+        const {student_id} = req.body
+        
+        if (teacherID != null)
+        {
+            let user = await User.findOne({ user_id: teacherID })
+            let student = await User.findOne({user_id:student_id})
+            //console.log(student.id)
+            if (user) {
+                //console.log("user id of teacher from teacher collection "+user.id)
+                let findteacher = await Teachers.findOne({ teacher_id: user._id })
+                let findstudent = await Student.findOne({ student_id: student._id })
+                //console.log("teacher id from teacher collection is " + findteacher.id)
+                //console.log("student id from student collection is " + findstudent.id)
+                if (findteacher) {
+                   // console.log("find teacher is hit")
+                    let course = await Courses.findOne({ _id })
+                    if (course) {
+                       // console.log("course is hit")
+                        course.name = name
+                        course.class_code = class_code
+                        course.term = term
+                        course.active_status = active_status
+                        course.teacher = findteacher.id
+                        
+                        //console.log(findteacher.id)
+                         await course.save()
+                            .then(async function (dbCourse) {
+                                
+                                const checkCourse = await Teachers.findOne({course: req.params.id})
+                                const checkStudent = await Student.findOne({course:req.params.id})
+                               //console.log(checkCourse)
+                                //console.log(checkStudent)
+                                //console.log(course.id)
+                                if (!checkCourse){
+                                await Teachers.findOneAndUpdate({ _id: findteacher.id }, { $push: { course: req.params.id } }, { new: true });
+                                }
+                                if (!checkStudent){
+                                    await Student.findOneAndUpdate({ _id: findstudent.id }, { $push: { course: req.params.id } }, { new: true });
+                                    const updateCourse = await Courses.findOneAndUpdate({ _id: req.params.id }, { $push: { students: findstudent.id } }, { new: true });
+                                    return res.status(200).json(updateCourse)
+                                }
+                                else{
+                                    return res.status(200).json(course)
+                                }
+                            })
+                            
+                                                    
+                    }
 
+                }
+
+            } else {
+                throw 'Teacher ID "' + teacherID + '" is invalid';
+            }
+        }else{
+            let course = await Courses.findOne({ _id })
+
+            if (!course) {
+                course = await Courses.create({
+                    name,
+                    class_code,
+                    term,
+                    active_status,
+
+                })
+                return res.status(201).json(course)
+            } else {
+                course.name = name
+                course.class_code = class_code
+                course.term = term
+                course.active_status = active_status
+
+                await course.save()
+                return res.status(200).json(course)
+            }
+        } 
+        
+    } catch (error) {
+        return res.status(500).json({"error":error})
+    }
+})
 module.exports = router
