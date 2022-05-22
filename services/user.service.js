@@ -1,8 +1,8 @@
-﻿
-const config = require('../config/config.json');
+﻿const config = require('../config/config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('config/db');
+const Student = db.Student;
 const User = db.User;
 const Teacher = db.Teacher;
 
@@ -98,6 +98,7 @@ async function createStudent(userParam) {
     }
 
     const user = new User(userParam);
+    //console.log(user.id);
 
     // hash password
     if (userParam.password) {
@@ -109,6 +110,12 @@ async function createStudent(userParam) {
 
     // save student
     await user.save();
+    
+    const student_id = user.id
+
+    await Student.create({
+        student_id
+    })     
 }
 
 async function update(id,userParam) {

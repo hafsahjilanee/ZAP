@@ -1,5 +1,6 @@
 const express = require('express');
 const Courses = require('../models/courses.model');
+const Student = require('../models/student.model');
 const Teachers = require('../models/teacher.model');  
 const User = require('../models/user.model');
 const router = express.Router()
@@ -80,6 +81,7 @@ router.put('/:id', async (req, res) => {
         const { class_code } = req.body
         const { active_status } = req.body
         const {teacherID} = req.body
+        const {studentID} = req.body
 
         //console.log(teacherID)
         if (teacherID != null)
@@ -106,11 +108,9 @@ router.put('/:id', async (req, res) => {
                                 await Teachers.findOneAndUpdate({ _id: findteacher.id }, { $push: { course: dbTeacher._id } }, { new: true });
                                 }
                             })
-                            return res.status(200).json(course)
-                        
+                            return res.status(200).json(course) 
                     }
-
-
+                
                 }
 
             } else {
@@ -137,7 +137,44 @@ router.put('/:id', async (req, res) => {
                 return res.status(200).json(course)
             }
         } 
+        /*
+        if (studentID != null)
+        {
+            let user = await User.findOne({ user_id: studentID })
+            if (user) {
+                console.log(user.id)
+                let findstudent = await Student.findOne({ student_id: user.id })
+                console.log(findstudent);
+                if (findstudent) {
+                    let course = await Courses.findOne({ _id })
+                    if (course) {
+
+                        course.name = name
+                        course.class_code = class_code
+                        course.term = term
+                        course.active_status = active_status
+                        course.teacher = findteacher.id
+                        course.students = findstudent.id
+                        //console.log(findteacher.id)
+                        await course.save()
+                            .then(async function (dbStudent) {
+                                const checkCourse = await Student.findOne({course: req.params.id})
+                                //console.log(checkCourse)
+                                if (!checkCourse){
+                                await Student.findOneAndUpdate({ _id: findstudent.id }, { $push: { course: dbStudent._id } }, { new: true });
+                                }
+                            })
+                            return res.status(200).json(course) 
+                    }
+                
+                }
+
+            } else {
+                throw 'Teacher ID "' + teacherID + '" is invalid';
+            }
+        }
         
+        */
     } catch (error) {
         return res.status(500).json({"error":error})
     }
@@ -220,21 +257,61 @@ router.delete('/:id', async (req, res) => {
     }
 })
 /*
-router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-    User.findOneAndUpdate({ username: req.user.username }, {
-        $pull: {
-            'projects': req.params.id
+//add student to course
+//id passed is course id
+router.post('/addStudent/:courseId', async (req, res) => {
+    try{
+    const _id = req.params.courseId; 
+        const { name } = req.body
+        const { term } = req.body
+        const { class_code } = req.body
+        const { active_status } = req.body
+        const {teacherID} = req.body
+        const {studentID} = req.body
+    
+
+    if (studentID != null) {
+        let user = await User.findOne({ user_id: studentID })
+        console.log(user.id)
+        if (user) {
+            //console.log(user.id)
+            let findStudent = await Student.findOne({ student_id: user.id })
+            console.log(findStudent)
+            if (findStudent) {
+                let course = await Courses.findOne({ _id })
+                console.log(course)
+                if (course) {
+
+                    course.name = name
+                    course.class_code = class_code
+                    course.term = term
+                    course.active_status = active_status
+                    //course.students = findStudent.id
+                    //console.log(findteacher.id)
+                    await course.save()
+                        .then(async function (dbTeacher) {
+                            const checkCourse = await Student.findOne({ course: req.params.courseId })
+                            //console.log(checkCourse)
+                            if (!checkCourse) {
+                                await Student.findOneAndUpdate({ _id: req.params.id }, { $push: { course: dbTeacher._id } }, { new: true });
+                            }
+                        })
+                    return res.status(200).json()
+
+                }
+
+
+            }
+
+        } else {
+            throw 'Teacher ID "' + teacherID + '" is invalid';
         }
-     }, function (err, model) {
-        if (!err) {
-            Project.findByIdAndRemove({ _id: req.params.id }, (err) => {
-                if (err) res.json(err)
-                else res.json('Succesfully removed')
-            });
-        }
-        else {
-            res.status(500).json(err)
-        }
-    });
+    }
+}
+catch (error) {
+    return res.status(500).json({"error":error})
+}
+  
 })*/
+
 module.exports = router
