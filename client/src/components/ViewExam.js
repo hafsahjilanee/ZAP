@@ -117,8 +117,8 @@ const ViewExam = () => {
             type="text"
             class="form-control-lg"
             id="inputText3"
-            name="exams.end_exam_date"
-            value={exams.end_exam_date}
+            name="exams.StartTimePeriod"
+            value={exams.startTimePeriod}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
