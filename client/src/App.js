@@ -151,7 +151,7 @@ function App() {
             />
             <Route
               exact
-              path="/TeacherDashboard/ExamPage/ViewExam"
+              path="/TeacherDashboard/ViewExam/:id"
               element={<ViewExam />}
             />
             <Route
@@ -162,23 +162,27 @@ function App() {
 
             <Route
               exact
-              path="/TeacherDashboard/ViewGrades:id"
+              path="/TeacherDashboard/ViewGrades/"
               element={<ViewGrades />}
             />
-            <Route exact path="/QuizDashboard" element={<QuizDashboard />} />
             <Route
               exact
-              path="/QuizDashboard/AddQuestion/"
+              path="/TeacherDashboard/QuizDashboard"
+              element={<QuizDashboard />}
+            />
+            <Route
+              exact
+              path="/TeacherDashboard/AddQuestion/"
               element={<AddQuestion />}
             />
             <Route
               exact
-              path="/QuizDashboard/viewQuestion/:id"
+              path="/TeacherDashboard/viewQuestion/"
               element={<ViewQuestion />}
             />
             <Route
               exact
-              path="/QuizDashboard/EditQuestion/:id"
+              path="/TeacherDashboard/EditQuestion/"
               element={<EditQuestion />}
             />
             <Route

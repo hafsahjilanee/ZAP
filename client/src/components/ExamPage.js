@@ -21,6 +21,7 @@ const ExamPage = () => {
     {
       exams: [
         {
+          _id: "",
           examName: "",
           end_exam_date: "",
           totalMarks: "",
@@ -41,8 +42,8 @@ const ExamPage = () => {
     ],
   });
 
-  const ViewExam = (id) => {
-    nav("TeacherDashboard/ExamPage/ViewExam");
+  const ViewExam = async (id) => {
+    nav("/TeacherDashboard/ViewExam/" + id);
   };
   useEffect(() => {
     loadExamDetails();
@@ -156,16 +157,23 @@ const ExamPage = () => {
                     <td>
                       <button
                         className="btn btn-outline-secondary me-2"
-                        //onClick={() => viewExam(e.id)}
-                        onClick={nav("/TeacherDashboard/ExamPage/ViewExam")}
+                        onClick={() => ViewExam(e._id)}
                       >
                         View
                       </button>
                       <button
                         className="btn btn-outline-primary me-2"
                         //onClick={() => editExam(e.id)}
+                        // onClick={nav("/TeacherDashboard/QuizDashboard")}
                       >
                         Edit
+                      </button>
+                      <button
+                        className="btn btn-outline-primary me-2"
+                        //onClick={() => editExam(e.id)}
+                        // onClick={nav("/TeacherDashboard/QuizDashboard")}
+                      >
+                        Grade
                       </button>
                     </td>
                   </tr>

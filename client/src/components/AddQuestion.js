@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import image from "./minus1.png";
-import image1 from "./plus.png";
-import { FormCheck } from "react-bootstrap";
+import { ButtonGroup } from "react-bootstrap";
+import { ToggleButtonGroup, ToggleButton } from "@mui/material";
+
 // import { set } from "mongoose";
 
 const AddQuestion = () => {
   let navigate = useNavigate();
+  const [alignment, setAlignment] = React.useState("web");
+
+  const handleChange = (e) => {
+    setAlignment("yes");
+  };
 
   const [question, setQuestion] = useState({
     description: "",
@@ -20,28 +26,25 @@ const AddQuestion = () => {
     ],
   });
 
-  //const {description, alternative: {text, isCorrect}} = question;
+  // const {
+  //   description,
+  //   marks,
+  //   alternatives: { text, isCorrect },
+  // } = question;
   //console.log(text);
 
   const onInputChange = (e) => {
     setQuestion({ ...question, [e.target.name]: e.target.value });
   };
-
+  console.log(question.description, question.marks, question.alternatives);
   const addAlternative = (e) => {
     let temp = { ...question };
     temp.alternatives.push({
       text: "",
-      isCorrect: "",
     });
     setQuestion(temp);
   };
-  /*
-    const deleteQuestion = (e, i) => {
-      let temp = {...state}
-      temp.branches.splice(i, 1)
-      setState(temp)
-    }
-  */
+
   const deleteAlternative = (e, j) => {
     let temp = { ...question };
     temp.alternatives.splice(j, 1);
@@ -52,11 +55,25 @@ const AddQuestion = () => {
     let temp = { ...question };
     temp.alternatives[i][e.target.name] = e.target.value;
     setQuestion(temp);
+  };
+  const onInput1 = (e, i) => {
+    let temp = { ...question };
+    temp.alternatives.isCorrect = e.target.value;
+    setQuestion(temp);
+    setbg(e);
+  };
+  const onInput2 = (e, i) => {
+    let temp = { ...question };
+    temp.alternatives.isCorrect = e.target.value;
+    setQuestion(temp);
+  };
+  // const [isOpen, setIsOpen] = useState(false);
+  const setbg = (e) => {
+    // setIsOpen(!isOpen);
+    e.preventDefault();
 
-    //  [e.target.name] = e.target.value;
-    //  temp.alternatives[i][e.target.type] === "checkbox"
-    //   ? temp.target.checked
-    //   : (e.target.value = "true");
+    // e.isCorrect = true && (e.target.button.style.backgroundColor = "#b24c4c");
+    // e.isCorrect = false && (e.target.button.style.backgroundColor = "#fff");
   };
 
   const onSubmit = async (e) => {
@@ -72,6 +89,7 @@ const AddQuestion = () => {
         },
       }
     );
+
     navigate("/QuizDashboard");
   };
 
@@ -80,9 +98,27 @@ const AddQuestion = () => {
       className="container"
       style={{ marginBottom: "200px", paddingBottom: "100px" }}
     >
-      <div className="container-form w-75 ">
-        <h2 className="text-center mb-4">Add A Question</h2>
+      <div className="container-form w-75 " style={{ marginTop: "90px" }}>
+        <h2 className="text-center mb-4" style={{ marginTop: "60px" }}>
+          Add A Question
+        </h2>
         <form onSubmit={(e) => onSubmit(e)}>
+          <div>
+            <input
+              type="number"
+              placeholder="Max Marks "
+              className="form-control-lg "
+              name="marks"
+              value={question.marks}
+              onChange={(e) => onInputChange(e)}
+              style={{
+                width: "15%",
+                marginLeft: "540px",
+                marginRight: "0px",
+                align: "left",
+              }}
+            />
+          </div>
           <div className="form-group">
             <textarea
               type="text"
@@ -95,14 +131,6 @@ const AddQuestion = () => {
               value={question.description}
               onChange={(e) => onInputChange(e)}
             />
-            <input
-              type="number"
-              placeholder="Max Marks "
-              className="form-control-lg w-75"
-              name="marks"
-              value={question.marks}
-              onChange={(e) => onInputChange(e)}
-            />
           </div>
           <br />{" "}
           {question.alternatives.map((alternative, i) => (
@@ -111,46 +139,40 @@ const AddQuestion = () => {
                 <span style={{ fontSize: "18px" }}>Option {i + 1}: </span>
 
                 <input
-                  variant="outlined"
                   name="text"
                   placeholder="Answer text"
                   className="form-control-lg"
                   style={{ width: "300px" }}
                   onChange={(e) => handleAlternativeChange(e, i)}
-                  value={question.alternatives[i].text}
+                  value={alternative.text}
                 />
-                {/* <input
-                  type={"checkbox"}
-                  name="isCorrect"
-                  // variant="outlined"
-                  // placeholder="true/false?"
-                  className="btn-primary "
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    marginLeft: "30px",
-                    marginRight: "30px",
-                  }}
-                  value="true"
-                  onChange={(e) => handleAlternativeChange(e, i)}
-                  // checked={(isCorrect= "true")}
-                /> */}
-                {/* <button
-                  variant="contained"
-                  className="btn-primary "
-                  style={{
-                    marginLeft: "70px",
-                    border: "none",
-                    paddingBottom: "0px",
-                    background: "none",
-                  }}
-                  //setQuestion.isCorrect("true")
-                  value={question.alternatives[i].isCorrect}
-                  onClick={(e) => handleAlternativeChange(e, i)}
-                >
-                  {" true"}
-                </button> */}
+
                 <button
+                  type="button"
+                  className=" btntrue1 mb-3 "
+                  id="floatingInput"
+                  name="true"
+                  value={true}
+                  onClick={(e) => {
+                    onInput1(e);
+                  }}
+                >
+                  true
+                </button>
+                <button
+                  type="button"
+                  className=" btntrue1 mb-3"
+                  id="floatingInput"
+                  name="false"
+                  value={false}
+                  onClick={(e) => {
+                    onInput2(e);
+                  }}
+                >
+                  false
+                </button>
+                <button
+                  name="delete"
                   variant="contained"
                   className="btn-primary "
                   style={{
@@ -193,8 +215,8 @@ const AddQuestion = () => {
               fontSize: "23px",
               fontFamily: "Calibri",
               borderRadius: "5px ",
+              marginBottom: "100px",
             }}
-            //onClick={(e) => onSubmit}
           >
             Add Question
           </button>

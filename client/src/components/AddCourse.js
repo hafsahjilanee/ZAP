@@ -141,70 +141,7 @@ const AddCourse = () => {
               onChange={(e) => onInputChange(e)}
             />
           </div>
-          {/* <div className="form-group mb-3">
-            <label className="  ">
-              {"Select Term :  "}
-              <select
-                value={term}
-                onChange={(e) => onInputChange(e)}
-                className="form-control-lg"
-                style={{ width: "150px", margin: "auto", padding: "auto" }}
-              >
-                <option value="default"> </option>
-                <option value="Spring'22">Spring'22</option>
-                <option value="Fall'22">Fall'22</option>
-                <option value="Spring'23">Spring'23</option>
-              </select>
-            </label>
-          </div>
-          {/* dropdown for term
-          {["Select Term"].map((variant) => (
-            <DropdownButton
-              as={ButtonGroup}
-              key={variant}
-              id={`dropdown-variants-${variant}`}
-              variant={variant.toLowerCase()}
-              title={variant}
-              className="form-control form-control-lg mb-2"
-              style={{ justifyContent: "normal" }}
-            >
-              <Dropdown.Item eventKey="1">Spring'22</Dropdown.Item>
-              <Dropdown.Item eventKey="2">Fall'22</Dropdown.Item>
-              <Dropdown.Item eventKey="3">Spring'23</Dropdown.Item>
-            </DropdownButton>
-          ))} 
 
-          {["Select Term"].map((variant) => (
-            <DropdownButton
-              as={ButtonGroup}
-              key={variant}
-              id={`dropdown-variants-${variant}`}
-              variant={variant.toLowerCase()}
-              title={variant}
-              className="form-control form-control-lg mb-2"
-              style={{ justifyContent: "normal" }}
-            >
-              <Dropdown.Item eventKey="1">Spring'22</Dropdown.Item>
-              <Dropdown.Item eventKey="2">Fall'22</Dropdown.Item>
-              <Dropdown.Item eventKey="3">Spring'23</Dropdown.Item>
-            </DropdownButton>
-          ))} 
-          {["Select Teacher"].map((variant) => (
-            <DropdownButton
-              as={ButtonGroup}
-              key={variant}
-              id={`dropdown-variants-${variant}`}
-              variant={variant.toLowerCase()}
-              title={variant}
-              className="form-control form-control-lg mb-2"
-              style={{ justifyContent: "normal" }}
-            >
-              <Dropdown.Item eventKey="1">Teacher One</Dropdown.Item>
-              <Dropdown.Item eventKey="2">Teacher Two</Dropdown.Item>
-              <Dropdown.Item eventKey="3">Teacher Three</Dropdown.Item>
-            </DropdownButton>
-
-          ))}*/}
           <h2 className="mb-4">Enrolled Students</h2>
           {Course.student.map((student, i) => (
             <div style={{ padding: "5px", alignItems: "center" }}>

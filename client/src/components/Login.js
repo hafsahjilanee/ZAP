@@ -55,16 +55,16 @@ function Login() {
           marginTop: "50px",
           paddingTop: "100px",
           width: "200px",
-          paddingRight: "650px",
-          paddingLeft: "700px",
-          align: "center",
+          //paddingRight: "700px",
+          paddingLeft: "750px",
         }}
       >
         <div
           className=" m-2 container-login  shadow p-5"
           style={{
             width: "max-content",
-            align: "center",
+
+            margin: "auto",
           }}
         >
           <div className="py-4">

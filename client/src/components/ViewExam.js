@@ -10,9 +10,12 @@ const ViewExam = () => {
     {
       exams: [
         {
+          _id: "",
           examName: "",
-          end_exam_date: "",
+          startTimePeriod: "",
+          endTimePeriod: "",
           totalMarks: "",
+          questions: [{ description: "" }],
         },
       ],
     },
@@ -21,11 +24,14 @@ const ViewExam = () => {
     name: "",
     term: "",
     class_code: "",
+    students: [{ name: "", _id: "" }],
   });
 
   useEffect(() => {
     loadExamDetails();
   }, []);
+
+  const id = useParams();
 
   const loadExamDetails = async () => {
     const result = await axios({
@@ -35,7 +41,7 @@ const ViewExam = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/exams/" + localStorage.getItem("courseID"),
+      url: "http://localhost:4000/exams/view/" + id,
     });
     console.log(result.data);
     setExams(result.data);
@@ -54,7 +60,7 @@ const ViewExam = () => {
       url: "http://localhost:4000/courses/" + localStorage.getItem("courseID"),
     });
 
-    console.log(result.data);
+    //console.log(result.data);
     setCourse(result.data);
 
     //setUser(result.data.reverse());
@@ -85,6 +91,44 @@ const ViewExam = () => {
             class="col-sm-2 col-form-label"
             style={{ width: "140px", margin: "auto" }}
           >
+            Exam Title
+          </label>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="exams.examName"
+            value={exams.examName}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+        <div class="row mb-3">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "140px", margin: "auto" }}
+          >
+            Open date
+          </label>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="exams.end_exam_date"
+            value={exams.end_exam_date}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+        <div class="row mb-3">
+          <label
+            for="inputText3"
+            class="col-sm-2 col-form-label"
+            style={{ width: "140px", margin: "auto" }}
+          >
             Due on
           </label>
 
@@ -92,8 +136,8 @@ const ViewExam = () => {
             type="text"
             class="form-control-lg"
             id="inputText3"
-            name="Due on"
-            value={exams.end_exam_date}
+            name="exams.endTimePeriod"
+            value={exams.endTimePeriod}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -112,32 +156,13 @@ const ViewExam = () => {
             type="text"
             class="form-control-lg"
             id="inputText3"
-            name="Max Marks"
+            name="totalMarks"
             value={exams.totalMarks}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
         </div>
-        <div class="row mb-3">
-          <label
-            for="inputText3"
-            class="col-sm-2 col-form-label"
-            style={{ width: "150px", margin: "auto" }}
-          >
-            Teacher Name
-          </label>
-
-          <input
-            type="text"
-            class="form-control-lg"
-            id="inputText3"
-            name="Teacher Name"
-            value={"Teacher Name"}
-            readOnly
-            style={{ width: "300px", margin: "auto" }}
-          />
-        </div>
-
+        <h2>Questions</h2>
         <table class="table table-hover border shadow">
           <thead>
             <tr>
@@ -145,9 +170,9 @@ const ViewExam = () => {
                 #
               </th>
               <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Student Name
+                Description
               </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
+              {/* <th style={{ width: "10%", overflow: "auto" }} scope="col">
                 Student ID
               </th>
               <th style={{ width: "10%", overflow: "auto" }} scope="col">
@@ -155,20 +180,17 @@ const ViewExam = () => {
               </th>
               <th style={{ width: "10%", overflow: "auto" }} scope="col">
                 Marks Obtained
-              </th>
+              </th>*/}
             </tr>
           </thead>
-          {/* <tbody>
-            {Teacher.course.map((c, index) => (
+          {/*<tbody>
+            {exams.questions.map((c, index) => (
               <tr key={index}>
                 <th scope="row">{index + 1}</th>
-                <td>{c.class_code}</td>
-                <td>{c.name}</td>
-                <td>{c.term}</td>
-                <td>{c.active_status.toString()}</td>
+                <td>{c.description}</td>
               </tr>
             ))}
-          </tbody> */}
+          </tbody>*/}
         </table>
         <br />
       </div>

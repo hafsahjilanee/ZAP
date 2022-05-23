@@ -60,7 +60,7 @@
 
     
 }
-.btntrue1:after, .btntrue1:visited, .btntrue1:hover,.btntrue1::after,.btntrue1:focus{
+.btntrue1:after{
    background-color:  #b24c4c;
 }
 
