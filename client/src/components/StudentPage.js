@@ -3,7 +3,6 @@ import axios from "axios";
 import { NavLink, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import image from "./plus.png";
-import Modal from "./Modal";
 import "./TeacherPage.css";
 import Popup from "./Popup";
 import "./popup.css";
@@ -186,24 +185,29 @@ const StudentPage = () => {
                   </td>
                 </tr>
               ))}{" "}
-              {isOpen && (
-                <Popup
-                  content={
-                    <>
-                      <b>Delete this student?</b>
-                      <p>{studentID.name}</p>{" "}
-                      <button onClick={() => deleteStudent(studentID)}>
-                        Yes
-                      </button>
-                    </>
-                  }
-                  handleClose={togglePopup}
-                />
-              )}
             </tbody>
           </table>
         </div>
       </div>
+      {isOpen && (
+        <Popup
+          content={
+            <>
+              <br></br>
+              <h5>Delete this student?</h5>
+
+              <button
+                className="btn btn-outline-danger m-3"
+                onClick={() => deleteStudent(studentID)}
+                height="fitContent"
+              >
+                Yes
+              </button>
+            </>
+          }
+          handleClose={togglePopup}
+        />
+      )}
     </div>
   );
 };

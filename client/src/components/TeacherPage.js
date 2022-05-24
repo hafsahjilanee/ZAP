@@ -184,9 +184,13 @@ const TeacherPage = () => {
         <Popup
           content={
             <>
-              <b>Delete this teacher?</b>
-              <p>{teacherID.firstName}</p>{" "}
-              <button className="btn" onClick={() => deleteTeacher(teacherID)}>
+              <br></br>
+              <h5>Delete this teacher?</h5>
+              <button
+                className="btn btn-outline-danger m-3"
+                onClick={() => deleteTeacher(teacherID)}
+                height="fitContent"
+              >
                 Yes
               </button>
             </>

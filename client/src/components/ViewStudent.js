@@ -122,25 +122,6 @@ const ViewStudent = () => {
           />
         </div>
 
-        <div class="row mb-3">
-          <label
-            for="inputText3"
-            class="col-sm-2 col-form-label"
-            style={{ width: "150px", margin: "auto" }}
-          >
-            Contact Number
-          </label>
-
-          <input
-            type="text"
-            class="form-control-lg"
-            id="inputText3"
-            name="Contact Number"
-            value={Student.user_id}
-            readOnly
-            style={{ width: "300px", margin: "auto" }}
-          />
-        </div>
         {/*For course count (optional) */}
         <div class="row mb-3">
           <label
@@ -171,7 +152,7 @@ const ViewStudent = () => {
                 Course Name
               </th>
               <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Teacher Name
+                Class Code
               </th>
             </tr>
           </thead>

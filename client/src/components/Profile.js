@@ -121,7 +121,11 @@ const Profile = () => {
         </div>
       </div>
       <br />
-      <button className="btn btn-primary" onClick={() => nav(-1)}>
+      <button
+        className="btn btn-primary"
+        onClick={() => nav(-1)}
+        style={{ color: "white" }}
+      >
         Back
       </button>
     </div>

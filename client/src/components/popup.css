@@ -27,7 +27,7 @@
     cursor: pointer;
     position: fixed;
     right: calc(27% - 30px);
-    top: calc(101vh - 85vh - 33px);
+    top: calc(101vh - 85vh - 27px);
     background-color: #635252;
     width: 25px;
     height: 25px;
@@ -36,5 +36,5 @@
     text-align: center;
     /* border: 1px solid #999; */
     font-size: 25px;
-    color: rgb(39, 38, 38);
+    color: rgb(227, 223, 223);
   }
