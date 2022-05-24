@@ -11,22 +11,18 @@ router.post('/:id', async (req, res) => {
 
         const { examName } = req.body
         const { start_exam_date } = req.body
-        const { startHours } = req.body
-        const { startMins } = req.body
         const { end_exam_date } = req.body
-        const { endHours } = req.body
-        const { endMins } = req.body
         const { totalMarks } = req.body
+        const { isOpen } = req.body
+        const { isReturn } = req.body
 
      const newExam = await Exam.create({
         examName,
         start_exam_date,
-        startHours,
-        startMins,
         end_exam_date,
-        endHours,
-        endMins,
-        totalMarks
+        totalMarks,
+        isOpen,
+        isReturn
     })
     //console.log(newExam) 
     .then(async function(dbExam) {
@@ -73,36 +69,39 @@ router.put('/:examId', async (req, res) => {
       const _id = req.params.examId; 
       const { examName } = req.body
       const { start_exam_date } = req.body
-      const { startHours } = req.body
-      const { startMins } = req.body
       const { end_exam_date } = req.body
-      const { endHours } = req.body
-      const { endMins } = req.body
       const { totalMarks } = req.body
+      const { isOpen } = req.body
+      const { isReturn } = req.body
 
+      //console.log(start_exam_date+ ':00.000Z');
+      //let d = start_exam_date+ ':00.000Z'
+      //let time = d.toString()//+ ':00.000Z';
+     // console.log(time);
+      //let text = d.toISOString();
+      //
+      // const ss = ISODate("2017-05-04T14:00:00Z");
+     // console.log(text);
+      //start_exam_date=text;
       let exam = await Exam.findOne({_id})
 
       if(!exam){
         exam = await Exam.create({
           examName,
           start_exam_date,
-          startHours,
-          startMins,
           end_exam_date,
-          endHours,
-          endMins,
-          totalMarks
+          totalMarks,
+          isOpen,
+          isReturn
           })    
           return res.status(201).json(exam)
       }else{
         exam.examName=examName,
         exam.start_exam_date=start_exam_date,
-        exam.startHours=startHours,
-        exam.startMins=startMins,
         exam.end_exam_date=end_exam_date,
-        exam.endHours=endHours,
-        exam.endMins=endMins,
         exam.totalMarks=totalMarks
+        exam.isOpen=isOpen,
+        exam.isReturn=isReturn
           await exam.save()
           return res.status(200).json(exam)
       }
