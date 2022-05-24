@@ -42,6 +42,8 @@ const ExamPage = () => {
     ],
   });
 
+  //console.log(localStorage.getItem("courseID"));
+
   const ViewExam = async (id) => {
     nav("/TeacherDashboard/ViewExam/" + id);
   };
@@ -50,6 +52,7 @@ const ExamPage = () => {
   }, []);
 
   const loadExamDetails = async () => {
+    
     const result = await axios({
       method: "get",
       headers: {

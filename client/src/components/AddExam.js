@@ -8,26 +8,25 @@ const AddExam = () => {
 
   const [Exam, setExam] = useState({
     examName: "",
-    // start_exam_date: "",
-    // startHours: "",
-    // startMins: "",
-    startTimePeriod: "",
-    // end_exam_date: "",
-    // endHours: "",
-    // endMins: "",
-    endTimePeriod: "",
+     start_exam_date: "",
+     end_exam_date: "",
     totalMarks: "",
-    Returned: "",
-    Open: "",
+    // isReturn: "",
+    // isOpen: "",
   });
 
+  //console.log(localStorage.getItem("courseID"));
+
+  const { examName, start_exam_date, end_exam_date, totalMarks/*, isReturn, isOpen*/ } = Exam;
   const onInputChange = (e) => {
-    setExam({ ...Exam, [e.target.examName]: e.target.value });
+    console.log(Exam.examName,Exam.start_exam_date, Exam.end_exam_date);
+    setExam({ ...Exam, [e.target.name]: e.target.value });
   };
   const onSubmit = async (e) => {
+    console.log(Exam.examName,Exam.start_exam_date, Exam.end_exam_date);
     e.preventDefault();
 
-    await axios({
+    const result = await axios({
       method: "post",
       data: Exam,
       headers: {
@@ -35,9 +34,11 @@ const AddExam = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/courses/createExam",
+      url: "http://localhost:4000/exams/"+localStorage.getItem("courseID")
     });
-    navigate("/AdminDashboard/ExamPage");
+    console.log(result.data);
+    //setExams(result.data);
+    navigate("/TeacherDashboard/ExamPage");
   };
 
   return (
@@ -50,9 +51,9 @@ const AddExam = () => {
               type="text"
               className="form-control-lg "
               id="floatingInput"
-              name="name"
+              name="examName"
               placeholder="Enter Exam Name"
-              value={Exam.examName}
+              value={examName}
               onChange={(e) => onInputChange(e)}
             />
           </div>
@@ -60,16 +61,16 @@ const AddExam = () => {
             <input
               type="text"
               className=" form-control-lg "
-              id="floatingInput"
+              //id="floatingInput"
               name="totalMarks"
               placeholder="Enter Max Marks"
-              value={Exam.totalMarks}
+              value={totalMarks}
               onChange={(e) => onInputChange(e)}
             />
           </div>
           <div className="form-group mb-3">
             <label
-              for="Exam.startTimePeriod"
+              //for="startTimePeriod"
               className="label"
               style={{ margin: "auto" }}
             >
@@ -79,9 +80,9 @@ const AddExam = () => {
             <input
               type="datetime-local"
               className=" form-control-lg"
-              id="Exam.startTimePeriod"
-              name="startTimePeriod"
-              value={Exam.startTimePeriod}
+              //id="Exam.startTimePeriod"
+              name="start_exam_date"
+              value={start_exam_date}
               min="2022-05-07T00:00"
               max="2023-05-14T00:00"
               onChange={(e) => onInputChange(e)}
@@ -94,14 +95,17 @@ const AddExam = () => {
             </label>
 
             <br></br>
-            <input
+            
+            {/* <input
               type="datetime-local"
               className=" form-control-lg"
-              id="floatingInput"
-              name="endTimePeriod"
-              value={Exam.endTimePeriod}
+              //id="floatingInput"
+              name="end_exam_date"
+              value={end_exam_date}
+              min="2022-05-07T00:00"
+              max="2023-05-14T00:00"
               onClick={(e) => onInputChange(e)}
-            />
+            /> */}
           </div>
           <button className="btn btn-primary btn-block me-2 mb-2">Add</button>
           <Link className="btn mb-2" to="/TeacherDashboard/ExamPage">
