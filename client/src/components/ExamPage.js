@@ -91,6 +91,7 @@ const ExamPage = () => {
           className="btn btn-outline-secondary"
           to="/TeacherDashboard/TeacherCoursePage"
           style={{
+            marginTop: "130px",
             marginRight: "1100px",
             align: "left",
             fontStyle: "bold",
