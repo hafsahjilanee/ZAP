@@ -18,6 +18,7 @@ const AddQuestion = () => {
   const [question, setQuestion] = useState({
     description: "",
     marks: "",
+    isSubjective: " ",
     alternatives: [
       {
         text: "",
@@ -36,11 +37,17 @@ const AddQuestion = () => {
   const onInputChange = (e) => {
     setQuestion({ ...question, [e.target.name]: e.target.value });
   };
-  console.log(question.description, question.marks, question.alternatives);
+  console.log(
+    question.description,
+    question.marks,
+    question.alternatives,
+    question.isSubjective
+  );
   const addAlternative = (e) => {
     let temp = { ...question };
     temp.alternatives.push({
       text: "",
+      isCorrect: "",
     });
     setQuestion(temp);
   };
@@ -67,6 +74,11 @@ const AddQuestion = () => {
     temp.alternatives.isCorrect = e.target.value;
     setQuestion(temp);
   };
+  const setSubjective = (e) => {
+    let temp = { ...question };
+    temp.isSubjective = e.target.value;
+    setQuestion(temp);
+  };
   // const [isOpen, setIsOpen] = useState(false);
   const setbg = (e) => {
     // setIsOpen(!isOpen);
@@ -79,7 +91,7 @@ const AddQuestion = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post(
-      "http://localhost:4000/question/createQuestion",
+      "http://localhost:4000/question/createQuestion/628cd2b689035b1e24ede219",
       question,
       {
         headers: {
@@ -89,10 +101,10 @@ const AddQuestion = () => {
         },
       }
     );
-
+    console.log(localStorage.getItem("examID"));
     navigate("/QuizDashboard");
   };
-
+  console.log(localStorage.getItem("examID"));
   return (
     <div
       className="container"
@@ -131,6 +143,33 @@ const AddQuestion = () => {
               value={question.description}
               onChange={(e) => onInputChange(e)}
             />
+          </div>
+          <div className="form-group">
+            <label className="label"> Subjective:</label>
+            <button
+              type="button"
+              className=" btntrue1 mb-3 "
+              id="floatingInput"
+              name="true"
+              value={true}
+              onClick={(e) => {
+                setSubjective(e);
+              }}
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              className=" btntrue1 mb-3"
+              id="floatingInput"
+              name="false"
+              value={false}
+              onClick={(e) => {
+                setSubjective(e);
+              }}
+            >
+              No
+            </button>
           </div>
           <br />{" "}
           {question.alternatives.map((alternative, i) => (
@@ -202,7 +241,9 @@ const AddQuestion = () => {
               borderRadius: "5px ",
               marginBottom: "50px",
             }}
-            onClick={(e) => addAlternative(e, Map.i)}
+            onClick={(e) => {
+              addAlternative(e, Map.i);
+            }}
           >
             Add Option
           </button>

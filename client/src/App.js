@@ -156,7 +156,7 @@ function App() {
             />{" "}
             <Route
               exact
-              path="/TeacherDashboard/EditExam/:id"
+              path="/TeacherDashboard/EditExam/"
               element={<EditExam />}
             />
             <Route

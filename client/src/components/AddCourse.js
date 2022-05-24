@@ -135,7 +135,7 @@ const AddCourse = () => {
               type="text"
               className=" form-control-lg"
               id="floatingInput"
-              name="term"
+              name="teacher_id"
               placeholder="Enter Teacher ID"
               value={Course.teacher_id}
               onChange={(e) => onInputChange(e)}

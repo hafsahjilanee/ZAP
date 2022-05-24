@@ -36,6 +36,12 @@ const ExamPage = () => {
     console.log(localStorage.getItem("exam_id"));
     nav("/TeacherDashboard/ViewExam/");
   };
+  const EditExam = async (id) => {
+    console.log(id);
+    //localStorage.setItem("exam_id", id);
+    console.log(localStorage.getItem("exam_id"));
+    nav("/TeacherDashboard/EditExam/");
+  };
 
   useEffect(() => {
     loadExamDetails();
@@ -60,7 +66,7 @@ const ExamPage = () => {
   };
 
   const loadCourses = async () => {
-    console.log("your're loadCourses");
+    console.log(" loadCourses");
     const result = await axios({
       method: "get",
       headers: {
@@ -159,7 +165,7 @@ const ExamPage = () => {
                       </button>
                       <button
                         className="btn btn-outline-primary me-2"
-                        //onClick={() => editExam(e.id)}
+                        onClick={() => EditExam(e._id)}
                         // onClick={nav("/TeacherDashboard/QuizDashboard")}
                       >
                         Edit
