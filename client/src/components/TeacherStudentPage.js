@@ -96,14 +96,14 @@ const TeacherStudentPage = () => {
       <div className="container-list">
         <h1 className="mb-4">{"//Coursename:Students"}</h1>{" "}
         {/*Adding multiple students functionality*/}
-        <div className="form-group mb-3 ">
+        {/* <div className="form-group mb-3 ">
           <input
             type="file"
             id="floatingInput"
             name="file"
             value={File}
           ></input>
-        </div>
+        </div> */}
         <table class="table table-hover border shadow">
           <thead>
             <tr>
