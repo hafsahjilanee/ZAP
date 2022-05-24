@@ -12,10 +12,10 @@ const ViewExam = () => {
         {
           _id: "",
           examName: "",
-          startTimePeriod: "",
-          endTimePeriod: "",
+          start_exam_date: "",
+          end_exam_date: "",
           totalMarks: "",
-          questions: [{ description: "" }],
+          //questions: [{ description: "" }],
         },
       ],
     },
@@ -41,7 +41,7 @@ const ViewExam = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/exams/view/" + id,
+      url: "http://localhost:4000/exams/view/" + localStorage.getItem("exam_id"),
     });
     console.log(result.data);
     setExams(result.data);
@@ -69,6 +69,59 @@ const ViewExam = () => {
   useEffect(() => {
     loadCourses();
   }, []);
+  // 
+  // 
+  // 
+  // 
+  // 
+  const [questions, setQuestions] = useState([]);
+
+ 
+
+  let limit = 3;
+
+  const fetchQuestions = async (currentPage) => {
+    const result = await axios({
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth"),
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      url: `http://localhost:4000/question/?page=${currentPage}&pagination=50`,
+    });
+    console.log(result.data);
+    setQuestions(result.data.data);
+  };
+
+  const handlePageClick = async (data) => {
+    //console.log(data.selected);
+
+    let currentPage = data.selected + 1;
+
+    await fetchQuestions(currentPage);
+  };
+
+  useEffect(() => {
+    loadQuestions();
+  }, [limit]);
+
+  const loadQuestions = async () => {
+    const result = await axios({
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("auth"),
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/question/?page=1&pagination=50",
+    });
+    //console.log(result.data)
+    setQuestions(result.data.data);
+    //console.log(questions)
+    //setUser(result.data.reverse());
+  };
+
   return (
     <div className="container-main py-4 ">
       <Link
@@ -83,7 +136,8 @@ const ViewExam = () => {
         {"Back"}
       </Link>{" "}
       <h2 className="text-center mb-4">{Course.name}</h2>{" "}
-      <h3 className="text-center mb-4">{exams.examName}</h3>{" "}
+      
+      <h3 className="text-center mb-4">{exams[0].examName}</h3>{" "}
       <div className="container-form">
         <div class="row mb-3">
           <label
@@ -99,7 +153,7 @@ const ViewExam = () => {
             class="form-control-lg"
             id="inputText3"
             name="exams.examName"
-            value={exams.examName}
+            value={exams[0].examName}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -118,7 +172,7 @@ const ViewExam = () => {
             class="form-control-lg"
             id="inputText3"
             name="exams.StartTimePeriod"
-            value={exams.startTimePeriod}
+            value={exams[0].start_exam_date}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -137,7 +191,7 @@ const ViewExam = () => {
             class="form-control-lg"
             id="inputText3"
             name="exams.endTimePeriod"
-            value={exams.endTimePeriod}
+            value={exams[0].end_exam_date}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -157,7 +211,7 @@ const ViewExam = () => {
             class="form-control-lg"
             id="inputText3"
             name="totalMarks"
-            value={exams.totalMarks}
+            value={exams[0].totalMarks}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -172,28 +226,29 @@ const ViewExam = () => {
               <th style={{ width: "10%", overflow: "auto" }} scope="col">
                 Description
               </th>
-              {/* <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Student ID
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Exam Status
-              </th>
-              <th style={{ width: "10%", overflow: "auto" }} scope="col">
-                Marks Obtained
-              </th>*/}
+             
             </tr>
           </thead>
-          {/*<tbody>
-            {exams.questions.map((c, index) => (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{c.description}</td>
-              </tr>
-            ))}
-          </tbody>*/}
+          {questions &&
+              questions.map((question, index) => (
+                <tr>
+                  <th scope="row">{index + 1}</th>
+                  <td
+                    style={{
+                      height: "min-content",
+                      wrap: "soft",
+                      width: "max-content",
+                    }}
+                  >
+                    {question.description}
+                  </td>
+                
+                </tr>
+              ))}
         </table>
         <br />
       </div>
+      
     </div>
   );
 };

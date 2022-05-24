@@ -3,6 +3,11 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
     description: String,
+    isSubjective:  {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     alternatives: [
         {
             text: {

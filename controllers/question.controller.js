@@ -38,6 +38,7 @@ router.post('/createQuestion/:examID', async (req, res) => {
     try {
         const { description } = req.body
         const { alternatives } = req.body
+        const { isSubjective } = req.body
         const { marks } = req.body
 
         const exam = await Exam.findOne({_id: req.params.examID });
@@ -46,6 +47,7 @@ router.post('/createQuestion/:examID', async (req, res) => {
         const question = await Question.create({
             description,
             alternatives,
+            isSubjective,
             marks
         })
         .then(async function(dbQuestion) {
@@ -54,7 +56,11 @@ router.post('/createQuestion/:examID', async (req, res) => {
              {$push: {questions: dbQuestion._id}}, 
              { new: true });
              
-             return res.status(201).json(addQuestion) 
+
+             const fetchExamWithQuestion= await Exam.findOne({_id: req.params.examID})
+             .populate("questions")
+        
+             return res.status(201).json(fetchExamWithQuestion) 
          })
         }
         else {
@@ -70,7 +76,7 @@ router.post('/createQuestion/:examID', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const _id = req.params.id; 
-        const { description, alternatives, marks } = req.body
+        const { description, alternatives, isSubjective, marks } = req.body
 
         let question = await Question.findOne({_id})
 
@@ -78,12 +84,14 @@ router.put('/:id', async (req, res) => {
             question = await Question.create({
                 description,
                 alternatives,
+                isSubjective,
                 marks
             })    
             return res.status(201).json(question)
         }else{
             question.description = description
             question.alternatives = alternatives
+            question.isSubjective = isSubjective
             question.marks = marks
             await question.save()
             return res.status(200).json(question)
