@@ -32,6 +32,7 @@ import TeacherStudentPage from "./components/TeacherStudentPage";
 import Profile from "./components/Profile";
 import TeacherCoursePage from "./components/TeacherCoursePage";
 import ViewExam from "./components/ViewExam";
+import EditExam from "./components/EditExam";
 import StudentCoursePage from "./components/StudentCoursePage";
 import AddExam from "./components/AddExam";
 import ViewGrades from "./components/ViewGrades";
@@ -47,7 +48,6 @@ function App() {
         <AuthContext.Provider value={{ authState, setAuthState }}>
           <Routes>
             {/* <Route exact path="/about" element={<About />} /> */}
-
             <Route exact path="/" element={<Login />} />
             <Route
               path="/adminDashboard"
@@ -153,13 +153,17 @@ function App() {
               exact
               path="/TeacherDashboard/ViewExam/:id"
               element={<ViewExam />}
+            />{" "}
+            <Route
+              exact
+              path="/TeacherDashboard/EditExam/:id"
+              element={<EditExam />}
             />
             <Route
               exact
               path="/TeacherDashboard/AddExam/"
               element={<AddExam />}
             />
-
             <Route
               exact
               path="/TeacherDashboard/ViewGrades/"
@@ -190,7 +194,6 @@ function App() {
               path="/profilePage"
               element={<Protected cmp={Profile}></Protected>}
             />
-
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthContext.Provider>

@@ -44,7 +44,7 @@ const AddCourse = () => {
 
   const handleChange = (e, i) => {
     let temp = { ...Course };
-    temp.student[i][e.target.user_id] = e.target.value;
+    temp.student[i][e.target.name] = e.target.value;
     setCourse(temp);
   };
   const onChangeVal = (e) => {

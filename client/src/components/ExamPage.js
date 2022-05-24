@@ -3,16 +3,8 @@ import axios from "axios";
 import { NavLink, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import image from "./plus.png";
-import Modal from "./Modal";
-import "./TeacherPage.css";
 
-//
-//
-//
-//wrong course id is being fetched
-//
-//
-//
+import "./TeacherPage.css";
 
 const ExamPage = () => {
   const nav = useNavigate();
@@ -52,7 +44,6 @@ const ExamPage = () => {
   }, []);
 
   const loadExamDetails = async () => {
-    
     const result = await axios({
       method: "get",
       headers: {

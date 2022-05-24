@@ -8,8 +8,8 @@ const AddExam = () => {
 
   const [Exam, setExam] = useState({
     examName: "",
-     start_exam_date: "",
-     end_exam_date: "",
+    start_exam_date: "",
+    end_exam_date: "",
     totalMarks: "",
     // isReturn: "",
     // isOpen: "",
@@ -17,13 +17,18 @@ const AddExam = () => {
 
   //console.log(localStorage.getItem("courseID"));
 
-  const { examName, start_exam_date, end_exam_date, totalMarks/*, isReturn, isOpen*/ } = Exam;
+  const {
+    examName,
+    start_exam_date,
+    end_exam_date,
+    totalMarks /*, isReturn, isOpen*/,
+  } = Exam;
   const onInputChange = (e) => {
-    console.log(Exam.examName,Exam.start_exam_date, Exam.end_exam_date);
+    console.log(Exam.examName, Exam.start_exam_date, Exam.end_exam_date);
     setExam({ ...Exam, [e.target.name]: e.target.value });
   };
   const onSubmit = async (e) => {
-    console.log(Exam.examName,Exam.start_exam_date, Exam.end_exam_date);
+    console.log(Exam.examName, Exam.start_exam_date, Exam.end_exam_date);
     e.preventDefault();
 
     const result = await axios({
@@ -34,7 +39,7 @@ const AddExam = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/exams/"+localStorage.getItem("courseID")
+      url: "http://localhost:4000/exams/" + localStorage.getItem("courseID"),
     });
     console.log(result.data);
     //setExams(result.data);
@@ -95,17 +100,16 @@ const AddExam = () => {
             </label>
 
             <br></br>
-            
-            {/* <input
+
+            <input
               type="datetime-local"
               className=" form-control-lg"
-              //id="floatingInput"
               name="end_exam_date"
               value={end_exam_date}
               min="2022-05-07T00:00"
               max="2023-05-14T00:00"
-              onClick={(e) => onInputChange(e)}
-            /> */}
+              onChange={(e) => onInputChange(e)}
+            />
           </div>
           <button className="btn btn-primary btn-block me-2 mb-2">Add</button>
           <Link className="btn mb-2" to="/TeacherDashboard/ExamPage">

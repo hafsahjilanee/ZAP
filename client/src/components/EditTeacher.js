@@ -9,11 +9,11 @@ const EditTeacher = () => {
     firstName: "",
     lastname: "",
     user_id: "",
-    email:"",
-    phone_no:""
+    email: "",
+    phone_no: "",
   });
 
-  const { firstName, lastName, user_id,email,phone_no } = teacher;
+  const { firstName, lastName, user_id, email, phone_no } = teacher;
   const onInputChange = (e) => {
     setTeacher({ ...teacher, [e.target.name]: e.target.value });
   };

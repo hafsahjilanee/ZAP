@@ -5,6 +5,7 @@ import "./AddTeacher.css";
 
 const AddTeacher = () => {
   let navigate = useNavigate();
+
   const [Teacher, setTeacher] = useState({
     firstName: "",
     lastName: "",
@@ -14,14 +15,14 @@ const AddTeacher = () => {
     email: "",
     phone_no: "",
   });
-/*
+  /*
   const [Number, setNumber] = useState({ 
     phone_no: "" 
   });
 */
   const { firstName, lastName, user_id, password, email, phone_no } = Teacher;
   //const { phone_no } = Number;
-/*
+  /*
   const onInputChange1 = (e) => {
     setNumber({ ...Number, [e.target.phone_no]: e.target.value });
   };
@@ -38,7 +39,7 @@ const AddTeacher = () => {
   }, []);
 */
   //console.log(id);
-/*
+  /*
   const addnumber = async (id) => {
     await axios.post("http://localhost:4000/teacher/addinfo/" + id, Number, {
       headers: {
@@ -59,7 +60,7 @@ const AddTeacher = () => {
         "Content-Type": "application/json",
       },
     });
-/*
+    /*
     addnumber(Teacher.user_id);
 */
     navigate("/AdminDashboard/teacherPage");
