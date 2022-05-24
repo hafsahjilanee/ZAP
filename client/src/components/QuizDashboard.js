@@ -87,7 +87,7 @@ const QuizDashboard = () => {
       <div className="container-list">
         <h1 className="mb-4">
           Exam Questions
-          <NavLink to="/quizDashboard/addQuestion">
+          <NavLink to="/TeacherDashboard/addQuestion">
             <img
               className="img"
               src={image}
