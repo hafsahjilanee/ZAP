@@ -256,63 +256,7 @@ router.delete('/:id', async (req, res) => {
         return res.status(500).json({"error":error})
     }
 })
-/*
-//add student to course
-//id passed is course id
-router.post('/addStudent/:courseId', async (req, res) => {
-    try{
-    const _id = req.params.courseId; 
-        const { name } = req.body
-        const { term } = req.body
-        const { class_code } = req.body
-        const { active_status } = req.body
-        const {teacherID} = req.body
-        const {studentID} = req.body
-    
 
-    if (studentID != null) {
-        let user = await User.findOne({ user_id: studentID })
-        console.log(user.id)
-        if (user) {
-            //console.log(user.id)
-            let findStudent = await Student.findOne({ student_id: user.id })
-            console.log(findStudent)
-            if (findStudent) {
-                let course = await Courses.findOne({ _id })
-                console.log(course)
-                if (course) {
-
-                    course.name = name
-                    course.class_code = class_code
-                    course.term = term
-                    course.active_status = active_status
-                    //course.students = findStudent.id
-                    //console.log(findteacher.id)
-                    await course.save()
-                        .then(async function (dbTeacher) {
-                            const checkCourse = await Student.findOne({ course: req.params.courseId })
-                            //console.log(checkCourse)
-                            if (!checkCourse) {
-                                await Student.findOneAndUpdate({ _id: req.params.id }, { $push: { course: dbTeacher._id } }, { new: true });
-                            }
-                        })
-                    return res.status(200).json()
-
-                }
-
-
-            }
-
-        } else {
-            throw 'Teacher ID "' + teacherID + '" is invalid';
-        }
-    }
-}
-catch (error) {
-    return res.status(500).json({"error":error})
-}
-  
-})*/
 router.put('/enrol/:id', async (req, res) => {
     try {
         const _id = req.params.id; 
@@ -323,23 +267,42 @@ router.put('/enrol/:id', async (req, res) => {
         const { active_status } = req.body
         const {teacherID} = req.body
         const {student_id} = req.body
-        
+        //console.log(student_id);
+
         if (teacherID != null)
         {
             let user = await User.findOne({ user_id: teacherID })
-            let student = await User.findOne({user_id:student_id})
-            //console.log(student.id)
+            let student = await User.find({user_id:student_id})
+            //console.log(student)
+            //console.log(student.length)
+
+            var newArr = [];
+            var studArr = [];
+
+            for (i = 0; i < student.length; i++) {
+                newArr[i] = student[i].id
+              }           
+            //console.log(newArr);
+
             if (user) {
                 //console.log("user id of teacher from teacher collection "+user.id)
                 let findteacher = await Teachers.findOne({ teacher_id: user._id })
-                let findstudent = await Student.findOne({ student_id: student._id })
-                //console.log("teacher id from teacher collection is " + findteacher.id)
-                //console.log("student id from student collection is " + findstudent.id)
+
+                let findstud;
+                for (j = 0; j < newArr.length; j++) {
+                    findstud = await Student.find({ student_id: newArr[j] })
+                   // console.log(findstud[0]._id)
+                    //console.log(findstud)
+                    //console.log("break")
+                    studArr[j] = findstud[0].id
+                  }           
+                //console.log(studArr);
+
                 if (findteacher) {
                    // console.log("find teacher is hit")
                     let course = await Courses.findOne({ _id })
                     if (course) {
-                       // console.log("course is hit")
+                        //console.log("course is hit")
                         course.name = name
                         course.class_code = class_code
                         course.term = term
@@ -351,21 +314,36 @@ router.put('/enrol/:id', async (req, res) => {
                             .then(async function (dbCourse) {
                                 
                                 const checkCourse = await Teachers.findOne({course: req.params.id})
-                                const checkStudent = await Student.findOne({course:req.params.id})
-                               //console.log(checkCourse)
-                                //console.log(checkStudent)
-                                //console.log(course.id)
+
                                 if (!checkCourse){
-                                await Teachers.findOneAndUpdate({ _id: findteacher.id }, { $push: { course: req.params.id } }, { new: true });
+                                    await Teachers.findOneAndUpdate({ _id: findteacher.id }, { $push: { course: req.params.id } }, { new: true });
                                 }
-                                if (!checkStudent){
-                                    await Student.findOneAndUpdate({ _id: findstudent.id }, { $push: { course: req.params.id } }, { new: true });
-                                    const updateCourse = await Courses.findOneAndUpdate({ _id: req.params.id }, { $push: { students: findstudent.id } }, { new: true });
-                                    return res.status(200).json(updateCourse)
+                                let updateCourse;
+                                for (j = 0; j < studArr.length; j++) {
+                                    let checkstud =  await Student.find({_id: studArr[j], course: _id})
+                                    //console.log("for student--" + j)
+
+                                   // console.log(checkstud)
+                                   // console.log(checkstud.length)
+                                   // console.log("--" )
+                                    if (checkstud.length==0){
+                                        //console.log("checkstud is hit")
+                                        //console.log(studArr[j])
+                                        const hh = await Student.findOneAndUpdate({ _id: studArr[j] },
+                                            { $push: { course: req.params.id } },
+                                            { new: true });
+                                            //console.log(hh);
+                                         updateCourse = await Courses.findOneAndUpdate({ _id: req.params.id },
+                                            { $push: { students: studArr[j]} },
+                                            { new: true });
+                                        console.log(updateCourse);
+                                           
+                                    }
+                                   
+                                    
                                 }
-                                else{
-                                    return res.status(200).json(course)
-                                }
+                                return res.status(200).json(updateCourse)
+                               
                             })
                             
                                                     
@@ -399,6 +377,99 @@ router.put('/enrol/:id', async (req, res) => {
             }
         } 
         
+    } catch (error) {
+        return res.status(500).json({"error":error})
+    }
+})
+
+router.put('/enrollStudent/:id', async (req, res) => {
+    try {
+        const _id = req.params.id; 
+        //console.log(req.body)
+        const { name } = req.body
+        const { term } = req.body
+        const { class_code } = req.body
+        const { active_status } = req.body
+        const {teacherID} = req.body
+        const {student_id} = req.body
+
+        if (teacherID != null)
+        {
+            let user = await User.findOne({ user_id: teacherID })
+            let student = await User.findOne({user_id:student_id})
+            //console.log(student.id)
+            if (user) {
+                //console.log("user id of teacher from teacher collection "+user.id)
+                let findteacher = await Teachers.findOne({ teacher_id: user._id })
+                let findstudent = await Student.findOne({ student_id: student._id })
+                //console.log("teacher id from teacher collection is " + findteacher.id)
+                //console.log("student id from student collection is " + findstudent.id)
+                if (findteacher) {
+                   // console.log("find teacher is hit")
+                    let course = await Courses.findOne({ _id })
+                    if (course) {
+                       // console.log("course is hit")
+                        course.name = name
+                        course.class_code = class_code
+                        course.term = term
+                        course.active_status = active_status
+                        course.teacher = findteacher.id
+
+                        //console.log(findteacher.id)
+                         await course.save()
+                            .then(async function (dbCourse) {
+
+                                const checkCourse = await Teachers.findOne({course: req.params.id})
+
+                                const checkStudent = await Student.findOne({course:req.params.id})
+
+                               //console.log(checkCourse)
+                                //console.log(checkStudent)
+                                //console.log(course.id)
+                                if (!checkCourse){
+                                await Teachers.findOneAndUpdate({ _id: findteacher.id }, { $push: { course: req.params.id } }, { new: true });
+                                }
+                                if (!checkStudent){
+                                    await Student.findOneAndUpdate({ _id: findstudent.id }, { $push: { course: req.params.id } }, { new: true });
+                                    const updateCourse = await Courses.findOneAndUpdate({ _id: req.params.id }, { $push: { students: findstudent.id } }, { new: true });
+                                    return res.status(200).json(updateCourse)
+                                }
+                                else{
+                                    return res.status(200).json(course)
+                                }
+                            })
+
+
+                    }
+
+                }
+
+            } else {
+                throw 'Teacher ID "' + teacherID + '" is invalid';
+            }
+        }else{
+            let course = await Courses.findOne({ _id })
+
+            if (!course) {
+                course = await Courses.create({
+                    name,
+                    class_code,
+                    term,
+                    active_status,
+
+                })
+                return res.status(201).json(course)
+            } else {
+                course.name = name
+                course.class_code = class_code
+                course.term = term
+                course.active_status = active_status
+
+                await course.save()
+                return res.status(200).json(course)
+            }
+        } 
+
     } catch (error) {
         return res.status(500).json({"error":error})
     }
