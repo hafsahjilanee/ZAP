@@ -6,13 +6,6 @@ import image from "./plus.png";
 import Modal from "./Modal";
 import "./TeacherPage.css";
 
-//
-//
-//
-//wrong course id is being fetched
-//
-//
-//
 
 const ExamPage = () => {
   const nav = useNavigate();
@@ -29,30 +22,28 @@ const ExamPage = () => {
       ],
     },
   ]);
+
   const [Course, setCourse] = useState({
     name: "",
     term: "",
     class_code: "",
-    exams: [
-      {
-        examName: "",
-        end_exam_date: "",
-        totalMarks: "",
-      },
-    ],
   });
 
   //console.log(localStorage.getItem("courseID"));
 
   const ViewExam = async (id) => {
-    nav("/TeacherDashboard/ViewExam/" + id);
+    console.log(id);
+    localStorage.setItem("exam_id", id);
+    console.log(localStorage.getItem("exam_id"))
+    nav("/TeacherDashboard/ViewExam/");
   };
+
   useEffect(() => {
     loadExamDetails();
   }, []);
 
   const loadExamDetails = async () => {
-    
+    //console.log("your're here")
     const result = await axios({
       method: "get",
       headers: {
@@ -62,6 +53,7 @@ const ExamPage = () => {
       },
       url: "http://localhost:4000/exams/" + localStorage.getItem("courseID"),
     });
+
     console.log(result.data);
     setExams(result.data);
     //console.log(questions)
@@ -69,6 +61,7 @@ const ExamPage = () => {
   };
 
   const loadCourses = async () => {
+    console.log("your're loadCourses")
     const result = await axios({
       method: "get",
       headers: {
@@ -85,6 +78,7 @@ const ExamPage = () => {
     //setUser(result.data.reverse());
   };
 
+  
   useEffect(() => {
     loadCourses();
   }, []);
