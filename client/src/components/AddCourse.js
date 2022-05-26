@@ -50,7 +50,7 @@ const AddCourse = () => {
   const onChangeVal = (e) => {
     //target.checked === e.active_status
   };
-  console.log(Course.name, Course.active_status, Course.term);
+  //console.log(Course.name, Course.active_status, Course.term);
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -135,7 +135,7 @@ const AddCourse = () => {
               type="text"
               className=" form-control-lg"
               id="floatingInput"
-              name="term"
+              name="teacher_id"
               placeholder="Enter Teacher ID"
               value={Course.teacher_id}
               onChange={(e) => onInputChange(e)}

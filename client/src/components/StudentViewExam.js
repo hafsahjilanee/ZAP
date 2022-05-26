@@ -105,7 +105,7 @@ const StudentViewExam = () => {
             class="col-sm-2 col-form-label"
             style={{ width: "150px", margin: "auto" }}
           >
-            Max Marks
+            Marks Obtained
           </label>
 
           <input

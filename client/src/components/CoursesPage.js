@@ -15,10 +15,12 @@ const CoursesPage = () => {
   }, []);
 
   const viewCourse = async (id) => {
+    console.log(id)
     nav("/adminDashboard/viewCourse/" + id);
   };
 
   const editCourse = async (id) => {
+    console.log(id)
     nav("/adminDashboard/editCourse/" + id);
   };
 
@@ -150,13 +152,13 @@ const CoursesPage = () => {
                   <td>
                     <button
                       className="btn btn-outline-secondary me-2"
-                      onClick={() => viewCourse(course.id)}
+                      onClick={() => viewCourse(course._id)}
                     >
                       View
                     </button>
                     <button
                       className="btn btn-outline-primary me-2"
-                      onClick={() => editCourse(course.id)}
+                      onClick={() => editCourse(course._id)}
                     >
                       Edit{" "}
                     </button>
@@ -169,7 +171,6 @@ const CoursesPage = () => {
                   </td>
                 </tr>
               ))}
-              x
             </tbody>
           </table>
         </div>
