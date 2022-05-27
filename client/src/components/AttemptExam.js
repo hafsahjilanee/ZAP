@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import image from "./minus1.png";
 import image1 from "./plus.png";
 import { FormCheck } from "react-bootstrap";
 // import { set } from "mongoose";
 
 const AttemptExam = () => {
-  let navigate = useNavigate();
-
+  let nav = useNavigate();
   const [question, setQuestion] = useState({
     description: "",
     alternatives: [
@@ -19,138 +18,70 @@ const AttemptExam = () => {
     ],
   });
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    await axios.post(
-      "http://localhost:4000/question/createQuestion",
-      question,
+  const { id } = useParams();
+
+  useEffect(() => {
+    loadQuestion();
+  }, []);
+
+  const loadQuestion = async () => {
+    const result = await axios.get(
+      "http://localhost:4000/question/" + id,
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("auth"),
-          Accept: "application/json",
-          "Content-Type": "application/json",
         },
+      },
+      {
+        data: { id: id },
       }
     );
-    navigate("/QuizDashboard");
+    console.log(id);
+    setQuestion(result.data);
   };
   return (
-    <div
-      className="container"
-      style={{ marginBottom: "200px", paddingBottom: "100px" }}
-    >
-      <div className="container-form w-75 ">
-        <h2 className="text-center mb-4">Add A Question</h2>
-        <form onSubmit={(e) => onSubmit(e)}>
-          <div className="form-group">
-            <textarea
-              type="text"
-              rows="5"
-              cols="100"
-              wrap="soft"
-              placeholder="Enter Question Description "
-              className="form-control-lg w-75"
-              name="description"
-              value={question.description}
-              rea
-            />
-          </div>
-          <br />{" "}
-          {question.alternatives.map((alternative, i) => (
-            <div style={{ padding: "15px", alignItems: "center" }}>
-              <div style={{ alignItems: "flex-start" }}>
-                <span style={{ fontSize: "18px" }}>Option {i + 1}: </span>
-
-                <input
-                  variant="outlined"
-                  name="text"
-                  placeholder="Answer text"
-                  className="form-control-lg"
-                  style={{ width: "300px" }}
-                  //onChange={(e) => handleAlternativeChange(e, i)}
-                  value={question.alternatives[i].text}
-                />
-                {/* <input
-                  type={"checkbox"}
-                  name="isCorrect"
-                  // variant="outlined"
-                  // placeholder="true/false?"
-                  className="btn-primary "
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    marginLeft: "30px",
-                    marginRight: "30px",
-                  }}
-                  value="true"
-                  onChange={(e) => handleAlternativeChange(e, i)}
-                  // checked={(isCorrect= "true")}
-                /> */}
-                {/* <button
-                  variant="contained"
-                  className="btn-primary "
-                  style={{
-                    marginLeft: "70px",
-                    border: "none",
-                    paddingBottom: "0px",
-                    background: "none",
-                  }}
-                  //setQuestion.isCorrect("true")
-                  value={question.alternatives[i].isCorrect}
-                  onClick={(e) => handleAlternativeChange(e, i)}
-                >
-                  {" true"}
-                </button> */}
-                <button
-                  variant="contained"
-                  className="btn-primary "
-                  style={{
-                    marginLeft: "70px",
-                    border: "none",
-                    paddingBottom: "0px",
-                    background: "none",
-                  }}
-                  //onClick={(e) => deleteAlternative(e, i)}
-                >
-                  <img
-                    classname="img"
-                    src={image}
-                    alt="add"
-                    height="23px"
-                    align="right"
-                  ></img>
-                </button>
-              </div>
-            </div>
+    <div className="container-list">
+      {/* <Link
+        className="btn  btn-primary btn-block me-2"
+        to="StudentDashboard/StudentCoursePage/"
+        style={{ marginBottom: "20px", backgroundColor: "" }}
+      >
+        Back
+      </Link> */}
+      <h1 className="mb-4">Question: {question.description}</h1>{" "}
+      <table class="table table-hover border shadow">
+        <thead>
+          <tr>
+            <th style={{ width: "10%" }} scope="col">
+              #
+            </th>
+            <th style={{ width: "45%" }} scope="col">
+              Options
+            </th>
+            <th style={{ width: "45%" }} scope="col">
+              Correct Option
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {question.alternatives.map((option, index) => (
+            <tr>
+              <th scope="row">{index + 1}</th>
+              <td>{option.text}</td>
+              <td>
+                <textarea></textarea>
+              </td>
+            </tr>
           ))}
-          <button
-            variant="contained"
-            className="btn btn-outline-secondary me-2 "
-            style={{
-              height: "40px",
-              borderRadius: "5px ",
-              marginBottom: "50px",
-            }}
-            //onClick={(e) => addAlternative(e, Map.i)}
-          >
-            Add Option
-          </button>
-          <br />
-          <button
-            className="btn-primary"
-            style={{
-              height: "55px",
-              width: "400px",
-              fontSize: "23px",
-              fontFamily: "Calibri",
-              borderRadius: "5px ",
-            }}
-            //onClick={(e) => onSubmit}
-          >
-            Add Question
-          </button>
-        </form>
-      </div>
+        </tbody>
+      </table>
+      <Link
+        className="btn  btn-primary btn-block me-2"
+        to="/StudentDashboard/StudentCoursePage/"
+        style={{ marginBottom: "20px", color: "white", margin: "auto" }}
+      >
+        Submit
+      </Link>
     </div>
   );
 };

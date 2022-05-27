@@ -38,6 +38,7 @@ import AddExam from "./components/AddExam";
 import ViewGrades from "./components/ViewGrades";
 import { useState } from "react";
 import StudentViewExam from "./components/StudentViewExam";
+import AttemptExam from "./components/AttemptExam";
 
 function App() {
   const [authState, setAuthState] = useState(false);
@@ -68,6 +69,11 @@ function App() {
               exact
               path="/StudentDashboard/StudentViewExam"
               element={<StudentViewExam />}
+            />
+            <Route
+              exact
+              path="/StudentDashboard/AttemptExam"
+              element={<AttemptExam />}
             />
             <Route
               exact
@@ -181,7 +187,7 @@ function App() {
             />
             <Route
               exact
-              path="/TeacherDashboard/viewQuestion/"
+              path="/TeacherDashboard/viewQuestion/:id"
               element={<ViewQuestion />}
             />
             <Route

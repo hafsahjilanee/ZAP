@@ -41,7 +41,8 @@ const ViewExam = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/exams/view/" + localStorage.getItem("exam_id"),
+      url:
+        "http://localhost:4000/exams/view/" + localStorage.getItem("exam_id"),
     });
     console.log(result.data);
     setExams(result.data);
@@ -69,14 +70,12 @@ const ViewExam = () => {
   useEffect(() => {
     loadCourses();
   }, []);
-  // 
-  // 
-  // 
-  // 
-  // 
+  //
+  //
+  //
+  //
+  //
   const [questions, setQuestions] = useState([]);
-
- 
 
   let limit = 3;
 
@@ -135,8 +134,6 @@ const ViewExam = () => {
       >
         {"Back"}
       </Link>{" "}
-      <h2 className="text-center mb-4">{Course.name}</h2>{" "}
-      
       <h3 className="text-center mb-4">{exams[0].examName}</h3>{" "}
       <div className="container-form">
         <div class="row mb-3">
@@ -226,29 +223,26 @@ const ViewExam = () => {
               <th style={{ width: "10%", overflow: "auto" }} scope="col">
                 Description
               </th>
-             
             </tr>
           </thead>
           {questions &&
-              questions.map((question, index) => (
-                <tr>
-                  <th scope="row">{index + 1}</th>
-                  <td
-                    style={{
-                      height: "min-content",
-                      wrap: "soft",
-                      width: "max-content",
-                    }}
-                  >
-                    {question.description}
-                  </td>
-                
-                </tr>
-              ))}
+            questions.map((question, index) => (
+              <tr>
+                <th scope="row">{index + 1}</th>
+                <td
+                  style={{
+                    height: "min-content",
+                    wrap: "soft",
+                    width: "max-content",
+                  }}
+                >
+                  {question.description}
+                </td>
+              </tr>
+            ))}
         </table>
         <br />
       </div>
-      
     </div>
   );
 };

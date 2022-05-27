@@ -87,7 +87,7 @@ const QuizDashboard = () => {
       <div className="container-list">
         <h1 className="mb-4">
           Exam Questions
-          <NavLink to="/quizDashboard/addQuestion">
+          <NavLink to="/TeacherDashboard/addQuestion">
             <img
               className="img"
               src={image}
@@ -129,13 +129,13 @@ const QuizDashboard = () => {
                   <td>
                     <Link
                       class="btn btn-outline-secondary me-2"
-                      to={`/quizDashboard/ViewQuestion/${question._id}`}
+                      to={`/TeacherDashboard/ViewQuestion/${question._id}`}
                     >
                       View
                     </Link>
                     <Link
                       className="btn btn-outline-primary me-2"
-                      to={`/quizDashboard/EditQuestion/${question._id}`}
+                      to={`/TeacherDashboard/EditQuestion/${question._id}`}
                     >
                       Edit
                     </Link>

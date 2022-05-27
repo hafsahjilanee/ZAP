@@ -35,8 +35,8 @@ const StudentCoursePage = () => {
             marginBottom: "100px",
           }}
         >
-          <h1 className="mb-4"> CourseName - Exams</h1>{" "}
-          <h2 className="mb-4"> //APIs for view and attempt exam needed</h2>
+          <h1 className="mb-4"> Exams</h1>{" "}
+          {/*<h2 className="mb-4"> //APIs for view and attempt exam needed</h2>*/}
           <table class="table table-hover border shadow">
             <thead>
               <tr>
@@ -46,6 +46,10 @@ const StudentCoursePage = () => {
                 <th style={{ width: "15%", overflow: "auto" }} scope="col">
                   Title
                 </th>
+                <th style={{ width: "8%", overflow: "auto" }} scope="col">
+                  Open Date
+                </th>
+
                 <th style={{ width: "8%", overflow: "auto" }} scope="col">
                   Due on
                 </th>
@@ -60,8 +64,9 @@ const StudentCoursePage = () => {
               <tr>
                 {" "}
                 <th scope="row">{"1"}</th>
-                <td>{"Exam xyz"}</td>
-                <td>{"02/02/22"}</td>
+                <td>{"Exam A"}</td>
+                <td>{"2022-05-18T09:52:00.000Z"}</td>
+                <td>{"2022-05-26T09:52:00.000Z"}</td>
                 <td>{"Open"}</td>
                 <td>
                   <button
@@ -72,7 +77,7 @@ const StudentCoursePage = () => {
                   </button>
                   <button
                     className="btn btn-outline-primary me-2"
-                    // onClick={() => }
+                    onClick={() => nav("/StudentDashboard/AttemptExam")}
                   >
                     Attempt
                   </button>
@@ -102,7 +107,6 @@ const StudentCoursePage = () => {
                 </td>
               </tr>*
                 ))}*/}
-              xx
             </tbody>
           </table>
         </div>

@@ -36,6 +36,12 @@ const ExamPage = () => {
     console.log(localStorage.getItem("exam_id"));
     nav("/TeacherDashboard/ViewExam/");
   };
+  const EditExam = async (id) => {
+    console.log(id);
+    //localStorage.setItem("exam_id", id);
+    console.log(localStorage.getItem("exam_id"));
+    nav("/TeacherDashboard/EditExam/");
+  };
 
   const editExam = async (id) => {
     console.log(id);
@@ -67,7 +73,7 @@ const ExamPage = () => {
   };
 
   const loadCourses = async () => {
-    console.log("your're loadCourses");
+    console.log(" loadCourses");
     const result = await axios({
       method: "get",
       headers: {
@@ -138,7 +144,10 @@ const ExamPage = () => {
                 <th style={{ width: "15%", overflow: "auto" }} scope="col">
                   Title
                 </th>
-                <th style={{ width: "8%", overflow: "auto" }} scope="col">
+                <th style={{ width: "20%", overflow: "auto" }} scope="col">
+                  Open Date
+                </th>
+                <th style={{ width: "20%", overflow: "auto" }} scope="col">
                   Due on
                 </th>
                 <th style={{ width: "10%", overflow: "auto" }} scope="col">
@@ -154,6 +163,7 @@ const ExamPage = () => {
                   <tr>
                     <th scope="row">{i + 1}</th>
                     <td>{e.examName}</td>
+                    <td>{e.start_exam_date}</td>
                     <td>{e.end_exam_date}</td>
                     <td>{e.totalMarks}</td>
 
@@ -166,7 +176,11 @@ const ExamPage = () => {
                       </button>
                       <button
                         className="btn btn-outline-primary me-2"
+<<<<<<< HEAD
+                        onClick={() => EditExam(e._id)}
+=======
                         onClick={() => editExam(e.id)}
+>>>>>>> e1cc76bd0f84c19c1e57e267f4ee0c017541e30f
                         // onClick={nav("/TeacherDashboard/QuizDashboard")}
                       >
                         Edit

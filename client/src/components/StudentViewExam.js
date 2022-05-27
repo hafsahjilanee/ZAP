@@ -76,10 +76,29 @@ const StudentViewExam = () => {
       >
         {"Back"}
       </Link>{" "}
-      <h2 className="text-center mb-4">{"Course.name"}</h2>{" "}
-      <h3 className="text-center mb-4">{"exams.examName"}</h3>{" "}
+      {/* <h2 className="text-center mb-4">{"Course.name"}</h2>{" "} */}
+      <h3 className="text-center mb-4">{"Exam "}</h3>{" "}
       <div className="container-form">
         <div class="row mb-3" style={{ marginTop: "40px" }}>
+          <label
+            for="inputText3"
+            className="col-sm-2 col-form-label "
+            style={{ width: "140px", margin: "auto" }}
+          >
+            Open Date
+          </label>
+
+          <input
+            type="text"
+            class="form-control-lg"
+            id="inputText3"
+            name="Due on"
+            value={"2022-05-18T09:52:00.000Z	"}
+            readOnly
+            style={{ width: "300px", margin: "auto" }}
+          />
+        </div>
+        <div class="row mb-3">
           <label
             for="inputText3"
             className="col-sm-2 col-form-label "
@@ -93,7 +112,7 @@ const StudentViewExam = () => {
             class="form-control-lg"
             id="inputText3"
             name="Due on"
-            value={"exams.end_exam_date"}
+            value={"2022-05-26T09:52:00.000Z"}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -113,7 +132,7 @@ const StudentViewExam = () => {
             class="form-control-lg"
             id="inputText3"
             name="Max Marks"
-            value={"exams.totalMarks"}
+            value={"50"}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -132,7 +151,7 @@ const StudentViewExam = () => {
             class="form-control-lg"
             id="inputText3"
             name="Teacher Name"
-            value={"Teacher Name"}
+            value={"Sajjad Haider"}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />

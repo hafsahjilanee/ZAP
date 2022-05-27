@@ -18,6 +18,7 @@ const AddQuestion = () => {
   const [question, setQuestion] = useState({
     description: "",
     marks: "",
+    isSubjective: " ",
     alternatives: [
       {
         text: "",
@@ -36,11 +37,17 @@ const AddQuestion = () => {
   const onInputChange = (e) => {
     setQuestion({ ...question, [e.target.name]: e.target.value });
   };
-  console.log(question.description, question.marks, question.alternatives);
+  console.log(
+    question.description,
+    question.marks,
+    question.alternatives,
+    question.isSubjective
+  );
   const addAlternative = (e) => {
     let temp = { ...question };
     temp.alternatives.push({
       text: "",
+      isCorrect: "",
     });
     setQuestion(temp);
   };
@@ -56,15 +63,20 @@ const AddQuestion = () => {
     temp.alternatives[i][e.target.name] = e.target.value;
     setQuestion(temp);
   };
-  const onInput1 = (e, i) => {
+  // const onInput1 = (e, i) => {
+  //   let temp = { ...question };
+  //   temp.alternatives[i][e.target.name] = e.target.value;
+  //   setQuestion(temp);
+  //   setbg(e);
+  // };
+  // const onInput2 = (e, i) => {
+  //   let temp = { ...question };
+  //   temp.alternatives[i][e.target.name] = e.target.value;
+  //   setQuestion(temp);
+  // };
+  const setSubjective = (e) => {
     let temp = { ...question };
-    temp.alternatives.isCorrect = e.target.value;
-    setQuestion(temp);
-    setbg(e);
-  };
-  const onInput2 = (e, i) => {
-    let temp = { ...question };
-    temp.alternatives.isCorrect = e.target.value;
+    temp.isSubjective = e.target.value;
     setQuestion(temp);
   };
   // const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +91,7 @@ const AddQuestion = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post(
-      "http://localhost:4000/question/createQuestion",
+      "http://localhost:4000/question/createQuestion/628cd2b689035b1e24ede219",
       question,
       {
         headers: {
@@ -89,10 +101,10 @@ const AddQuestion = () => {
         },
       }
     );
-
-    navigate("/QuizDashboard");
+    console.log(localStorage.getItem("examID"));
+    navigate("/TeacherDashboard/ExamPage/");
   };
-
+  console.log(localStorage.getItem("examID"));
   return (
     <div
       className="container"
@@ -132,6 +144,33 @@ const AddQuestion = () => {
               onChange={(e) => onInputChange(e)}
             />
           </div>
+          <div className="form-group">
+            <label className="label"> Subjective:</label>
+            <button
+              type="button"
+              className=" btntrue1 mb-3 "
+              id="floatingInput"
+              name="true"
+              value={true}
+              onClick={(e) => {
+                onInputChange(e);
+              }}
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              className=" btntrue1 mb-3"
+              id="floatingInput"
+              name="false"
+              value={false}
+              onClick={(e) => {
+                setSubjective(e);
+              }}
+            >
+              No
+            </button>
+          </div>
           <br />{" "}
           {question.alternatives.map((alternative, i) => (
             <div style={{ padding: "15px", alignItems: "center" }}>
@@ -151,10 +190,10 @@ const AddQuestion = () => {
                   type="button"
                   className=" btntrue1 mb-3 "
                   id="floatingInput"
-                  name="true"
+                  name="isCorrect"
                   value={true}
                   onClick={(e) => {
-                    onInput1(e);
+                    handleAlternativeChange(e, i);
                   }}
                 >
                   true
@@ -163,10 +202,10 @@ const AddQuestion = () => {
                   type="button"
                   className=" btntrue1 mb-3"
                   id="floatingInput"
-                  name="false"
+                  name="isCorrect"
                   value={false}
                   onClick={(e) => {
-                    onInput2(e);
+                    handleAlternativeChange(e, i);
                   }}
                 >
                   false
@@ -202,7 +241,9 @@ const AddQuestion = () => {
               borderRadius: "5px ",
               marginBottom: "50px",
             }}
-            onClick={(e) => addAlternative(e, Map.i)}
+            onClick={(e) => {
+              addAlternative(e, Map.i);
+            }}
           >
             Add Option
           </button>
