@@ -137,7 +137,10 @@ const ExamPage = () => {
                 <th style={{ width: "15%", overflow: "auto" }} scope="col">
                   Title
                 </th>
-                <th style={{ width: "8%", overflow: "auto" }} scope="col">
+                <th style={{ width: "20%", overflow: "auto" }} scope="col">
+                  Open Date
+                </th>
+                <th style={{ width: "20%", overflow: "auto" }} scope="col">
                   Due on
                 </th>
                 <th style={{ width: "10%", overflow: "auto" }} scope="col">
@@ -153,6 +156,7 @@ const ExamPage = () => {
                   <tr>
                     <th scope="row">{i + 1}</th>
                     <td>{e.examName}</td>
+                    <td>{e.start_exam_date}</td>
                     <td>{e.end_exam_date}</td>
                     <td>{e.totalMarks}</td>
 

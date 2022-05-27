@@ -63,17 +63,17 @@ const AddQuestion = () => {
     temp.alternatives[i][e.target.name] = e.target.value;
     setQuestion(temp);
   };
-  const onInput1 = (e, i) => {
-    let temp = { ...question };
-    temp.alternatives.isCorrect = e.target.value;
-    setQuestion(temp);
-    setbg(e);
-  };
-  const onInput2 = (e, i) => {
-    let temp = { ...question };
-    temp.alternatives.isCorrect = e.target.value;
-    setQuestion(temp);
-  };
+  // const onInput1 = (e, i) => {
+  //   let temp = { ...question };
+  //   temp.alternatives[i][e.target.name] = e.target.value;
+  //   setQuestion(temp);
+  //   setbg(e);
+  // };
+  // const onInput2 = (e, i) => {
+  //   let temp = { ...question };
+  //   temp.alternatives[i][e.target.name] = e.target.value;
+  //   setQuestion(temp);
+  // };
   const setSubjective = (e) => {
     let temp = { ...question };
     temp.isSubjective = e.target.value;
@@ -102,7 +102,7 @@ const AddQuestion = () => {
       }
     );
     console.log(localStorage.getItem("examID"));
-    navigate("/QuizDashboard");
+    navigate("/TeacherDashboard/ExamPage/");
   };
   console.log(localStorage.getItem("examID"));
   return (
@@ -153,7 +153,7 @@ const AddQuestion = () => {
               name="true"
               value={true}
               onClick={(e) => {
-                setSubjective(e);
+                onInputChange(e);
               }}
             >
               Yes
@@ -190,10 +190,10 @@ const AddQuestion = () => {
                   type="button"
                   className=" btntrue1 mb-3 "
                   id="floatingInput"
-                  name="true"
+                  name="isCorrect"
                   value={true}
                   onClick={(e) => {
-                    onInput1(e);
+                    handleAlternativeChange(e, i);
                   }}
                 >
                   true
@@ -202,10 +202,10 @@ const AddQuestion = () => {
                   type="button"
                   className=" btntrue1 mb-3"
                   id="floatingInput"
-                  name="false"
+                  name="isCorrect"
                   value={false}
                   onClick={(e) => {
-                    onInput2(e);
+                    handleAlternativeChange(e, i);
                   }}
                 >
                   false

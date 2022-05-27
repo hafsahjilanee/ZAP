@@ -74,7 +74,7 @@ const StudentDashboard = () => {
                     width: "300px",
                   }}
                 >
-                  {"Course Name"}
+                  {"IDM"}
                 </td>
                 <td
                   style={{
@@ -83,7 +83,42 @@ const StudentDashboard = () => {
                     width: "maxContent",
                   }}
                 >
-                  {"0000"}
+                  {"5059"}
+                </td>
+                <td
+                  style={{
+                    paddingLeft: "5px",
+                    paddingRight: "70px",
+                    width: "maxContent",
+                  }}
+                >
+                  {"Spring'22"}
+                </td>
+              </tr>{" "}
+              <tr
+                onClick={() => viewCoursePage()}
+                style={{
+                  marginBottom: "20px",
+                  paddingBottom: "20px",
+                }}
+              >
+                <td
+                  style={{
+                    paddingLeft: "70px",
+                    paddingRight: "20px",
+                    width: "300px",
+                  }}
+                >
+                  {"ITC"}
+                </td>
+                <td
+                  style={{
+                    paddingLeft: "8px",
+                    paddingRight: "20px",
+                    width: "maxContent",
+                  }}
+                >
+                  {"5048"}
                 </td>
                 <td
                   style={{

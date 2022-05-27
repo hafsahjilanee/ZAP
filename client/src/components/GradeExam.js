@@ -108,24 +108,23 @@ const QuizDashboard = () => {
                 Question
               </th>
               <th style={{ width: "35%", overflow: "auto" }} scope="col">
-                Action
+                Answer
               </th>
             </tr>
           </thead>
           <tbody>
             {questions &&
               questions.map((question, index) => (
-                <tr>
+                <tr
+                  style={{
+                    height: "min-content",
+                    wrap: "soft",
+                    width: "max-content",
+                  }}
+                >
                   <th scope="row">{index + 1}</th>
-                  <td
-                    style={{
-                      height: "min-content",
-                      wrap: "soft",
-                      width: "max-content",
-                    }}
-                  >
-                    {question.description}
-                  </td>
+                  <td>{question.description}</td>
+                  <td>{question.alternatives}</td>
                   <td>
                     <Link
                       class="btn btn-outline-secondary me-2"

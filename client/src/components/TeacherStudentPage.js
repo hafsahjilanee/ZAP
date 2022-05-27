@@ -94,8 +94,8 @@ const TeacherStudentPage = () => {
       </Link>
       <br></br>
       <div className="container-list">
-        <h1 className="mb-4">{"//Coursename:Students"}</h1>{" "}
-        {/*Adding multiple students functionality*/}
+        {/*<h1 className="mb-4">{"//Coursename:Students"}</h1>{" "}
+        Adding multiple students functionality*/}
         {/* <div className="form-group mb-3 ">
           <input
             type="file"
@@ -119,7 +119,7 @@ const TeacherStudentPage = () => {
               <th style={{ width: "8%", overflow: "auto" }} scope="col">
                 user ID
               </th>
-              <th style={{ width: "35%" }}> Action </th>
+              <th style={{ width: "15%" }}> Action </th>
             </tr>
           </thead>
           <tbody>
@@ -135,18 +135,6 @@ const TeacherStudentPage = () => {
                     onClick={() => viewStudent(student.id)}
                   >
                     View
-                  </button>
-                  <button
-                    className="btn btn-outline-primary me-2"
-                    onClick={() => editStudent(student.id)}
-                  >
-                    Edit{" "}
-                  </button>
-                  <button
-                    className="btn btn-outline-danger"
-                    onClick={() => deleteStudent(student.user_id)}
-                  >
-                    Delete
                   </button>
                 </td>
               </tr>
