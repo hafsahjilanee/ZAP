@@ -3,17 +3,18 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const ViewCourse = () => {
-  const [Student, setStudent] = useState({
-    firstName: "",
-    lastName: "",
-    user_id: "",
+  const [Course, setCourse] = useState({
+    name: "",
+    term: "",
+    class_code: "",
+    active_status:""
   });
   const id = useParams();
   useEffect(() => {
-    loadStudent();
+    loadCourse();
   }, []);
 
-  const loadStudent = async () => {
+  const loadCourse = async () => {
     console.log(id.id);
     const result = await axios({
       method: "get",
@@ -22,10 +23,10 @@ const ViewCourse = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      url: "http://localhost:4000/admin/getById/" + id.id,
+      url: "http://localhost:4000/courses/" + id.id,
     });
     console.log(result.data);
-    setStudent(result.data);
+    setCourse(result.data);
   };
 
   return (
@@ -41,7 +42,7 @@ const ViewCourse = () => {
       >
         {"Back"}
       </Link>
-      <h2 className="text-center mb-4">{Student.firstName}</h2>{" "}
+      <h2 className="text-center mb-4">{Course.name}</h2>{" "}
       <div className="container-form shadow">
         <div class="row mb-3">
           <label
@@ -57,7 +58,7 @@ const ViewCourse = () => {
             class="form-control-lg"
             id="inputText3"
             name="firstname"
-            value={Student.firstName}
+            value={Course.name}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -76,7 +77,7 @@ const ViewCourse = () => {
             class="form-control-lg"
             id="inputText3"
             name="lastname"
-            value={Student.lastName}
+            value={Course.class_code}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -95,7 +96,7 @@ const ViewCourse = () => {
             class="form-control-lg"
             id="inputText3"
             name="user ID"
-            value={Student.user_id}
+            value={Course.term}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -114,7 +115,7 @@ const ViewCourse = () => {
             class="form-control-lg"
             id="inputText3"
             name="Email address"
-            value={Student.user_id}
+            value={Course.active_status}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />
@@ -135,7 +136,7 @@ const ViewCourse = () => {
             class="form-control-lg"
             id="inputText3"
             name="Courses"
-            value={Student.user_id}
+            value={Course.active_status}
             readOnly
             style={{ width: "300px", margin: "auto" }}
           />

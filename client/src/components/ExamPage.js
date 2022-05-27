@@ -43,6 +43,13 @@ const ExamPage = () => {
     nav("/TeacherDashboard/EditExam/");
   };
 
+  const editExam = async (id) => {
+    console.log(id);
+    localStorage.setItem("exam_id", id);
+    console.log(localStorage.getItem("exam_id"));
+    nav("/TeacherDashboard/EditExam/");
+  };
+
   useEffect(() => {
     loadExamDetails();
   }, []);
@@ -169,7 +176,11 @@ const ExamPage = () => {
                       </button>
                       <button
                         className="btn btn-outline-primary me-2"
+<<<<<<< HEAD
                         onClick={() => EditExam(e._id)}
+=======
+                        onClick={() => editExam(e.id)}
+>>>>>>> e1cc76bd0f84c19c1e57e267f4ee0c017541e30f
                         // onClick={nav("/TeacherDashboard/QuizDashboard")}
                       >
                         Edit

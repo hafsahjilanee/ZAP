@@ -50,7 +50,7 @@ const AddCourse = () => {
   const onChangeVal = (e) => {
     //target.checked === e.active_status
   };
-  console.log(Course.name, Course.active_status, Course.term);
+  //console.log(Course.name, Course.active_status, Course.term);
   const onSubmit = async (e) => {
     e.preventDefault();
 
