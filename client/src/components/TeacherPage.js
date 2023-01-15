@@ -3,13 +3,13 @@ import axios from "axios";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import image from "./plus.png";
-import Modal from "./Modal";
 import "./TeacherPage.css";
+import Popup from "./Popup";
+import "./popup.css";
 
 const TeacherPage = () => {
   const nav = useNavigate();
   const [teachers, setTeacher] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     loadTeachers();
@@ -39,6 +39,7 @@ const TeacherPage = () => {
     //setUser(result.data.reverse());
   };
   const deleteTeacher = async (id) => {
+    console.log(id);
     await axios.delete(
       "http://localhost:4000/admin/" + id,
       {
@@ -47,7 +48,7 @@ const TeacherPage = () => {
         },
       },
       {
-        data: { id: id },
+        data: { id },
       }
     );
     loadTeachers();
@@ -73,66 +74,130 @@ const TeacherPage = () => {
     } catch (e) {
         console.log(e)
     }*/
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [teacherID, setID] = useState("");
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="container-main">
-      {" "}
-      <br></br>
-      <div className="container-list">
-        <h1>
-          {" "}
-          Teachers
-          <NavLink exact to="/adminDashboard/AddTeacher">
-            <img
-              classname="img"
-              src={image}
-              alt="add"
-              height="40"
-              align="right"
-            ></img>{" "}
-          </NavLink>{" "}
-        </h1>{" "}
-        <table class="table table-hover border shadow">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">User ID</th>
-              <th> Action </th>
-            </tr>
-          </thead>
-          <tbody>
-            {teachers.map((teacher, index) => (
+    <div
+      className="bg"
+      style={{
+        paddingTop: "100px",
+        align: "center",
+      }}
+    >
+      <div
+        className="container-main"
+        style={{
+          marginBottom: "100px",
+        }}
+      >
+        <Link
+          className="btn btn-outline-secondary mb-4"
+          to="/adminDashboard"
+          style={{
+            marginRight: "1100px",
+            align: "left",
+            fontStyle: "bold",
+          }}
+        >
+          {"Back"}
+        </Link>{" "}
+        <br></br>
+        <div className="container-list">
+          <h1 className="mb-4">
+            {" "}
+            Teachers
+            <NavLink to="/adminDashboard/AddTeacher">
+              <img
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Add a Teacher"
+                className="img"
+                src={image}
+                alt="add"
+                height="40"
+                align="right"
+                style={{ paddingRight: "3rem" }}
+              ></img>{" "}
+            </NavLink>{" "}
+          </h1>{" "}
+          <table class="table table-hover border shadow">
+            <thead>
               <tr>
-                <th scope="row">{index + 1}</th>
-                <td>{teacher.firstName}</td>
-                <td>{teacher.lastName}</td>
-                <td>{teacher.user_id}</td>
-                <td>
-                  <button
-                    className="btn btn-outline-secondary me-2"
-                    onClick={() => viewTeacher(teacher.id)}
-                  >
-                    View
-                  </button>
-                  <button
-                    className="btn btn-outline-primary me-2"
-                    onClick={() => editTeacher(teacher.id)}
-                  >
-                    Edit{" "}
-                  </button>
-                  <button
-                    className="btn btn-outline-danger me-2"
-                    onClick={() => deleteTeacher(teacher.user_id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+                <th style={{ width: "5%" }} scope="col">
+                  #
+                </th>
+                <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                  First Name
+                </th>
+                <th style={{ width: "10%", overflow: "auto" }} scope="col">
+                  Last Name
+                </th>
+                <th style={{ width: "8%", overflow: "auto" }} scope="col">
+                  User ID
+                </th>
+                <th style={{ width: "35%", overflow: "auto" }}> Action </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {teachers.map((teacher, index) => (
+                <tr key={teacher.id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{teacher.firstName}</td>
+                  <td>{teacher.lastName}</td>
+                  <td>{teacher.user_id}</td>
+                  <td>
+                    <button
+                      className="btn btn-outline-secondary me-2"
+                      onClick={() => viewTeacher(teacher.id)}
+                    >
+                      View
+                    </button>
+                    <button
+                      className="btn btn-outline-primary me-2"
+                      onClick={() => editTeacher(teacher.id)}
+                    >
+                      Edit{" "}
+                    </button>
+                    <input
+                      type="button"
+                      value="Delete"
+                      className="btn btn-outline-danger"
+                      // onClick={() => deleteTeacher(teacher.id)}
+                      onClick={() => {
+                        setID(teacher.id);
+                        togglePopup();
+                      }}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>{" "}
       </div>
+      {isOpen && (
+        <Popup
+          content={
+            <>
+              <br></br>
+              <h5>Delete this teacher?</h5>
+              <button
+                className="btn btn-outline-danger m-3"
+                onClick={() => deleteTeacher(teacherID)}
+                height="fitContent"
+              >
+                Yes
+              </button>
+            </>
+          }
+          handleClose={togglePopup}
+        />
+      )}
     </div>
   );
 };

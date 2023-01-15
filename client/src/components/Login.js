@@ -3,9 +3,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./_helpers/AuthContext";
 import "./Login.css";
+import Navbar from "./layout/Navbar";
+
 function Login() {
   const [user_id, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const [User, setUser] = useState([]);
+
   const { setAuthState } = useContext(AuthContext);
   let history = useNavigate();
 
@@ -22,13 +27,15 @@ function Login() {
           localStorage.setItem("user", JSON.stringify(response.data));
           //console.log(localStorage.getItem('auth'))
           console.log(localStorage.getItem("user"));
+          //console.log(JSON.parse(localStorage.getItem('user')).id);
+          const id = JSON.parse(localStorage.getItem("user")).id;
           setAuthState(true);
           //alert("Login Successful!");
           if (response.data.role === "admin") {
             history("/adminDashboard");
           } else if (response.data.role === "teacher") {
             history("/teacherDashboard");
-          } else {
+          } else if (response.data.role === "student") {
             history("/studentDashboard");
           }
         }
@@ -42,9 +49,24 @@ function Login() {
       });
   };
   return (
-    <div>
-      <div>
-        <div className="m-2 container-login mx-auto shadow p-5">
+    <div className="bg" style={{ paddingTop: "1px" }}>
+      <div
+        style={{
+          marginTop: "50px",
+          paddingTop: "100px",
+          width: "200px",
+          //paddingRight: "700px",
+          paddingLeft: "750px",
+        }}
+      >
+        <div
+          className=" m-2 container-login  shadow p-5"
+          style={{
+            width: "max-content",
+
+            margin: "auto",
+          }}
+        >
           <div className="py-4">
             <h1> Welcome to ZAP!</h1>
           </div>
@@ -69,7 +91,16 @@ function Login() {
             />
             <br />
             <br />
-            <button className=" button" onClick={login}>
+            <button
+              className=" button"
+              onClick={login}
+              style={{
+                borderRadius: "8px",
+                height: "fit-content",
+                width: "fit-content",
+              }}
+            >
+              {" "}
               Login
             </button>
           </div>

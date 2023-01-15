@@ -112,30 +112,44 @@ const AdminDashboard = () => {
         console.log(e)
     }*/
   return (
-    <div className="container-admin">
-      <div className="gallery">
-        <NavLink className="container2" exact to="/adminDashboard/teacherPage">
-          <img className="image1" src={image} alt="teacher" />
-          <div class="middle">
-            <div class="text">Teachers</div>
-          </div>
-        </NavLink>
-      </div>
-      <div className="gallery">
-        <NavLink className="container2" exact to="/adminDashboard/studentPage">
-          <img class="image1" src={image1} alt="students"></img>
-          <div class="middle">
-            <div class="text">Students</div>
-          </div>
-        </NavLink>
-      </div>
-      <div className="gallery">
-        <NavLink className="container2" exact to="/adminDashboard/teacherPage">
-          <img class="image1" src={image2} alt="courses"></img>
-          <div class="middle">
-            <div class="text">Courses</div>
-          </div>
-        </NavLink>
+    <div className="bg" style={{ marginTop: "1px", paddingTop: "1px" }}>
+      <div className="container-admin " style={{ marginTop: "200px" }}>
+        <div className="gallery ">
+          <NavLink
+            className="container2  "
+            exact
+            to="/adminDashboard/TeacherPage"
+          >
+            <img className="image1" src={image} alt="teacher" />
+            <div className="middle">
+              <div className="text">Teachers</div>
+            </div>
+          </NavLink>
+        </div>
+        <div className="gallery">
+          <NavLink
+            className="container2"
+            exact
+            to="/adminDashboard/studentPage"
+          >
+            <img className="image1" src={image1} alt="students" />
+            <div className="middle">
+              <div className="text">Students</div>
+            </div>
+          </NavLink>
+        </div>
+        <div className="gallery">
+          <NavLink
+            className="container2"
+            exact
+            to="/adminDashboard/CoursesPage"
+          >
+            <img className="image1" src={image2} alt="courses" />
+            <div className="middle">
+              <div className="text">Courses</div>
+            </div>
+          </NavLink>
+        </div>
       </div>
     </div>
   );

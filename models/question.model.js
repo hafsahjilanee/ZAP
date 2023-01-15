@@ -3,6 +3,11 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
     description: String,
+    isSubjective:  {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     alternatives: [
         {
             text: {
@@ -15,7 +20,8 @@ const schema = new Schema({
                 default: false
             }
         }
-    ]
+    ],
+    marks: Number
 })
 
 const Question = mongoose.model('Question', schema);

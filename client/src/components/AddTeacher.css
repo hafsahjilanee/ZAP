@@ -6,11 +6,12 @@
     padding-bottom: 1.5rem !important;
 }
 .label{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align:inherit;
     font-weight: bolder;
 }
-.form-control-lg1{
+.form-control-lg{
+    width: 50%;
     margin-bottom: 0.75rem !important;
     min-height: calc(1.5em + (1rem + 2px));
     padding: 0.5rem;
@@ -18,13 +19,94 @@
     border: 1px solid #9c9b9b;
     font-size: 1.25rem;
     border-radius: 0.3rem;
+    margin: auto    ;
+    height: min-content     ;
+    
 }
-.container22{
-    width: 65%;
+.container-form{
+    width: 55%;
     margin-right: auto !important;
     margin-left: auto !important;
     padding: 2rem !important;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-    background-color: #efededf9;
-    border: #717171;
+    background-color: #f1ededaa;
+  
+    justify-content: space-between !important;
 }
+.container-main{
+    width: 65%;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding: 2rem !important;   
+  
+}
+.form-group {
+    margin-bottom: 1rem !important;
+    padding: auto;
+    
+}
+.btn{
+    margin-left: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+    
+}
+.btntrue1{
+   
+    margin-left: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+
+    
+}
+.btntrue1:after{
+   background-color:  #b24c4c;
+}
+
+.btn-primary{
+    background-color: #b24c4c;
+    border-color: #B24C4C;
+    margin-left: 20px;
+    color: rgb(254, 246, 246);
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.btn-primary:hover{
+    background-color: #b24c4cc3;
+    opacity: 0.7;
+}
+.btn-primary::after,.btn-primary:focus, .btn-primary:active {
+    background-color: #b24c4cc3;
+    
+}
+.btn{align-self: right;}
+
+.form-floating > label {
+    font: optional;
+    font-size: 25;
+    transition: none;
+    align-items: flex-start;
+    justify-content:flex-start;
+    
+  }
+  .form-floating >  .form-control::placeholder {
+      color: #9c9b9b;
+      transition: none;
+      padding: 0px;
+    align-items: flex-start;      
+  }
+  .form-floating > .form-control:focus ~ label,
+  .form-floating > .form-control:not(:placeholder-shown) ~ label,
+  .form-floating > .form-select ~ label {
+    opacity: 0.9;
+    transform: none;
+    font-weight: bolder;
+  }
+  .form-floating > .form-control:-webkit-autofill {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
+  .form-floating > .form-control {
+    padding: 1rem;
+  }

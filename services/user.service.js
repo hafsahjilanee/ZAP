@@ -1,8 +1,8 @@
-﻿
-const config = require('../config/config.json');
+﻿const config = require('../config/config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('config/db');
+const Student = db.Student;
 const User = db.User;
 const Teacher = db.Teacher;
 
@@ -37,6 +37,7 @@ async function register(userParam) {
     if(userParam.role!=='admin'){
         throw "Enter Valid user"
     }
+
     if (await User.findOne({ user_id: userParam.user_id })) {
         throw 'User ID "' + userParam.user_id + '" is already taken';
     }
@@ -63,7 +64,10 @@ async function createTeacher(userParam) {
     if (await User.findOne({ user_id: userParam.user_id })) {
         throw 'User ID "' + userParam.user_id + '" is already taken';
     }
+      
     const user = new User(userParam);
+
+    //console.log(user.id);
 
     // hash password
     if (userParam.password) {
@@ -75,6 +79,12 @@ async function createTeacher(userParam) {
 
     // save teacher
     await user.save();
+
+    const teacher_id = user.id
+
+    await Teacher.create({
+        teacher_id
+    })       
 }
 
 async function createStudent(userParam) {
@@ -88,6 +98,7 @@ async function createStudent(userParam) {
     }
 
     const user = new User(userParam);
+    //console.log(user.id);
 
     // hash password
     if (userParam.password) {
@@ -99,6 +110,12 @@ async function createStudent(userParam) {
 
     // save student
     await user.save();
+    
+    const student_id = user.id
+
+    await Student.create({
+        student_id
+    })     
 }
 
 async function update(id,userParam) {
@@ -121,6 +138,7 @@ async function update(id,userParam) {
 }
 
 async function _delete(user_id) {
+    //add condition here for teacher
     return await User.findOneAndRemove({user_id:user_id});
     
 }
