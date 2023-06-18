@@ -1,0 +1,1144 @@
+{
+	"info": {
+		"_postman_id": "3e2932af-3a2e-4a9a-b9af-e49f6cb71729",
+		"name": "exam-app-APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register new admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"01\",\r\n    \"firstName\": \"Hafsah\",\r\n    \"lastName\": \"Jilanee\",\r\n    \"role\":\"admin\",\r\n    \"password\": \"321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":\"01\",\r\n    \"password\":\"321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "teacher login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":\"03\",\r\n    \"password\":\"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTkwMDFiN2YwMDI3NDMxMDA1OWEyZDYiLCJpYXQiOjE2Mzg0NDA1OTksImV4cCI6MTYzOTA0NTM5OX0.KvMMPefxcyrwzXnwjlBgi6YShJbyLoupj0vcSECiRiU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/admin/admins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"admins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerTeacher",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk2MzA1NzEsImV4cCI6MTY1MDIzNTM3MX0.dJ331C_F9mywUo--FYMbBpZEtRZ49UNrsfVyrtg--8I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Sajjad\",\r\n    \"lastName\": \"Haider\",\r\n    \"user_id\":\"03\",\r\n    \"password\":\"1234\",\r\n    \"role\": \"teacher\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/registerTeacher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"registerTeacher"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerStudent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTkwMDFiN2YwMDI3NDMxMDA1OWEyZDYiLCJpYXQiOjE2MzY4MzEyNzksImV4cCI6MTYzNzQzNjA3OX0.H54upsUkTTtMq8Ox_8dnhegDp9fmeB-spnrv-Na3DFw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":\"17902\",\r\n    \"firstName\":\"Lando\",\r\n    \"lastName\":\"Norris\",\r\n    \"role\":\"student\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/registerStudent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"registerStudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "teacher getStudents",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTkwMDFiN2YwMDI3NDMxMDA1OWEyZDYiLCJpYXQiOjE2MzY4MzEyNzksImV4cCI6MTYzNzQzNjA3OX0.H54upsUkTTtMq8Ox_8dnhegDp9fmeB-spnrv-Na3DFw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/teacher/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"teacher",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin getStudents",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTkwMDFiN2YwMDI3NDMxMDA1OWEyZDYiLCJpYXQiOjE2MzY4MzEyNzksImV4cCI6MTYzNzQzNjA3OX0.H54upsUkTTtMq8Ox_8dnhegDp9fmeB-spnrv-Na3DFw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/admin/getStudents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"getStudents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk2MzY3MDEsImV4cCI6MTY1MDI0MTUwMX0.PaQygw2q8_GJlP5icpUYzzoBhBNs5Gb9lX5V6sEsJlY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/admin/getById/62318f5dddd54d0c046e3ea6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"getById",
+						"62318f5dddd54d0c046e3ea6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTIwODQ3NTUsImV4cCI6MTY1MjY4OTU1NX0.qvuDgBVSObWI1X-oDSj8Zfd4UN9kLZ48waUdKz7bAHM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Sajjad\",\r\n    \"lastName\": \"Haider\",\r\n    \"user_id\": \"03\",\r\n    \"role\": \"teacher\",\r\n    \"email\": \"sajjad@gmail.com\"\r\n    \r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/admin/62535d84e45a06384496d3a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"62535d84e45a06384496d3a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Teachers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY0MDE1ODg2MiwiZXhwIjoxNjQwNzYzNjYyfQ.RkmIGzGnN2zKEAGj2c5h0vY8Za0dTxqKXn2xWeUV6Yw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/admin/getTeachers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"getTeachers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin deleteUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTEwNzM0NTQsImV4cCI6MTY1MTY3ODI1NH0.BowXxo1H8C52D0XGK2BaHTnk9wfhcPjFU5JpikbMmOI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/admin/002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin deleteStudent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTkwMDFiN2YwMDI3NDMxMDA1OWEyZDYiLCJpYXQiOjE2MzcxNDk1OTIsImV4cCI6MTYzNzc1NDM5Mn0.uvva557Vz4UBi5bnL5nyORsWmk75nphLNicGsC-cKKo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/admin/deleteStudent/6195c8d53bcdcf2300527266",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"admin",
+						"deleteStudent",
+						"6195c8d53bcdcf2300527266"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exam CreateQuestion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"3 test\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"A\"\r\n        },\r\n        {\r\n            \"text\": \"B\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"C\"\r\n        },\r\n        {\r\n            \"text\": \"none of the above\"\r\n        }\r\n    ],\r\n    \"marks\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/question/createQuestion/62820fa343f4884ce8dd0450",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"question",
+						"createQuestion",
+						"62820fa343f4884ce8dd0450"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exam getQuestions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTkwMDFiN2YwMDI3NDMxMDA1OWEyZDYiLCJpYXQiOjE2MzY4MzEyNzksImV4cCI6MTYzNzQzNjA3OX0.H54upsUkTTtMq8Ox_8dnhegDp9fmeB-spnrv-Na3DFw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:4000/question/62820fa343f4884ce8dd0450",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"question",
+						"62820fa343f4884ce8dd0450"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "question getOneQuestion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTkwMDFiN2YwMDI3NDMxMDA1OWEyZDYiLCJpYXQiOjE2MzcxNDk1OTIsImV4cCI6MTYzNzc1NDM5Mn0.uvva557Vz4UBi5bnL5nyORsWmk75nphLNicGsC-cKKo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/question/view/62821db1bcae500c780fd023",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"question",
+						"view",
+						"62821db1bcae500c780fd023"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "question updateOneQuestion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTkwMDFiN2YwMDI3NDMxMDA1OWEyZDYiLCJpYXQiOjE2Mzk2ODQyMDIsImV4cCI6MTY0MDI4OTAwMn0.EnUtJmNufp9kT1zuphMMtHobVXSGHO5p0z8UPL_UToY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"3 test\",\r\n    \"alternatives\": [\r\n        {\r\n            \"text\": \"A\"\r\n        },\r\n        {\r\n            \"text\": \"B\",\r\n            \"isCorrect\":true\r\n        },\r\n        {\r\n            \"text\": \"C\"\r\n        },\r\n        {\r\n            \"text\": \"none of the above\"\r\n        }\r\n    ],\r\n    \"marks\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/question/62821db1bcae500c780fd023",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"question",
+						"62821db1bcae500c780fd023"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteQuestion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/question/62821da0bcae500c780fd013",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"question",
+						"62821da0bcae500c780fd013"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCourse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Introduction to Computing\",\r\n    \"term\": \"Fall 2021\",\r\n    \"class_code\": 5046,\r\n    \"active_status\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/courses/createCourse",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"courses",
+						"createCourse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCourse",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":\"03\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/courses/626ed3df51b1f94f5c7066e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"courses",
+						"626ed3df51b1f94f5c7066e5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deleteCourse",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":\"03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/courses/626ed3df51b1f94f5c7066e5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"courses",
+								"626ed3df51b1f94f5c7066e5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "21"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"15-i6mGJi9nOHW3mupFnJWdA9Lzo5A\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 01 May 2022 18:46:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "\"Succesfully removed\""
+				}
+			]
+		},
+		{
+			"name": "getAllCourses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/courses/allCourses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"courses",
+						"allCourses"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getAllCourses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/courses/allCourses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"courses",
+								"allCourses"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1043"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"413-ISnPJ8c+oK2CUd+qifIF//e/fL4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 01 May 2022 18:46:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"62537d8ec590d54f10fd97a8\",\n        \"name\": \"Audit Ethics\",\n        \"class_code\": 60158,\n        \"term\": \"Spring 2022\",\n        \"active_status\": false,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"62670de05d69ba43a493c6bc\",\n        \"name\": \"Arabic 2\",\n        \"term\": \"Spring 2022\",\n        \"class_code\": 5701,\n        \"active_status\": true,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6268eeec55b70352f4e6f276\",\n        \"name\": \"Pak History\",\n        \"term\": \"Fall 2021\",\n        \"class_code\": 5555,\n        \"active_status\": true,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"626ecd1951b1f94f5c7066d7\",\n        \"name\": \"Introduction to Computing\",\n        \"term\": \"Fall 2021\",\n        \"class_code\": 5046,\n        \"active_status\": true,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"626ed3c551b1f94f5c7066dc\",\n        \"name\": \"1st course\",\n        \"term\": \"Fall 2021\",\n        \"class_code\": 5668,\n        \"active_status\": true,\n        \"teacher\": {\n            \"teacher_id\": {\n                \"firstName\": \"Sajjad\",\n                \"lastName\": \"Haider\",\n                \"user_id\": \"03\",\n                \"id\": \"62535d84e45a06384496d3a6\"\n            },\n            \"id\": \"626ebdacb1f5e14704fcdcee\"\n        },\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"626ed3d151b1f94f5c7066e0\",\n        \"name\": \"2nd course\",\n        \"term\": \"Fall 2021\",\n        \"class_code\": 5669,\n        \"active_status\": true,\n        \"teacher\": {\n            \"teacher_id\": {\n                \"firstName\": \"Sajjad\",\n                \"lastName\": \"Haider\",\n                \"user_id\": \"03\",\n                \"id\": \"62535d84e45a06384496d3a6\"\n            },\n            \"id\": \"626ebdacb1f5e14704fcdcee\"\n        },\n        \"__v\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "getcoursebyID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/courses/626ed3c551b1f94f5c7066dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"courses",
+						"626ed3c551b1f94f5c7066dc"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getcoursebyID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/courses/626ebe0fb1f5e14704fcdcf5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"courses",
+								"626ebe0fb1f5e14704fcdcf5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "267"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10b-ogVsHF712tRr+vPTxKM2RmSSpwM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 01 May 2022 17:35:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"626ebe0fb1f5e14704fcdcf5\",\n    \"name\": \"2nd course\",\n    \"term\": \"Fall 2021\",\n    \"class_code\": 5667,\n    \"active_status\": true,\n    \"teacher\": {\n        \"teacher_id\": {\n            \"firstName\": \"Sajjad\",\n            \"lastName\": \"Haider\",\n            \"user_id\": \"03\",\n            \"id\": \"62535d84e45a06384496d3a6\"\n        },\n        \"id\": \"626ebdacb1f5e14704fcdcee\"\n    },\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "updateCourseByID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n   \"name\": \"Audit Ethics\",\r\n    \"term\": \"Spring 2022\",\r\n    \"class_code\": 60158,\r\n    \"active_status\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/courses/62537d8ec590d54f10fd97a8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"courses",
+						"62537d8ec590d54f10fd97a8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin makeTeacher",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/teacher/addinfo/62535d84e45a06384496d3a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"teacher",
+						"addinfo",
+						"62535d84e45a06384496d3a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "teacher addinfo/updateInfo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone_no\":\"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/teacher/addinfo/62535d84e45a06384496d3a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"teacher",
+						"addinfo",
+						"62535d84e45a06384496d3a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "teacher getinfo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/teacher/62535d84e45a06384496d3a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"teacher",
+						"62535d84e45a06384496d3a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "course create for teacher",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"German 1\",\r\n    \"term\": \"Spring 2022\",\r\n    \"class_code\": 5671,\r\n    \"active_status\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/courses/teacherCourse/6278c440e3c1c30f208eabc6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"courses",
+						"teacherCourse",
+						"6278c440e3c1c30f208eabc6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin addTeacherToCourse",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n   \"name\": \"Pak History\",\r\n    \"term\": \"Fall 2021\",\r\n    \"class_code\": 5555,\r\n    \"active_status\": true,\r\n    \"teacherID\":\"03\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/courses/6268eeec55b70352f4e6f276",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"courses",
+						"6268eeec55b70352f4e6f276"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "course createExam",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"examName\": \"IDM Exam\",\r\n    \"start_exam_date\": \"14/05/2022\",\r\n    \"startHours\": \"08\",\r\n    \"startMins\": \"00\",\r\n    \"end_exam_date\": \"14/05/2022\",\r\n    \"endHours\":\"10\",\r\n    \"endMins\":\"00\",\r\n    \"totalMarks\":100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/exams/626ed3c551b1f94f5c7066dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exams",
+						"626ed3c551b1f94f5c7066dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "course getExams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/exams/626ed3c551b1f94f5c7066dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exams",
+						"626ed3c551b1f94f5c7066dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exam getOneExam",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/exams/view/62820fa343f4884ce8dd0450",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exams",
+						"view",
+						"62820fa343f4884ce8dd0450"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exam updateExamInfo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"examName\": \"Updated sarahh Exam\",\r\n    \"start_exam_date\": \"14/05/2022\",\r\n    \"startHours\": \"08\",\r\n    \"startMins\": \"00\",\r\n    \"startTimePeriod\" : \"AM\",\r\n    \"end_exam_date\": \"14/05/2022\",\r\n    \"endHours\":\"10\",\r\n    \"endMins\":\"00\",\r\n    \"endTimePeriod\":\"AM\",\r\n    \"totalMarks\":100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/exams/6280ae63a500e443f07cceaa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exams",
+						"6280ae63a500e443f07cceaa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete exam",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/exams/6280ae63a500e443f07cceaa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exams",
+						"6280ae63a500e443f07cceaa"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

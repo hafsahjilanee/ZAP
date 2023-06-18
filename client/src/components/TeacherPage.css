@@ -1,0 +1,40 @@
+
+.img {
+    margin-left: 5px;
+    }
+    .img:hover{
+        opacity: 0.5;
+    }
+.container-list{
+    padding-top: 20px;
+    height: fit-content; 
+    width: fit-content;
+    margin: auto;
+    
+}
+.container-main{
+    margin-top: 1px !important;
+    margin:auto;
+    vertical-align: top;
+   }
+   .table{
+       background: #f3EDED; width: 100%;
+   }
+   .btn{
+    margin-left: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: larger;
+    font-weight: 500;
+    border-color: rgb(57, 57, 57);
+    color: dimgrey;
+    border-width: 1px;
+    height: fit-content;
+    
+    
+}
+.table{
+    margin-top: auto;
+}
